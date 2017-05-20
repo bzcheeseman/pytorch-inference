@@ -8,6 +8,7 @@
 
 int main() {
 
+  // Set up data - this just creates random tensors in the specified shapes
   pycpp::python_home = "../scripts";
   pycpp::py_object test ("test");
   test("save_tensor", {pycpp::to_python(1), // out_filters
@@ -48,9 +49,10 @@ int main() {
 
   auto image = from_numpy((PyArrayObject *)i, 4, {2, 3, 6, 6});
   auto pytorch_out = from_numpy((PyArrayObject *)pto, 4, {2, 3, 1, 1});
-  pytorch_out = af::reorder(pytorch_out, 2, 1, 0, 3);
+  pytorch_out = af::reorder(pytorch_out, 2, 1, 0, 3);  // Get the output from pytorch - this is the result we
+                                                       // want to replicate
 
-  pytorch::conv_params_t params = {3, 5, 1, 1, 0, 0};
+  pytorch::conv_params_t params = {3, 5, 1, 1, 0, 0};  // filter_x, filter_y, stride_x, stride_y, pad_x, pad_y
 
   pytorch::Conv2d conv(params, "filts.dat", {1, 3, 3, 5}, "bias.dat", {1, 1, 1, 1});
   pytorch::Linear lin("lin_weight.dat", {1, 1, 3, 8}, "lin_bias.dat", {1, 1, 3, 1});
