@@ -29,5 +29,5 @@ def test_conv(filts_file, bias_file, img_file, lw_file, lb_file):
     lw = Variable(torch.load(lw_file)).squeeze()
     lb = Variable(torch.load(lb_file)).squeeze()
     output = Funct.conv2d(img, weights, bias)
-    output = Funct.linear(output.view(output.size(0), -1), lw, lb)
+    output = Funct.hardtanh(Funct.linear(output.view(output.size(0), -1), lw, lb))
     return np.float32(output.unsqueeze(2).unsqueeze(3).data.numpy())

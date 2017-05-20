@@ -135,6 +135,9 @@ namespace pytorch {
 
   };
 
+  // TODO: MaxPool
+  // TODO: BatchNorm (af::transform? Or just apply regular batchnorm?)
+
   /* Sigmoid */
   class Sigmoid : public Layer {
   public:
@@ -161,13 +164,16 @@ namespace pytorch {
 
   /* Hardtanh */
   class Hardtanh : public Layer {
+    const float low, high;
   public:
+    Hardtanh(const float &low = 1.f, const float &high = 1.f) : low(low), high(high) {}
+
     inline af::array forward(const af::array &input){
-      return pytorch::hardtanh(input);
+      return pytorch::hardtanh(input, low, high);
     }
 
     inline af::array operator()(const af::array &input){
-      return pytorch::hardtanh(input);
+      return pytorch::hardtanh(input, low, high);
     }
   };
 

@@ -121,7 +121,6 @@ namespace pytorch {
     return 1 / (1 + af::exp(-a));
   }
 
-  // Not necessarily correct (not yet anyway)
   inline af::array hardtanh(const af::array &a, const float &low=1.f, const float &high=1.f){
     return af::clamp(a, low, high);  // just cuts it off at low/high (basicaly scaled hardtanh)?
   }
@@ -131,7 +130,7 @@ namespace pytorch {
   }
 
   inline af::array relu(const af::array &a){
-    return af::max(a, 0);  // this should work
+    return af::max(a, af::constant(0, a.dims()));  // this should work
   }
 
   // TODO: MaxPool

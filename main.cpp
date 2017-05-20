@@ -6,9 +6,6 @@
 #include "include/layers.hpp"
 #include "include/inference_engine.hpp"
 
-// save pytorch tensors (weights/biases) with tolist() method, save to file as .csv, load into arrayfire
-// or use .numpy() method and convert in from numpy
-
 int main() {
 
   pycpp::python_home = "../scripts";
@@ -57,10 +54,12 @@ int main() {
 
   pytorch::Conv2d conv(params, "filts.dat", {1, 3, 3, 5}, "bias.dat", {1, 1, 1, 1});
   pytorch::Linear lin("lin_weight.dat", {1, 1, 3, 8}, "lin_bias.dat", {1, 1, 3, 1});
+  pytorch::Hardtanh hardtanh(-1, 1);
 
   pytorch::inference_engine engine;
   engine.add_layer(conv);
   engine.add_layer(lin);
+  engine.add_layer(hardtanh);
   auto output = engine.forward(image);
 
 //  auto output = pytorch::conv2d(params, filters, bias, image);
