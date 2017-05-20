@@ -85,7 +85,7 @@ namespace pytorch {
         out(af::span, af::span, af::span, i) +=
                 af::moddims(
                         af::reorder(
-                                af::matmul(f(af::span, af::span, k), in(af::span, af::span, k, i)),
+                                af::matmul(f(af::span, af::span, k, af::span), in(af::span, af::span, k, i)),
                         3, 1, 2, 0),
                 h_out, w_out, Cout);
       }

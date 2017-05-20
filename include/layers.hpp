@@ -63,9 +63,9 @@ namespace pytorch {
            const std::vector<int> &bias_dims,
            const std::string &python_home = "../scripts") : params(params), utils("utils", python_home) {
 
-      PyObject *filts = utils("load_tensor", {pycpp::to_python(filters_filename)});
+      PyObject *filts = utils("load_tensor", (std::initializer_list){pycpp::to_python(filters_filename)});
       assert(filts);
-      PyObject *bs = utils("load_tensor", {pycpp::to_python(bias_filename)});
+      PyObject *bs = utils("load_tensor", (std::initializer_list){pycpp::to_python(bias_filename)});
       assert(bs);
 
       filters = from_numpy(reinterpret_cast<PyArrayObject *>(filts), filt_dims.size(), filt_dims);
@@ -108,9 +108,9 @@ namespace pytorch {
            const std::vector<int> &bias_dims,
            const std::string &python_home = "../scripts") : utils("utils", python_home) {
 
-      PyObject *ws = utils("load_tensor", {pycpp::to_python(weights_filename)});
+      PyObject *ws = utils("load_tensor", (std::initializer_list){pycpp::to_python(weights_filename)});
       assert(ws);
-      PyObject *bs = utils("load_tensor", {pycpp::to_python(bias_filename)});
+      PyObject *bs = utils("load_tensor", (std::initializer_list){pycpp::to_python(bias_filename)});
       assert(bs);
 
       weights = from_numpy(reinterpret_cast<PyArrayObject *>(ws), weights_dims.size(), weights_dims);
