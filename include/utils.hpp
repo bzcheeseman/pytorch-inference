@@ -33,6 +33,7 @@
 
 /**
  * @brief Converts a numpy array to an ArrayFire array
+ *
  * @param array numpy ndarray (PyArrayObject *) object
  * @param ndim Number of dimensions, usually 4
  * @param dims The array dimensions - note these are in the torch convention (n, k, h, w), we will convert to

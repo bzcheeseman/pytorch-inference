@@ -30,6 +30,12 @@
 
 namespace pytorch {
 
+  /**
+   * @struct conv_params_t
+   * @file include/ops.hpp
+   * @brief Holds the parameters needed for convolution as well as a convenience function to send them
+   * to a std::ostream object.
+   */
   struct conv_params_t {
     int filter_x, filter_y;
     int stride_x, stride_y;
@@ -98,6 +104,7 @@ namespace pytorch {
 
   /**
    * @brief Performs the linear transformation y = Wx + b
+   *
    * @param weight The weight matrix W
    * @param bias The bias vector b
    * @param input The input x

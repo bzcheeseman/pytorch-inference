@@ -55,6 +55,8 @@ namespace pytorch {
   };
 
   /**
+   * @class Conv2d
+   * @file include/layers.hpp
    * @brief Equivalent to Conv2d in pytorch.
    *
    * Implements the forward pass for pytorch's nn.Conv2d module. Note that clearly something needs to happen to

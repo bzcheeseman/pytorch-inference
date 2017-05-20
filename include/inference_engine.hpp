@@ -36,17 +36,33 @@
 
 namespace pytorch {
 
+  /**
+   * @class inference_engine
+   * @file include/inference_engine.hpp
+   * @brief The engine that drives inferences. This will hold everything related to the OpenCL backend.
+   */
   class inference_engine {
   private:
     std::vector<Layer *> layers;
+    const int device;
 
   public:
-    inference_engine(std::vector<int> devices = {0}) {}
+    inference_engine(const int &device = 0, af::Backend backend = AF_BACKEND_OPENCL) : device(device) {
+      af::setBackend(backend);
+      af::setDevice(device);
+      af::info();
+    }
 
-    virtual ~inference_engine() {}
+    virtual ~inference_engine() {
+      af::deviceGC();
+    }
 
     inline void add_layer(Layer &l){
       layers.push_back(&l);
+    }
+
+    inline void add_layer(Layer *l){
+      layers.push_back(l);
     }
 
     inline af::array forward(const af::array &input){
@@ -55,6 +71,7 @@ namespace pytorch {
         auto temp = l->forward(out);
         out = af::array(temp);
       }
+      af::sync(device);
       return out;
     }
 

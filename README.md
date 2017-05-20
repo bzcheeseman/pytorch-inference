@@ -11,7 +11,7 @@ which allows us to use the pytorch-trained weights in our C++ program.
 ```
 cmake >= 3.5
 pytorch >= 0.1.9
-arrayfire >= 3.4 (?)
+arrayfire >= 3.5
 Py_Cpp (python3 port already included)
 ```
 
