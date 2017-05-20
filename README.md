@@ -23,7 +23,7 @@ documentation, anything/everything.
 I would ask that you follow these steps for organization:
 1. Open an issue with proposed changes (tag appropriately)
 2. Fork the repo and add a branch for the changes
-3. Be patient - I'll get to it as soon as I can
+3. Be patient - I'll get to it as soon as I can :smile:
 
 
 Note on the licensing - I believe in open-source software and I like the GPL, but if 

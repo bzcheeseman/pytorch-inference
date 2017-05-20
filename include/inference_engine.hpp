@@ -47,10 +47,14 @@ namespace pytorch {
     const int device;
 
   public:
-    inference_engine(const int &device = 0, af::Backend backend = AF_BACKEND_OPENCL) : device(device) {
+    inference_engine(const int &device = 0,
+                     af::Backend backend = AF_BACKEND_OPENCL,
+                     bool quiet = true) : device(device) {
       af::setBackend(backend);
       af::setDevice(device);
-      af::info();
+      if (!quiet){
+        af::info();
+      }
     }
 
     virtual ~inference_engine() {
@@ -76,7 +80,7 @@ namespace pytorch {
     }
 
   };
-}  // pytorch
+} // pytorch
 
 
 

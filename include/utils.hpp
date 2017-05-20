@@ -31,36 +31,40 @@
 
 #include <arrayfire.h>
 
-/**
- * @brief Converts a numpy array to an ArrayFire array
- *
- * @param array numpy ndarray (PyArrayObject *) object
- * @param ndim Number of dimensions, usually 4
- * @param dims The array dimensions - note these are in the torch convention (n, k, h, w), we will convert to
- *             ArrayFire convention which is (h, w, k, n) in the output array. This will be obscured as much as possible.
- * @return ArrayFire array that has the data from the numpy array arranged within.
- */
-inline af::array from_numpy(PyArrayObject *array, int ndim, std::vector<int> dims){
+namespace pytorch {
 
-  array = PyArray_GETCONTIGUOUS(array);  // make sure it's contiguous (might already be)
+  /**
+   * @brief Converts a numpy array to an ArrayFire array
+   *
+   * @param array numpy ndarray (PyArrayObject *) object
+   * @param ndim Number of dimensions, usually 4
+   * @param dims The array dimensions - note these are in the torch convention (n, k, h, w), we will convert to
+   *             ArrayFire convention which is (h, w, k, n) in the output array. This will be obscured as much as possible.
+   * @return ArrayFire array that has the data from the numpy array arranged within.
+   */
+  inline af::array from_numpy(PyArrayObject *array, int ndim, std::vector<int> dims){
 
-  int array_ndim = PyArray_NDIM(array);
-  assert(ndim == array_ndim);
+    array = PyArray_GETCONTIGUOUS(array);  // make sure it's contiguous (might already be)
 
-  npy_intp *array_dims = PyArray_SHAPE(array);
+    int array_ndim = PyArray_NDIM(array);
+    assert(ndim == array_ndim);
 
-  for (int i = 0; i < ndim; i++){
-    assert(dims[i] == array_dims[i]);  // make sure dimensions are right
+    npy_intp *array_dims = PyArray_SHAPE(array);
+
+    for (int i = 0; i < ndim; i++){
+      assert(dims[i] == array_dims[i]);  // make sure dimensions are right
+    }
+
+    int n, k, h, w;
+    n = dims[0]; k = dims[1]; h = dims[2]; w = dims[3];
+
+    af::array out (w, h, k, n, reinterpret_cast<float *>(PyArray_DATA(array)), afHost);  // errors out here
+    out = af::reorder(out, 1, 0, 2, 3);  // reorder to arrayfire specs (h, w, k, batch)
+
+    return out;
+
   }
 
-  int n, k, h, w;
-  n = dims[0]; k = dims[1]; h = dims[2]; w = dims[3];
-
-  af::array out (w, h, k, n, reinterpret_cast<float *>(PyArray_DATA(array)), afHost);  // errors out here
-  out = af::reorder(out, 1, 0, 2, 3);  // reorder to arrayfire specs (h, w, k, batch)
-
-  return out;
-
-}
+} // pytorch
 
 #endif //PYTORCH_INFERENCE_EXTRACT_NUMPY_HPP

@@ -48,11 +48,11 @@ int main() {
                                         pycpp::to_python("lin_weight.dat"), pycpp::to_python("lin_bias.dat")});
 
   // Initialize the engine (sets up the backend)
-  pytorch::inference_engine engine;
+  pytorch::inference_engine engine (0, AF_BACKEND_OPENCL, false);
 
   // Load up the image and target
-  auto image = from_numpy((PyArrayObject *)i, 4, {2, 3, 6, 6});
-  auto pytorch_out = from_numpy((PyArrayObject *)pto, 4, {2, 3, 1, 1});
+  auto image = pytorch::from_numpy((PyArrayObject *)i, 4, {2, 3, 6, 6});
+  auto pytorch_out = pytorch::from_numpy((PyArrayObject *)pto, 4, {2, 3, 1, 1}); // need to reorder - not 4-dim originally
   pytorch_out = af::reorder(pytorch_out, 2, 1, 0, 3);  // Get the output from pytorch - this is the result we
                                                        // want to replicate
 
@@ -63,6 +63,7 @@ int main() {
 //  pytorch::Linear lin("lin_weight.dat", {1, 1, 3, 8}, "lin_bias.dat", {1, 1, 3, 1});
 //  pytorch::Hardtanh hardtanh(-1, 1);
 
+  // Can set up layers like above (commented) or this way, both have the same effect.
   engine.add_layer(new pytorch::Conv2d(params, "filts.dat", {1, 3, 3, 5}, "bias.dat", {1, 1, 1, 1}));
   engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 8}, "lin_bias.dat", {1, 1, 3, 1}));
   engine.add_layer(new pytorch::Hardtanh(-1, 1));
