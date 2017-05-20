@@ -124,6 +124,15 @@ namespace pytorch {
 
   }
 
+  inline std::vector<af::array> copy_branch(const af::array &input, const int &copies){
+    assert(copies <= 4); // only 4 branches supported for now
+    std::vector<af::array> out;
+    for (int i = 0; i < copies; i++){
+      out.push_back(input);
+    }
+    return out;
+  }
+
   inline af::array cat2(const af::array &input1,
                          const af::array &input2,
                          const int &dim){

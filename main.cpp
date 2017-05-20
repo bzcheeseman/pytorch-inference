@@ -31,13 +31,13 @@ int main() {
 
   test("save_tensor", {pycpp::to_python(1),  // no batch
                        pycpp::to_python(1),  // no filters
-                       pycpp::to_python(30),  // output size
-                       pycpp::to_python(222*224*32),  // input size
+                       pycpp::to_python(3),  // output size
+                       pycpp::to_python(222*224*32*2),  // input size
                        pycpp::to_python("lin_weight.dat")});
 
   test("save_tensor", {pycpp::to_python(1),  // no batch
                        pycpp::to_python(1),  // no filters
-                       pycpp::to_python(30),  // output size
+                       pycpp::to_python(3),  // output size
                        pycpp::to_python(1),  // vector
                        pycpp::to_python("lin_bias.dat")});
 
@@ -62,7 +62,8 @@ int main() {
 
   // Load up the image and target
   auto image = pytorch::from_numpy((PyArrayObject *)i, 4, {10, 3, 224, 224});
-  auto pytorch_out = pytorch::from_numpy((PyArrayObject *)pto, 4, {10, 30, 1, 1}); // need to reorder - not 4-dim originally
+  auto pytorch_out = pytorch::from_numpy((PyArrayObject *)pto, 4, {10, 3, 1, 1});
+  // need to reorder - not 4-dim originally
   pytorch_out = af::reorder(pytorch_out, 2, 1, 0, 3);  // Get the output from pytorch - this is the result we
                                                        // want to replicate
 
@@ -75,7 +76,10 @@ int main() {
 
   // Can set up layers like above (commented) or this way, both have the same effect.
   engine.add_layer(new pytorch::Conv2d(params, "filts.dat", {32, 3, 3, 1}, "bias.dat", {1, 32, 1, 1}));
-  engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 30, 222*224*32}, "lin_bias.dat", {1, 1, 30, 1}));
+  engine.add_layer(new pytorch::Branch(2));
+  engine.add_layer({new pytorch::Skip, new pytorch::Skip}); // this is how you add singles after the branch
+  engine.add_layer(new pytorch::Concat2(pytorch::k));
+  engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 222*224*32*2}, "lin_bias.dat", {1, 1, 3, 1}));
   engine.add_layer(new pytorch::Hardtanh(-1, 1));
   af::timer::start();
   auto output = engine.forward(image);

@@ -26,6 +26,7 @@ def test_concat(filts_file, dim):
     f = Variable(torch.load(filts_file))
     return np.float32(torch.cat([f, f], dim).data.numpy())
 
+
 def test_conv(filts_file, bias_file, img_file, lw_file, lb_file):
     img = Variable(torch.load(img_file))
     weights = Variable(torch.load(filts_file))
@@ -33,5 +34,6 @@ def test_conv(filts_file, bias_file, img_file, lw_file, lb_file):
     lw = Variable(torch.load(lw_file)).squeeze()
     lb = Variable(torch.load(lb_file)).squeeze()
     output = Funct.conv2d(img, weights, bias)
+    output = torch.cat([output, output], 1)
     output = Funct.hardtanh(Funct.linear(output.view(output.size(0), -1), lw, lb))
     return np.float32(output.unsqueeze(2).unsqueeze(3).data.numpy())

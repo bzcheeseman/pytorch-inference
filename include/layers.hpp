@@ -34,6 +34,16 @@
 namespace pytorch {
 
   /**
+   * @brief Convenience enum to use whenever you need to specify a dimension (like in Concat)
+   */
+  enum dims {
+    n = 3,
+    k = 2,
+    h = 0,
+    w = 1
+  };
+
+  /**
    * @class Layer
    * @file include/layers.hpp
    * @brief Abstract base class for all layers.
@@ -49,13 +59,44 @@ namespace pytorch {
      * @param input The input to this layer
      * @return The output of this layer
      */
-    inline virtual af::array forward(const af::array &input) = 0;
+    inline virtual std::vector<af::array> forward(const std::vector<af::array> &input) = 0;
 
-    inline virtual af::array operator()(const af::array &input) = 0;
+    /**
+     * @brief Forward function for this layer
+     * @param input The input to this layer
+     * @return The output of this layer
+     */
+    inline virtual std::vector<af::array> operator()(const std::vector<af::array> &input) = 0;
   };
 
   /**
-   * @class Conv2d
+   * @class Skip (TESTED)
+   * @file include/layers.hpp
+   * @brief Performs a no-op - makes it so that we can create branching networks.
+   */
+  class Skip : public Layer {
+  public:
+    /**
+     * @brief No-op forward
+     * @param input Input tensor(s)
+     * @return Input tensor(s)
+     */
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return input;
+    }
+
+    /**
+     * @brief No-op forward
+     * @param input Input tensor(s)
+     * @return Input tensor(s)
+     */
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return input;
+    }
+  };
+
+  /**
+   * @class Conv2d (TESTED)
    * @file include/layers.hpp
    * @brief Equivalent to Conv2d in pytorch.
    *
@@ -161,8 +202,8 @@ namespace pytorch {
      * @param input Input data size (h_in, w_in, Cin, batch)
      * @return Convolved data size (h_out, w_out, Cout, batch)
      */
-    inline af::array forward(const af::array &input){
-      return conv2d(params, filters, bias, input);
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {conv2d(params, filters, bias, input[0])};
     }
 
     /**
@@ -172,13 +213,15 @@ namespace pytorch {
      * @param input Input data size (h_in, w_in, Cin, batch)
      * @return Convolved data size (h_out, w_out, Cout, batch)
      */
-    inline af::array operator()(const af::array &input){
-      return conv2d(params, filters, bias, input);
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {conv2d(params, filters, bias, input[0])};
     }
 
   };
 
-  /*  Linear  */
+  // TODO: Grouped convolution(?)
+
+  /*  Linear - tested  */
   class Linear : public Layer {
   private:
     af::array weights;
@@ -226,118 +269,132 @@ namespace pytorch {
       bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
     }
 
-    inline af::array forward(const af::array &input){
-      return linear(weights, bias, input);
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {linear(weights, bias, input[0])};
     }
 
-    inline af::array operator()(const af::array &input){
-      return linear(weights, bias, input);
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {linear(weights, bias, input[0])};
     }
 
   };
 
   // TODO: MaxPool
   // TODO: BatchNorm (af::transform? Or just apply regular batchnorm?)
-  // TODO: Figure out branching structures (concat works, just need to be able to feed in multiple inputs...)
 
-  /* Concat2 */
+  /* Branch - tested */
+  class Branch : public Layer {
+  private:
+    int copies;
+  public:
+    Branch(const int &copies) : copies(copies){}
+
+    inline int get_copies(){
+      return copies;
+    }
+
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return pytorch::copy_branch(input[0], copies);
+    }
+
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return pytorch::copy_branch(input[0], copies);
+    }
+  };
+
+  /* Concat2 - tested */
   class Concat2 : public Layer {
+    int dim;
   public:
-    inline af::array forward(const af::array &input1, const af::array &input2, const int &dim){
-      return pytorch::cat2(input1, input2, dim);
+    Concat2 (const int &dim) : dim(dim) {}
+
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {pytorch::cat2(input[0], input[1], dim)};
     }
 
-    inline af::array operator()(const af::array &input1, const af::array &input2, const int &dim){
-      return pytorch::cat2(input1, input2, dim);
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {pytorch::cat2(input[0], input[1], dim)};
     }
   };
 
-  /* Concat3 */
+  /* Concat3 - tested */
   class Concat3 : public Layer {
+    int dim;
   public:
-    inline af::array forward(const af::array &input1,
-                             const af::array &input2,
-                             const af::array &input3,
-                             const int &dim){
-      return pytorch::cat3(input1, input2, input3, dim);
+    Concat3 (const int &dim) : dim(dim) {}
+
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {pytorch::cat3(input[0], input[1], input[2], dim)};
     }
 
-    inline af::array operator()(const af::array &input1,
-                             const af::array &input2,
-                             const af::array &input3,
-                             const int &dim){
-      return pytorch::cat3(input1, input2, input3, dim);
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {pytorch::cat3(input[0], input[1], input[2], dim)};
     }
   };
 
-  /* Concat4 - higher is not supported by arrayfire */
+  /* Concat4 - higher is not supported by arrayfire - tested */
   class Concat4 : public Layer {
+    int dim;
   public:
-    inline af::array forward(const af::array &input1,
-                             const af::array &input2,
-                             const af::array &input3,
-                             const af::array &input4,
-                             const int &dim){
-      return pytorch::cat4(input1, input2, input3, input4, dim);
+    Concat4 (const int &dim) : dim(dim) {}
+
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {pytorch::cat4(input[0], input[1], input[2], input[3], dim)};
     }
 
-    inline af::array operator()(const af::array &input1,
-                             const af::array &input2,
-                             const af::array &input3,
-                             const af::array &input4,
-                             const int &dim){
-      return pytorch::cat4(input1, input2, input3, input4, dim);
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {pytorch::cat4(input[0], input[1], input[2], input[3], dim)};
     }
   };
 
-  /* Sigmoid */
+  /* Sigmoid - tested */
   class Sigmoid : public Layer {
   public:
-    inline af::array forward(const af::array &input){
-      return pytorch::sigmoid(input);
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {pytorch::sigmoid(input[0])};
     }
 
-    inline af::array operator()(const af::array &input){
-      return pytorch::sigmoid(input);
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {pytorch::sigmoid(input[0])};
     }
   };
 
-  /* Tanh */
+  /* Tanh - tested */
   class Tanh : public Layer {
   public:
-    inline af::array forward(const af::array &input){
-      return pytorch::tanh(input);
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {pytorch::tanh(input[0])};
     }
 
-    inline af::array operator()(const af::array &input){
-      return pytorch::tanh(input);
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {pytorch::tanh(input[0])};
     }
   };
 
-  /* Hardtanh */
+  /* Hardtanh - tested */
   class Hardtanh : public Layer {
     const float low, high;
   public:
     Hardtanh(const float &low = 1.f, const float &high = 1.f) : low(low), high(high) {}
 
-    inline af::array forward(const af::array &input){
-      return pytorch::hardtanh(input, low, high);
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {pytorch::hardtanh(input[0], low, high)};
     }
 
-    inline af::array operator()(const af::array &input){
-      return pytorch::hardtanh(input, low, high);
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {pytorch::hardtanh(input[0], low, high)};
     }
   };
 
-  /* ReLU */
+  /* ReLU - tested */
   class ReLU : public Layer {
   public:
-    inline af::array forward(const af::array &input){
-      return pytorch::relu(input);
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {pytorch::relu(input[0])};
     }
 
-    inline af::array operator()(const af::array &input){
-      return pytorch::relu(input);
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {pytorch::relu(input[0])};
     }
   };
 

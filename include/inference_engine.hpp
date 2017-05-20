@@ -43,7 +43,7 @@ namespace pytorch {
    */
   class inference_engine {
   private:
-    std::vector<Layer *> layers;
+    std::vector<std::vector<pytorch::Layer *>> layers;
     const int device;
 
   public:
@@ -61,21 +61,36 @@ namespace pytorch {
       af::deviceGC();
     }
 
-    inline void add_layer(Layer &l){
-      layers.push_back(&l);
+    inline void add_layer(Layer *l){
+      layers.push_back({l});
     }
 
-    inline void add_layer(Layer *l){
+    inline void add_layer(std::vector<Layer *>l){
       layers.push_back(l);
     }
 
     inline af::array forward(const af::array &input){
-      af::array out (input);  // first input is input
-      for (auto &l : layers){  // pass the data through the network
-        auto temp = l->forward(out);
-        out = af::array(temp);
+      std::vector<af::array> out;  // first input is input
+      out.push_back(input);
+      for (int i = 0; i < layers.size(); i++){
+        std::vector<af::array> temp;
+        if (layers[i].size() == 1) {  // works for concat layers
+          assert(out.size() <= 4);
+          // Call forward function
+          temp = layers[i][0]->forward(out);
+        }
+        else{
+          temp.clear();
+          assert(out.size() == layers[i].size());  // make sure there are enough inputs
+          for (int j = 0; j < layers[i].size(); j++){
+            // Call forward for each branch
+            temp.push_back(layers[i][j]->forward({out[j]})[0]);
+          }
+        }
+        out = temp;
       }
-      return out;
+
+      return out[0]; // must be a single tensor by the end
     }
 
   };
