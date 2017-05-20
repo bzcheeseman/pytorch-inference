@@ -28,3 +28,8 @@ I would ask that you follow these steps for organization:
 
 Note on the licensing - I believe in open-source software and I like the GPL, but if 
 someone has a good reason to change the license please let me know and I'll consider it.
+
+Obligatory note: I am NOT promoting ArrayFire or using its name to promote this project 
+in any way. If someone from ArrayFire has issues with this they should please let me
+know promptly and I'll do my best to rectify the situation. I'm not distributing the source
+code or binary so I hope there aren't any conflicts.
