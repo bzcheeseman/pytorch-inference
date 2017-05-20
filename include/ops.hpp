@@ -124,6 +124,27 @@ namespace pytorch {
 
   }
 
+  inline af::array cat2(const af::array &input1,
+                         const af::array &input2,
+                         const int &dim){
+    return af::join(dim, input1, input2);
+  }
+
+  inline af::array cat3(const af::array &input1,
+                        const af::array &input2,
+                        const af::array &input3,
+                        const int &dim){
+    return af::join(dim, input1, input2, input3);
+  }
+
+  inline af::array cat4(const af::array &input1,
+                        const af::array &input2,
+                        const af::array &input3,
+                        const af::array &input4,
+                        const int &dim){
+    return af::join(dim, input1, input2, input3, input4);
+  }
+
   inline af::array sigmoid(const af::array &a){
     return 1 / (1 + af::exp(-a));
   }

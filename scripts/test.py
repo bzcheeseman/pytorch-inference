@@ -22,6 +22,10 @@ def load_tensor(filename):
     return np.float32(tensor.numpy())
 
 
+def test_concat(filts_file, dim):
+    f = Variable(torch.load(filts_file))
+    return np.float32(torch.cat([f, f], dim).data.numpy())
+
 def test_conv(filts_file, bias_file, img_file, lw_file, lb_file):
     img = Variable(torch.load(img_file))
     weights = Variable(torch.load(filts_file))

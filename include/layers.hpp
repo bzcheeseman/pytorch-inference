@@ -238,6 +238,57 @@ namespace pytorch {
 
   // TODO: MaxPool
   // TODO: BatchNorm (af::transform? Or just apply regular batchnorm?)
+  // TODO: Figure out branching structures (concat works, just need to be able to feed in multiple inputs...)
+
+  /* Concat2 */
+  class Concat2 : public Layer {
+  public:
+    inline af::array forward(const af::array &input1, const af::array &input2, const int &dim){
+      return pytorch::cat2(input1, input2, dim);
+    }
+
+    inline af::array operator()(const af::array &input1, const af::array &input2, const int &dim){
+      return pytorch::cat2(input1, input2, dim);
+    }
+  };
+
+  /* Concat3 */
+  class Concat3 : public Layer {
+  public:
+    inline af::array forward(const af::array &input1,
+                             const af::array &input2,
+                             const af::array &input3,
+                             const int &dim){
+      return pytorch::cat3(input1, input2, input3, dim);
+    }
+
+    inline af::array operator()(const af::array &input1,
+                             const af::array &input2,
+                             const af::array &input3,
+                             const int &dim){
+      return pytorch::cat3(input1, input2, input3, dim);
+    }
+  };
+
+  /* Concat4 - higher is not supported by arrayfire */
+  class Concat4 : public Layer {
+  public:
+    inline af::array forward(const af::array &input1,
+                             const af::array &input2,
+                             const af::array &input3,
+                             const af::array &input4,
+                             const int &dim){
+      return pytorch::cat4(input1, input2, input3, input4, dim);
+    }
+
+    inline af::array operator()(const af::array &input1,
+                             const af::array &input2,
+                             const af::array &input3,
+                             const af::array &input4,
+                             const int &dim){
+      return pytorch::cat4(input1, input2, input3, input4, dim);
+    }
+  };
 
   /* Sigmoid */
   class Sigmoid : public Layer {

@@ -75,7 +75,6 @@ namespace pytorch {
         auto temp = l->forward(out);
         out = af::array(temp);
       }
-      af::sync(device);
       return out;
     }
 
