@@ -57,7 +57,7 @@ def test_conv(filts_file, bias_file, img_file, lw_file, lb_file, gamma_file, bet
     output = Funct.tanh(output)
     output = Funct.max_pool2d(output, kernel_size=(2, 2), stride=(2, 2))
     output = Funct.sigmoid(output)
-    output = Funct.avg_pool2d(output, kernel_size=(2, 2), stride=(2, 2))
+    output = Funct.max_pool2d(output, kernel_size=(2, 2), stride=(2, 2))
     output = Funct.hardtanh(output, -0.1, 0.1)
     output = Funct.linear(output.view(output.size(0), -1), lw)
     output = Funct.relu(output)

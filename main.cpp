@@ -76,7 +76,7 @@ int main() {
   std::cout << "pytorch forward took (s): " << af::timer::stop() << std::endl;
 
   // Initialize the engine (sets up the backend)
-  pytorch::inference_engine engine;
+  pytorch::inference_engine engine (0, AF_BACKEND_OPENCL, false);
 
   // Load up the image and target
   auto image = pytorch::from_numpy((PyArrayObject *)i, 4, {2, 3, 224, 224});
@@ -102,7 +102,7 @@ int main() {
   engine.add_layer(new pytorch::Tanh);
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Sigmoid);
-  engine.add_layer(new pytorch::AvgPool2d(poolparams));
+  engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Hardtanh(-0.1f, 0.1f));
   engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 55*56*16}, false, "lin_bias.dat", {1, 1, 3, 1}));
   engine.add_layer(new pytorch::ReLU);

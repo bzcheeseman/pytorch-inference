@@ -308,6 +308,8 @@ namespace pytorch {
     }
   };
 
+  //! @todo: add unpool - it takes a pointer to a maxpool layer maybe?
+
   /**
    * @class BatchNorm2d (TESTED)
    * @file include/layers.hpp

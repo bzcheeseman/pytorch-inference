@@ -57,6 +57,8 @@ namespace pytorch {
 
   /**
    * @brief Performs convolution given exported pytorch filters
+   * @todo: optimize this
+   *
    * @param filters (fh, fw, Cin, Cout)
    * @param bias (1, 1, Cout)
    * @param input (h, w, Cin, batch)
@@ -211,6 +213,7 @@ namespace pytorch {
     return af::join(dim, input1, input2, input3, input4);
   }
 
+  //! @todo: optimize this
   inline af::array batchnorm2d(const af::array &gamma, // vectors of size C (applied across channels)
                                const af::array &beta,
                                const af::array &running_mean,
@@ -224,7 +227,7 @@ namespace pytorch {
 
     af::array out = (input - af::tile(running_mean, h_in, w_in, 1, batch))
                             /(af::sqrt(af::tile(running_variance, h_in, w_in, 1, batch)) + epsilon)
-                    * af::tile(gamma, h_in, w_in, 1, batch) + af::tile(beta, h_in, w_in, 1, batch);
+                            * af::tile(gamma, h_in, w_in, 1, batch) + af::tile(beta, h_in, w_in, 1, batch);
 
     return out;
   }
@@ -285,7 +288,7 @@ namespace pytorch {
     return af::max(a, af::constant(0, a.dims()));  // this should work
   }
 
-  inline af::array _softmax(const af::array &a, const af::array &rhs){
+  inline af::array _softmax(const af::array &a, const af::array &rhs){ // optimize this if possible
     return af::exp(a - af::max<float>(a))/af::sum(af::exp(a - af::max<float>(a)), 0);
   }
 
