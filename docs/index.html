@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>pytorch-inference: Main Page</title>
+<title>pytorch-inference: pytorch-inference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,10 +80,21 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">pytorch-inference Documentation</div>  </div>
+<div class="title">pytorch-inference </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><h3>Purpose</h3>
+<p>I realize that including all of pytorch's functionality in an OpenCL implementation is difficult for various reasons. However, the fact remains that an OpenCL runtime would be quite useful. For this reason, I've done quite a bit of work to try and write functions using ArrayFire that mimic pytorch functions exactly - which allows us to use the pytorch-trained weights in our C++ program.</p>
+<p>### Dependencies </p><div class="fragment"><div class="line">cmake &gt;= 3.5</div><div class="line">pytorch &gt;= 0.1.9</div><div class="line">arrayfire &gt;= 3.5</div><div class="line">Py_Cpp (python3 port already included)</div></div><!-- fragment --><h3>Contributions</h3>
+<p>I welcome most anything. I would especially welcome help from those who know more about ArrayFire and/or pytorch who can help optimize, suggest improvements, help out with documentation, anything/everything.</p>
+<p>I would ask that you follow these steps for organization:</p><ol type="1">
+<li>Open an issue with proposed changes (tag appropriately)</li>
+<li>Fork the repo and add a branch for the changes</li>
+<li>Be patient - I'll get to it as soon as I can :smile:</li>
+</ol>
+<p>Note on the licensing - I believe in open-source software and I like the GPL, but if someone has a good reason to change the license please let me know and I'll consider it.</p>
+<p>Obligatory note: I am NOT promoting ArrayFire or using its name to promote this project in any way. If someone from ArrayFire has issues with this they should please let me know promptly and I'll do my best to rectify the situation. I'm not distributing the source code or binary so I hope there aren't any conflicts. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

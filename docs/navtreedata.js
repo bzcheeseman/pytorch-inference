@@ -1,7 +1,6 @@
 var NAVTREE =
 [
   [ "pytorch-inference", "index.html", [
-    [ "pytorch-inference", "md___users__aman_code_pytorch-inference__r_e_a_d_m_e.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
