@@ -31,6 +31,11 @@
 #include "utils.hpp"
 #include "py_object.hpp"
 
+/**
+ * @file include/layers.hpp
+ * @brief Holds all the layer interfaces.
+ */
+
 namespace pytorch {
 
   /**
@@ -45,7 +50,7 @@ namespace pytorch {
 
   /**
    * @class Layer
-   * @file include/layers.hpp
+   * @file "include/layers.hpp"
    * @brief Abstract base class for all layers.
    *
    * We store pointers to this class in the inference engine which allows us to use a std::vector to store
@@ -71,7 +76,7 @@ namespace pytorch {
 
   /**
    * @class Skip (TESTED)
-   * @file include/layers.hpp
+   * @file "include/layers.hpp"
    * @brief Performs a no-op - makes it so that we can create branching networks.
    */
   class Skip : public Layer {
@@ -97,7 +102,7 @@ namespace pytorch {
 
   /**
    * @class Conv2d (TESTED)
-   * @file include/layers.hpp
+   * @file "include/layers.hpp"
    * @brief Equivalent to Conv2d in pytorch.
    *
    * Implements the forward pass for pytorch's nn.Conv2d module. Note that clearly something needs to happen to
@@ -226,7 +231,7 @@ namespace pytorch {
 
   /**
    * @class MaxPool2d (TESTED)
-   * @file include/layers.hpp
+   * @file "include/layers.hpp"
    * @brief Equivalent to MaxPool2d in pytorch (with a caveat)
    *
    * This layer implements the forward pass of pytorch's nn.MaxPool2d module. This holds the pooling indices
@@ -269,7 +274,7 @@ namespace pytorch {
 
   /**
    * @class AvgPool2d (TESTED)
-   * @file include/layers.hpp
+   * @file "include/layers.hpp"
    * @brief Equivalent to AvgPool2d in pytorch
    *
    * This layer implements the forward pass of pytorch's nn.AvgPool2d module. It doesn't do anything fancy,
@@ -312,7 +317,7 @@ namespace pytorch {
 
   /**
    * @class BatchNorm2d (TESTED)
-   * @file include/layers.hpp
+   * @file "include/layers.hpp"
    * @brief Equivalent to BatchNorm2d in pytorch.
    *
    * Implements the forward pass for pytorch's nn.BatchNorm2d module. Note that you do need to extract the proper
@@ -464,7 +469,7 @@ namespace pytorch {
 
   /**
    * @class Linear (TESTED)
-   * @file include/layers.hpp
+   * @file "include/layers.hpp"
    * @brief Equivalent to Linear in pytorch
    *
    * Implements the forward pass for pytorch's nn.Linear module. Note that clearly something needs to happen to

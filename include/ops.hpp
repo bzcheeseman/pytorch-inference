@@ -28,6 +28,11 @@
 #include <arrayfire.h>
 #include <assert.h>
 
+/**
+ * @file include/ops.hpp
+ * @brief Holds all the implementations of the forward modules.
+ */
+
 namespace pytorch {
 
   /**

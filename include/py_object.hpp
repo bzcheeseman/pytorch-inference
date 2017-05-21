@@ -39,7 +39,7 @@
  */
 
 /**
- * @file include/py_object.hpp
+ * @file "include/py_object.hpp"
  *
  * Holds the pycpp namespace. All the methods and functions related to importing Python modules and converting C++ values
  * to python are here.
