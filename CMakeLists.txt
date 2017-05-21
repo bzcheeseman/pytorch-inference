@@ -6,6 +6,21 @@ set(CMAKE_CXX_STANDARD 14)
 find_package(PythonInterp 3.6 REQUIRED)
 find_package(PythonLibs 3.6 REQUIRED)
 
+# Documentation ######################################################################
+find_package(Doxygen)
+
+if(DOXYGEN_FOUND)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile @ONLY)
+    add_custom_target(docs
+            COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile
+            SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs/
+            COMMENT "Generating API documentation with Doxygen" VERBATIM
+            )
+endif(DOXYGEN_FOUND)
+
+# Documentation ######################################################################
+
 # From Eyescale/CMake - brilliant solution ############################################
 if (PYTHON_EXECUTABLE)
     # Find out the include path
