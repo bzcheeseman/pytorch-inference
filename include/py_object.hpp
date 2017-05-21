@@ -807,10 +807,6 @@ namespace pycpp {
 
       py_object out;
 
-//      std::cout << "after here" << std::endl;
-//      PyObject_Print(PyObject_Dir(me), stdout, 1); // right here
-//      std::cout << std::endl;
-
       PyObject *pyclassname = PyObject_GetAttrString(me, klass.c_str());
 
       if (pyclassname){
