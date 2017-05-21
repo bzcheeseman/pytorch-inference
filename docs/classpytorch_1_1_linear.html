@@ -81,6 +81,7 @@ $(document).ready(function(){initNavTree('classpytorch_1_1_linear.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classpytorch_1_1_linear-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">pytorch::Linear Class Reference</div>  </div>
@@ -100,10 +101,10 @@ Inheritance diagram for pytorch::Linear:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a47740884c0ce199daecd9958bd6b6ca3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a47740884c0ce199daecd9958bd6b6ca3">Linear</a> (const af::array &amp;weights, const af::array &amp;bias)</td></tr>
+<tr class="memitem:a47740884c0ce199daecd9958bd6b6ca3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a47740884c0ce199daecd9958bd6b6ca3">Linear</a> (const af::array &amp;<a class="el" href="classpytorch_1_1_linear.html#a1ce5755565afc4f3de332e3f6836f3bd">weights</a>, const af::array &amp;<a class="el" href="classpytorch_1_1_linear.html#ae2ec81120db6e196709dc11a67fc9ce8">bias</a>)</td></tr>
 <tr class="memdesc:a47740884c0ce199daecd9958bd6b6ca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classpytorch_1_1_linear.html">Linear</a> object given weights, and bias tensors.  <a href="#a47740884c0ce199daecd9958bd6b6ca3">More...</a><br /></td></tr>
 <tr class="separator:a47740884c0ce199daecd9958bd6b6ca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad061ae2fec18baa95cc7b9b854b57f92"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#ad061ae2fec18baa95cc7b9b854b57f92">Linear</a> (const std::string &amp;weights_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;weights_dims={}, const bool has_bias=false, const std::string &amp;bias_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;bias_dims={}, const std::string &amp;python_home=&quot;../scripts&quot;)</td></tr>
+<tr class="memitem:ad061ae2fec18baa95cc7b9b854b57f92"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#ad061ae2fec18baa95cc7b9b854b57f92">Linear</a> (const std::string &amp;weights_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;weights_dims={}, const bool <a class="el" href="classpytorch_1_1_linear.html#af77334f2b9d31c019e91834651dd5fe4">has_bias</a>=false, const std::string &amp;bias_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;bias_dims={}, const std::string &amp;python_home=&quot;../scripts&quot;)</td></tr>
 <tr class="memdesc:ad061ae2fec18baa95cc7b9b854b57f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classpytorch_1_1_linear.html">Linear</a> object given the filenames and sizes of the requisite tensors.  <a href="#ad061ae2fec18baa95cc7b9b854b57f92">More...</a><br /></td></tr>
 <tr class="separator:ad061ae2fec18baa95cc7b9b854b57f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8bbc9c901cda2e77ac60abccf4de372"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#ac8bbc9c901cda2e77ac60abccf4de372">Linear</a> (const <a class="el" href="classpytorch_1_1_linear.html">Linear</a> &amp;other)</td></tr>
@@ -118,7 +119,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4db382b11a3f91778797a6e940692d86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a4db382b11a3f91778797a6e940692d86">add_bias</a> (const std::string &amp;bias_filename, const std::vector&lt; int &gt; &amp;bias_dims)</td></tr>
 <tr class="memdesc:a4db382b11a3f91778797a6e940692d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read in bias from a file given here if it wasn't passed to the constructor. Overwrites current contents of this-&gt;bias.  <a href="#a4db382b11a3f91778797a6e940692d86">More...</a><br /></td></tr>
 <tr class="separator:a4db382b11a3f91778797a6e940692d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a850c81192d2f73e96f42700b94091a57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a850c81192d2f73e96f42700b94091a57">set_has_bias</a> (bool has_bias)</td></tr>
+<tr class="memitem:a850c81192d2f73e96f42700b94091a57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a850c81192d2f73e96f42700b94091a57">set_has_bias</a> (bool <a class="el" href="classpytorch_1_1_linear.html#af77334f2b9d31c019e91834651dd5fe4">has_bias</a>)</td></tr>
 <tr class="memdesc:a850c81192d2f73e96f42700b94091a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether or not this layer has bias. If no, then this should be called. Otherwise, it's unnecessary.  <a href="#a850c81192d2f73e96f42700b94091a57">More...</a><br /></td></tr>
 <tr class="separator:a850c81192d2f73e96f42700b94091a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b0318a61558f674bff2be8410da1fb5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a0b0318a61558f674bff2be8410da1fb5">forward</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
@@ -127,6 +128,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6d86c19268604c3c35a7958bb55d0329"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a6d86c19268604c3c35a7958bb55d0329">operator()</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
 <tr class="memdesc:a6d86c19268604c3c35a7958bb55d0329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function, takes data and performs the <a class="el" href="classpytorch_1_1_linear.html">Linear</a> operation using the already-initialized weights and bias tensors.  <a href="#a6d86c19268604c3c35a7958bb55d0329">More...</a><br /></td></tr>
 <tr class="separator:a6d86c19268604c3c35a7958bb55d0329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1ce5755565afc4f3de332e3f6836f3bd"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a1ce5755565afc4f3de332e3f6836f3bd">weights</a></td></tr>
+<tr class="separator:a1ce5755565afc4f3de332e3f6836f3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2ec81120db6e196709dc11a67fc9ce8"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#ae2ec81120db6e196709dc11a67fc9ce8">bias</a></td></tr>
+<tr class="separator:ae2ec81120db6e196709dc11a67fc9ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1e4c23bdc871fa3df2d6fc1db4cf954"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpycpp_1_1py__object.html">pycpp::py_object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#ae1e4c23bdc871fa3df2d6fc1db4cf954">utils</a></td></tr>
+<tr class="separator:ae1e4c23bdc871fa3df2d6fc1db4cf954"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af77334f2b9d31c019e91834651dd5fe4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#af77334f2b9d31c019e91834651dd5fe4">has_bias</a></td></tr>
+<tr class="separator:af77334f2b9d31c019e91834651dd5fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a47740884c0ce199daecd9958bd6b6ca3"></a>
@@ -506,8 +518,97 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae2ec81120db6e196709dc11a67fc9ce8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2ec81120db6e196709dc11a67fc9ce8">&#9670;&nbsp;</a></span>bias</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">af::array pytorch::Linear::bias</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af77334f2b9d31c019e91834651dd5fe4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af77334f2b9d31c019e91834651dd5fe4">&#9670;&nbsp;</a></span>has_bias</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pytorch::Linear::has_bias</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1e4c23bdc871fa3df2d6fc1db4cf954"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1e4c23bdc871fa3df2d6fc1db4cf954">&#9670;&nbsp;</a></span>utils</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classpycpp_1_1py__object.html">pycpp::py_object</a> pytorch::Linear::utils</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ce5755565afc4f3de332e3f6836f3bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ce5755565afc4f3de332e3f6836f3bd">&#9670;&nbsp;</a></span>weights</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">af::array pytorch::Linear::weights</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/Aman/code/pytorch-inference/include/<a class="el" href="layers_8hpp_source.html">layers.hpp</a></li>
+<li><a class="el" href="layers_8hpp_source.html">layers.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

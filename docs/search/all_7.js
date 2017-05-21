@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['h',['h',['../namespacepytorch.html#aa67d3445f1e6d5b9256f2fef9932d196a1f250f3998835bb50ff8608dead82418',1,'pytorch']]],
-  ['hardtanh',['Hardtanh',['../classpytorch_1_1_hardtanh.html',1,'pytorch::Hardtanh'],['../classpytorch_1_1_hardtanh.html#a597d72b27db6b4647d91bdbef5b6a99c',1,'pytorch::Hardtanh::Hardtanh()'],['../namespacepytorch.html#a6b9e5bd40b9390dced2011dc1a2c6f27',1,'pytorch::hardtanh()']]]
+  ['gamma',['gamma',['../classpytorch_1_1_batch_norm2d.html#a24862bed65a92fe530ec5e7d0008d021',1,'pytorch::BatchNorm2d']]],
+  ['get_5fcopies',['get_copies',['../classpytorch_1_1_branch.html#af70ee99c631a3c21d87ba0460130a437',1,'pytorch::Branch']]],
+  ['get_5fdim',['get_dim',['../classpytorch_1_1_slice2.html#aaa119a9771aaea730dd58ac6e45e8167',1,'pytorch::Slice2::get_dim()'],['../classpytorch_1_1_slice3.html#a53fbbf80acc37d0d12520f583158461e',1,'pytorch::Slice3::get_dim()'],['../classpytorch_1_1_slice4.html#a227cb3c33ab5c5752bbe365943660bf8',1,'pytorch::Slice4::get_dim()']]]
 ];

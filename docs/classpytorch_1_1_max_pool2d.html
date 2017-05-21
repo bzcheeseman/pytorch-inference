@@ -81,6 +81,7 @@ $(document).ready(function(){initNavTree('classpytorch_1_1_max_pool2d.html','');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classpytorch_1_1_max_pool2d-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">pytorch::MaxPool2d Class Reference</div>  </div>
@@ -100,7 +101,7 @@ Inheritance diagram for pytorch::MaxPool2d:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8c601902ed93f0afa8ab61e62110f19f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_pool2d.html#a8c601902ed93f0afa8ab61e62110f19f">MaxPool2d</a> (const <a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a> &amp;params)</td></tr>
+<tr class="memitem:a8c601902ed93f0afa8ab61e62110f19f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_pool2d.html#a8c601902ed93f0afa8ab61e62110f19f">MaxPool2d</a> (const <a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a> &amp;<a class="el" href="classpytorch_1_1_max_pool2d.html#a01ce0020e17604df233fccdd235d265f">params</a>)</td></tr>
 <tr class="memdesc:a8c601902ed93f0afa8ab61e62110f19f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the <a class="el" href="classpytorch_1_1_max_pool2d.html">MaxPool2d</a> layer. Requires pooling parameters that are functionally equivalent to the convolutional parameters.  <a href="#a8c601902ed93f0afa8ab61e62110f19f">More...</a><br /></td></tr>
 <tr class="separator:a8c601902ed93f0afa8ab61e62110f19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f2ea435fea042c0677ecd665de1405b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_pool2d.html#a5f2ea435fea042c0677ecd665de1405b">forward</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
@@ -109,6 +110,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6849f3a4850596f32f05b51273ea4eb3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_pool2d.html#a6849f3a4850596f32f05b51273ea4eb3">operator()</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
 <tr class="memdesc:a6849f3a4850596f32f05b51273ea4eb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the forward pass.  <a href="#a6849f3a4850596f32f05b51273ea4eb3">More...</a><br /></td></tr>
 <tr class="separator:a6849f3a4850596f32f05b51273ea4eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a01ce0020e17604df233fccdd235d265f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_pool2d.html#a01ce0020e17604df233fccdd235d265f">params</a></td></tr>
+<tr class="separator:a01ce0020e17604df233fccdd235d265f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3251f7f29fd9ef9c1d096301f3d120c3"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_pool2d.html#a3251f7f29fd9ef9c1d096301f3d120c3">indices</a></td></tr>
+<tr class="separator:a3251f7f29fd9ef9c1d096301f3d120c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8c601902ed93f0afa8ab61e62110f19f"></a>
@@ -220,8 +228,53 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3251f7f29fd9ef9c1d096301f3d120c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3251f7f29fd9ef9c1d096301f3d120c3">&#9670;&nbsp;</a></span>indices</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">af::array pytorch::MaxPool2d::indices</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01ce0020e17604df233fccdd235d265f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01ce0020e17604df233fccdd235d265f">&#9670;&nbsp;</a></span>params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a> pytorch::MaxPool2d::params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/Aman/code/pytorch-inference/include/<a class="el" href="layers_8hpp_source.html">layers.hpp</a></li>
+<li><a class="el" href="layers_8hpp_source.html">layers.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

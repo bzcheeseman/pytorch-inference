@@ -250,7 +250,7 @@ namespace pytorch {
 
   }
 
-  // TODO: implement unpool?
+  //! @todo: implement unpool?
 
   inline af::array avgpool(const pooling_params_t &params,
                            const af::array &input){

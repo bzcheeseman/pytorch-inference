@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['_7econv2d',['~Conv2d',['../classpytorch_1_1_conv2d.html#a5e7eb9604dbc94ca62edd04ec8944faf',1,'pytorch::Conv2d']]],
-  ['_7einference_5fengine',['~inference_engine',['../classpytorch_1_1inference__engine.html#a1e7f29df63846b396d8ca28feb52a307',1,'pytorch::inference_engine']]],
-  ['_7elinear',['~Linear',['../classpytorch_1_1_linear.html#a2b0abcb252baef05e13f648df24af1cf',1,'pytorch::Linear']]],
-  ['_7epy_5fobject',['~py_object',['../classpycpp_1_1py__object.html#a907090ae91bdb474f247b9b67b84b37e',1,'pycpp::py_object']]]
+  ['w',['w',['../namespacepytorch.html#aa67d3445f1e6d5b9256f2fef9932d196a15d37568bf28ad3bce066ae5692e91de',1,'pytorch']]],
+  ['weights',['weights',['../classpytorch_1_1_linear.html#a1ce5755565afc4f3de332e3f6836f3bd',1,'pytorch::Linear']]]
 ];

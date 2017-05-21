@@ -81,6 +81,8 @@ $(document).ready(function(){initNavTree('classpycpp_1_1py__object.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classpycpp_1_1py__object-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">pycpp::py_object Class Reference</div>  </div>
@@ -121,6 +123,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a49b0cf7ef288cf512ce5a18e2ecd3bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2224d318c6d8a201d7f972c67601c04c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpycpp_1_1py__object.html">py_object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpycpp_1_1py__object.html#a2224d318c6d8a201d7f972c67601c04c">py_class</a> (const std::string &amp;klass, PyObject *args=NULL, PyObject *kwargs=NULL)</td></tr>
 <tr class="separator:a2224d318c6d8a201d7f972c67601c04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1d4d7040e073f8aea915f06c33e04014"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpycpp_1_1py__object.html#a1d4d7040e073f8aea915f06c33e04014">check_callable</a> (PyObject *obj)</td></tr>
+<tr class="separator:a1d4d7040e073f8aea915f06c33e04014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a422d6c746f1559ee390e93166a506b3b"><td class="memItemLeft" align="right" valign="top">PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpycpp_1_1py__object.html#a422d6c746f1559ee390e93166a506b3b">me</a></td></tr>
+<tr class="memdesc:a422d6c746f1559ee390e93166a506b3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The core Python module.  <a href="#a422d6c746f1559ee390e93166a506b3b">More...</a><br /></td></tr>
+<tr class="separator:a422d6c746f1559ee390e93166a506b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Imports a python module and offers call operators to simplify calling member functions of that module from C++. </p>
@@ -255,6 +268,39 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1d4d7040e073f8aea915f06c33e04014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d4d7040e073f8aea915f06c33e04014">&#9670;&nbsp;</a></span>check_callable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pycpp::py_object::check_callable </td>
+          <td>(</td>
+          <td class="paramtype">PyObject *&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks if a PyObject * is callable - throws an error if it's not.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>PyObject * to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a055d1f51e6262a29d1aae65b28ad7c6c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a055d1f51e6262a29d1aae65b28ad7c6c">&#9670;&nbsp;</a></span>operator()() <span class="overload">[1/8]</span></h2>
 
@@ -731,8 +777,33 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a422d6c746f1559ee390e93166a506b3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a422d6c746f1559ee390e93166a506b3b">&#9670;&nbsp;</a></span>me</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PyObject* pycpp::py_object::me</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The core Python module. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/Aman/code/pytorch-inference/include/<a class="el" href="py__object_8hpp_source.html">py_object.hpp</a></li>
+<li><a class="el" href="py__object_8hpp_source.html">py_object.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

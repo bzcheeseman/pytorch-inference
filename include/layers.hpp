@@ -587,6 +587,8 @@ namespace pytorch {
 
   };
 
+  //! @todo: add documentation for the rest of the classes
+
   /* Branch - tested */
   class Branch : public Layer {
   private:

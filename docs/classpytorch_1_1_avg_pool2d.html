@@ -81,6 +81,7 @@ $(document).ready(function(){initNavTree('classpytorch_1_1_avg_pool2d.html','');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classpytorch_1_1_avg_pool2d-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">pytorch::AvgPool2d Class Reference</div>  </div>
@@ -100,7 +101,7 @@ Inheritance diagram for pytorch::AvgPool2d:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad23e05cd109aaa2ddeaf132b0e5cc1f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_avg_pool2d.html#ad23e05cd109aaa2ddeaf132b0e5cc1f8">AvgPool2d</a> (const <a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a> &amp;params)</td></tr>
+<tr class="memitem:ad23e05cd109aaa2ddeaf132b0e5cc1f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_avg_pool2d.html#ad23e05cd109aaa2ddeaf132b0e5cc1f8">AvgPool2d</a> (const <a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a> &amp;<a class="el" href="classpytorch_1_1_avg_pool2d.html#a1256dba0f7f4207327a70573687aa66b">params</a>)</td></tr>
 <tr class="memdesc:ad23e05cd109aaa2ddeaf132b0e5cc1f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the <a class="el" href="classpytorch_1_1_avg_pool2d.html">AvgPool2d</a> layer. Requires pooling parameters that are functionally identical to the convolution parameters.  <a href="#ad23e05cd109aaa2ddeaf132b0e5cc1f8">More...</a><br /></td></tr>
 <tr class="separator:ad23e05cd109aaa2ddeaf132b0e5cc1f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1904e62fdaee1476b737a364b5156be7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_avg_pool2d.html#a1904e62fdaee1476b737a364b5156be7">forward</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
@@ -109,6 +110,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6a08e267be98ce762c062052cb9d046b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_avg_pool2d.html#a6a08e267be98ce762c062052cb9d046b">operator()</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
 <tr class="memdesc:a6a08e267be98ce762c062052cb9d046b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the forwards pass.  <a href="#a6a08e267be98ce762c062052cb9d046b">More...</a><br /></td></tr>
 <tr class="separator:a6a08e267be98ce762c062052cb9d046b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a1256dba0f7f4207327a70573687aa66b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_avg_pool2d.html#a1256dba0f7f4207327a70573687aa66b">params</a></td></tr>
+<tr class="separator:a1256dba0f7f4207327a70573687aa66b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad23e05cd109aaa2ddeaf132b0e5cc1f8"></a>
@@ -220,8 +226,31 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1256dba0f7f4207327a70573687aa66b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1256dba0f7f4207327a70573687aa66b">&#9670;&nbsp;</a></span>params</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a> pytorch::AvgPool2d::params</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/Users/Aman/code/pytorch-inference/include/<a class="el" href="layers_8hpp_source.html">layers.hpp</a></li>
+<li><a class="el" href="layers_8hpp_source.html">layers.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
