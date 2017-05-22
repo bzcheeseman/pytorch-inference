@@ -7,7 +7,7 @@ runtime would be quite useful. For this reason, I've done quite a bit of work
 to try and write functions using ArrayFire that mimic pytorch functions exactly - 
 which allows us to use the pytorch-trained weights in our C++ program.
 
-### Dependencies
+### Dependencies 
 ```
 cmake >= 3.5
 pytorch >= 0.1.9

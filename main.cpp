@@ -14,7 +14,7 @@ int main() {
   test("save_tensor", {pycpp::to_python(16), // out_filters
                        pycpp::to_python(3), // in_filters
                        pycpp::to_python(3),
-                       pycpp::to_python(1),
+                       pycpp::to_python(3),
                        pycpp::to_python("filts.dat")});
 
   test("save_tensor", {pycpp::to_python(1),
@@ -56,7 +56,7 @@ int main() {
   test("save_tensor", {pycpp::to_python(1),  // no batch
                        pycpp::to_python(1),  // no filters
                        pycpp::to_python(3),  // output size
-                       pycpp::to_python(55*56*16),  // input size
+                       pycpp::to_python(56*56*16),  // input size
                        pycpp::to_python("lin_weight.dat")});
 
   test("save_tensor", {pycpp::to_python(1),  // no batch
@@ -76,7 +76,8 @@ int main() {
   std::cout << "pytorch forward took (s): " << af::timer::stop() << std::endl;
 
   // Initialize the engine (sets up the backend)
-  pytorch::inference_engine engine (0, AF_BACKEND_OPENCL, false);
+  pytorch::inference_engine engine;
+
 
   // Load up the image and target
   auto image = pytorch::from_numpy((PyArrayObject *)i, 4, {2, 3, 224, 224});
@@ -85,7 +86,7 @@ int main() {
   pytorch_out = af::array(pytorch_out, 3, 1, 1, 2);  // Get the output from pytorch - this is the result we
                                                        // want to replicate
 
-  pytorch::conv_params_t params = {3, 1, 1, 1, 0, 0};  // filter_x, filter_y, stride_x, stride_y, pad_x, pad_y, has_bias
+  pytorch::conv_params_t params = {3, 3, 1, 1, 1, 1};  // filter_x, filter_y, stride_x, stride_y, pad_x, pad_y
   pytorch::pooling_params_t poolparams = {2, 2, 2, 2, 0, 0};
 
   // Set up the layers of our network
@@ -94,7 +95,7 @@ int main() {
 //  pytorch::Hardtanh hardtanh(-1, 1);
 
   // Can set up layers like above (commented) or this way, both have the same effect.
-  engine.add_layer(new pytorch::Conv2d(params, "filts.dat", {16, 3, 3, 1}, false, "bias.dat", {1, 16, 1, 1}));
+  engine.add_layer(new pytorch::Conv2d(params, "filts.dat", {16, 3, 3, 3}, false, "bias.dat", {1, 16, 1, 1}));
   engine.add_layer(new pytorch::BatchNorm2d("gamma.dat", {1, 16, 1, 1},
                                             "beta.dat", {1, 16, 1, 1},
                                             "rm.dat", {1, 16, 1, 1},
@@ -102,14 +103,21 @@ int main() {
   engine.add_layer(new pytorch::Tanh);
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Sigmoid);
+
+  pytorch::MaxPool2d *mp;
+  mp = reinterpret_cast<pytorch::MaxPool2d *>(engine.get_layer_ptr(3, 0));
+  engine.add_layer(new pytorch::MaxUnpool2d(poolparams, mp));
+
+  engine.add_layer(new pytorch::AvgPool2d(poolparams));
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Hardtanh(-0.1f, 0.1f));
-  engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 55*56*16}, false, "lin_bias.dat", {1, 1, 3, 1}));
+  engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 56*56*16}, false, "lin_bias.dat", {1, 1, 3, 1}));
   engine.add_layer(new pytorch::ReLU);
-//  engine.add_layer(new pytorch::Softmax);  // also tends to end up being unstable
+//  engine.add_layer(new pytorch::Softmax);
   af::timer::start();
   auto output = engine.forward(image);
   std::cout << "forward took (s): " << af::timer::stop() << std::endl;
+
 
   af_print((pytorch_out - output) / af::max(af::constant(1.f, output.dims()), output));
                                              // normalize error by the size of the number

@@ -251,6 +251,10 @@ namespace pytorch {
      */
     MaxPool2d(const pooling_params_t &params) : params(params) {}
 
+    inline af::array get_indices() const {
+      return indices;
+    }
+
     /**
      * @brief Implements the forward pass
      *
@@ -269,6 +273,40 @@ namespace pytorch {
      */
     inline std::vector<af::array> operator()(const std::vector<af::array> &input){
       return {pytorch::maxpool(params, input[0], indices)};
+    }
+  };
+
+  class MaxUnpool2d : public Layer {
+  private:
+    pooling_params_t params;
+    const MaxPool2d *mp_ref;
+  public:
+    /**
+     * @brief Constructs the MaxUnpool2d layer. Requires pooling parameters that are functionally equivalent to
+     * the convolutional parameters.
+     *
+     * @param params Pooling parameters like window, stride, etc.
+     */
+    MaxUnpool2d(const pooling_params_t &params, const MaxPool2d *mp_ref) : params(params), mp_ref(mp_ref) {}
+
+    /**
+     * @brief Implements the forward pass
+     *
+     * @param input The input array to be unpooled
+     * @return The unpooled array
+     */
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {pytorch::unpool(params, input[0], mp_ref->get_indices())};
+    }
+
+    /**
+     * @brief Implements the forward pass
+     *
+     * @param input The input array to be unpooled
+     * @return The unpooled array
+     */
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {pytorch::unpool(params, input[0], mp_ref->get_indices())};
     }
   };
 

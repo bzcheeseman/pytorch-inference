@@ -84,8 +84,8 @@ namespace pytorch {
     assert(filters.dims(1) == params.filter_y);
 
     long h_in = input.dims(0); long w_in = input.dims(0);
-    long h_out = (input.dims(0) - params.filter_x + 2*params.pad_x)/params.stride_x + 1;
-    long w_out = (input.dims(1) - params.filter_y + 2*params.pad_y)/params.stride_y + 1;
+    long h_out = (int)floor((input.dims(0) - params.filter_x + 2*params.pad_x)/params.stride_x + 1);
+    long w_out = (int)floor((input.dims(1) - params.filter_y + 2*params.pad_y)/params.stride_y + 1);
 
     af::array out = af::constant(0, h_out, w_out, Cout, batch);  // (h, w, k, n)
 
@@ -252,13 +252,46 @@ namespace pytorch {
     af::array maxima, idx;
     af::max(maxima, idx, in, 0);
     af::array out = af::array(maxima, h_out, w_out, input.dims(2), input.dims(3));
-    indices = af::array(idx, h_out, w_out, input.dims(2), input.dims(3));
+    indices = idx;
+//    indices = af::array(idx, h_out, w_out, input.dims(2), input.dims(3));
 
     return out;
 
   }
 
-  //! @todo: implement unpool?
+  //! @todo: MUST OPTIMIZE THIS IS CRAP
+  inline af::array unpool(const pooling_params_t &params,
+                          const af::array &input,
+                          const af::array &indices){
+
+    int h_in = input.dims(0); int w_in = input.dims(1);
+    int h_out = (h_in - 1) * params.stride_x - 2*params.pad_x + params.filter_x;
+    int w_out = (w_in - 1) * params.stride_y - 2*params.pad_y + params.filter_y;
+    int C = input.dims(2); int batch = input.dims(3);
+
+    af::array out = af::unwrap(af::constant(0, h_out, w_out, C, batch), params.filter_x, params.filter_y,
+                     params.stride_x, params.stride_y,
+                     params.pad_x, params.pad_y);
+    af::array in = af::unwrap(af::resize(input, h_out, w_out, AF_INTERP_LOWER), params.filter_x, params.filter_y,
+                              params.stride_x, params.stride_y,
+                              params.pad_x, params.pad_y);
+
+    af::array idx;
+    for (int i = 0; i < batch; i++){ // there's gotta be a way to speed this up...
+      for (int j = 0; j < C; j++){
+        gfor (af::seq k, out.dims(1)){
+          idx = indices(0, k, j, i).as(u32);
+          out(idx.host<std::uint32_t>()[0], k, j, i) = in(idx.host<std::uint32_t>()[0], k, j, i);
+        }
+      }
+    }
+
+    out = af::wrap(out, h_out, w_out, params.filter_x, params.filter_y,
+                   params.stride_x, params.stride_y,
+                   params.pad_x, params.pad_y);
+
+    return out;
+  }
 
   inline af::array avgpool(const pooling_params_t &params,
                            const af::array &input){

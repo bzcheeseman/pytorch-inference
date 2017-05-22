@@ -69,6 +69,10 @@ namespace pytorch {
       layers.push_back(l);
     }
 
+    inline Layer *get_layer_ptr(const int &depth, const int &width = 0){
+      return layers[depth][width];
+    }
+
     inline af::array forward(const af::array &input){
       std::vector<af::array> out;  // first input is input
       out.push_back(input);

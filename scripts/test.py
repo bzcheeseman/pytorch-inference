@@ -52,11 +52,13 @@ def test_conv(filts_file, bias_file, img_file, lw_file, lb_file, gamma_file, bet
     bn.running_mean = rm.data
     bn.running_var = rv.data
 
-    output = Funct.conv2d(img, weights)
+    output = Funct.conv2d(img, weights, padding=(1, 1))
     output = bn(output)
     output = Funct.tanh(output)
-    output = Funct.max_pool2d(output, kernel_size=(2, 2), stride=(2, 2))
+    output, idx = Funct.max_pool2d(output, kernel_size=(2, 2), stride=(2, 2), return_indices=True)
     output = Funct.sigmoid(output)
+    output = Funct.max_unpool2d(output, idx, kernel_size=(2, 2), stride=(2, 2))
+    output = Funct.avg_pool2d(output, kernel_size=(2, 2), stride=(2, 2))
     output = Funct.max_pool2d(output, kernel_size=(2, 2), stride=(2, 2))
     output = Funct.hardtanh(output, -0.1, 0.1)
     output = Funct.linear(output.view(output.size(0), -1), lw)
