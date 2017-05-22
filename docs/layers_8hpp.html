@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('layers_8hpp.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Abstract base class for all layers.  
+<p>Holds all the layer interfaces.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;arrayfire.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="ops_8hpp_source.html">ops.hpp</a>&quot;</code><br />
@@ -106,6 +106,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_conv2d.html">pytorch::Conv2d</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_pool2d.html">pytorch::MaxPool2d</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_unpool2d.html">pytorch::MaxUnpool2d</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_avg_pool2d.html">pytorch::AvgPool2d</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,16 +156,19 @@ Enumerations</h2></td></tr>
 <tr class="separator:aa67d3445f1e6d5b9256f2fef9932d196"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract base class for all layers. </p>
+<div class="textblock"><p>Holds all the layer interfaces. </p>
 <p>Equivalent to Linear in pytorch.</p>
 <p>Equivalent to BatchNorm2d in pytorch.</p>
 <p>Equivalent to AvgPool2d in pytorch.</p>
+<p>Equivalent to <a class="el" href="class_max_unool2d.html">MaxUnool2d</a> in pytorch.</p>
 <p>Equivalent to MaxPool2d in pytorch (with a caveat)</p>
 <p>Equivalent to Conv2d in pytorch.</p>
 <p>Performs a no-op - makes it so that we can create branching networks.</p>
+<p>Abstract base class for all layers.</p>
 <p>We store pointers to this class in the inference engine which allows us to use a std::vector to store them but still have multiple classes represented. The only requirement is that they implement the forward and operator() methods.</p>
 <p>Implements the forward pass for pytorch's nn.Conv2d module. Note that clearly something needs to happen to get the tensors from python to C++, but I've tried to take care of this through the import constructor.</p>
 <p>This layer implements the forward pass of pytorch's nn.MaxPool2d module. This holds the pooling indices inside itself - unpooling will be another challenge if it's even possible with this framework. For now, we just store the indices in arrayfire format for future use.</p>
+<p>This layer implements the forward pass of pytorch's nn.MaxUnool2d module. This holds a pointer to a maxpool layer from which to get the indices for the unpooling process.</p>
 <p>This layer implements the forward pass of pytorch's nn.AvgPool2d module. It doesn't do anything fancy, just takes the mean of the various windows.</p>
 <p>Implements the forward pass for pytorch's nn.BatchNorm2d module. Note that you do need to extract the proper running mean, running variance, gamma and beta tensors from pytorch.</p>
 <p>Implements the forward pass for pytorch's nn.Linear module. Note that clearly something needs to happen to get the tensors from python to C++, but I've tried to take care of this through the import constructor. </p>

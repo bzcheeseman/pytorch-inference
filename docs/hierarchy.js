@@ -13,6 +13,7 @@ var hierarchy =
       [ "pytorch::Hardtanh", "classpytorch_1_1_hardtanh.html", null ],
       [ "pytorch::Linear", "classpytorch_1_1_linear.html", null ],
       [ "pytorch::MaxPool2d", "classpytorch_1_1_max_pool2d.html", null ],
+      [ "pytorch::MaxUnpool2d", "classpytorch_1_1_max_unpool2d.html", null ],
       [ "pytorch::ReLU", "classpytorch_1_1_re_l_u.html", null ],
       [ "pytorch::Sigmoid", "classpytorch_1_1_sigmoid.html", null ],
       [ "pytorch::Skip", "classpytorch_1_1_skip.html", null ],
@@ -22,5 +23,6 @@ var hierarchy =
       [ "pytorch::Softmax", "classpytorch_1_1_softmax.html", null ],
       [ "pytorch::Tanh", "classpytorch_1_1_tanh.html", null ]
     ] ],
+    [ "MaxUnool2d", "class_max_unool2d.html", null ],
     [ "pycpp::py_object", "classpycpp_1_1py__object.html", null ]
 ];

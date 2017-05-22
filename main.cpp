@@ -103,11 +103,8 @@ int main() {
   engine.add_layer(new pytorch::Tanh);
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Sigmoid);
-
-  pytorch::MaxPool2d *mp;
-  mp = reinterpret_cast<pytorch::MaxPool2d *>(engine.get_layer_ptr(3, 0));
-  engine.add_layer(new pytorch::MaxUnpool2d(poolparams, mp));
-
+  engine.add_layer(new pytorch::MaxUnpool2d(poolparams,
+                                            reinterpret_cast<pytorch::MaxPool2d *>(engine.get_layer_ptr(3, 0))));
   engine.add_layer(new pytorch::AvgPool2d(poolparams));
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Hardtanh(-0.1f, 0.1f));
@@ -117,6 +114,13 @@ int main() {
   af::timer::start();
   auto output = engine.forward(image);
   std::cout << "forward took (s): " << af::timer::stop() << std::endl;
+
+//  auto im = af::randn(4, 4, 3, 1);
+//  af_print(im);
+//  af::array indices;
+//  im = pytorch::maxpool(poolparams, im, indices);
+//  im = pytorch::unpool(poolparams, im, indices);
+//  af_print(im);
 
 
   af_print((pytorch_out - output) / af::max(af::constant(1.f, output.dims()), output));

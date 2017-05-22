@@ -4,6 +4,7 @@ var layers_8hpp =
     [ "Skip", "classpytorch_1_1_skip.html", "classpytorch_1_1_skip" ],
     [ "Conv2d", "classpytorch_1_1_conv2d.html", "classpytorch_1_1_conv2d" ],
     [ "MaxPool2d", "classpytorch_1_1_max_pool2d.html", "classpytorch_1_1_max_pool2d" ],
+    [ "MaxUnpool2d", "classpytorch_1_1_max_unpool2d.html", "classpytorch_1_1_max_unpool2d" ],
     [ "AvgPool2d", "classpytorch_1_1_avg_pool2d.html", "classpytorch_1_1_avg_pool2d" ],
     [ "BatchNorm2d", "classpytorch_1_1_batch_norm2d.html", "classpytorch_1_1_batch_norm2d" ],
     [ "Linear", "classpytorch_1_1_linear.html", "classpytorch_1_1_linear" ],

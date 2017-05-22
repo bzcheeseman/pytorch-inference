@@ -13,6 +13,7 @@ var namespacepytorch =
     [ "Layer", "classpytorch_1_1_layer.html", "classpytorch_1_1_layer" ],
     [ "Linear", "classpytorch_1_1_linear.html", "classpytorch_1_1_linear" ],
     [ "MaxPool2d", "classpytorch_1_1_max_pool2d.html", "classpytorch_1_1_max_pool2d" ],
+    [ "MaxUnpool2d", "classpytorch_1_1_max_unpool2d.html", "classpytorch_1_1_max_unpool2d" ],
     [ "ReLU", "classpytorch_1_1_re_l_u.html", "classpytorch_1_1_re_l_u" ],
     [ "Sigmoid", "classpytorch_1_1_sigmoid.html", "classpytorch_1_1_sigmoid" ],
     [ "Skip", "classpytorch_1_1_skip.html", "classpytorch_1_1_skip" ],

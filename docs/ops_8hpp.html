@@ -89,7 +89,7 @@ $(document).ready(function(){initNavTree('ops_8hpp.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Holds the parameters needed for convolution as well as a convenience function to send them to a std::ostream object.  
+<p>Holds all the implementations of the forward modules.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;arrayfire.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
@@ -134,6 +134,8 @@ Functions</h2></td></tr>
 <tr class="separator:ae865095aad032ac1ea9516ae5361e0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacf5782da70434cc8657a5ff4c612fc5"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#aacf5782da70434cc8657a5ff4c612fc5">pytorch::maxpool</a> (const pooling_params_t &amp;params, const af::array &amp;input, af::array &amp;indices)</td></tr>
 <tr class="separator:aacf5782da70434cc8657a5ff4c612fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12e2103bef62222f09265c609d047299"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#a12e2103bef62222f09265c609d047299">pytorch::unpool</a> (const pooling_params_t &amp;params, const af::array &amp;input, const af::array &amp;indices)</td></tr>
+<tr class="separator:a12e2103bef62222f09265c609d047299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78a38423eda0d20c5b3c61c69a0ce8c4"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#a78a38423eda0d20c5b3c61c69a0ce8c4">pytorch::avgpool</a> (const pooling_params_t &amp;params, const af::array &amp;input)</td></tr>
 <tr class="separator:a78a38423eda0d20c5b3c61c69a0ce8c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac61be684e3426c6f8c53dc794ccf3a70"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#ac61be684e3426c6f8c53dc794ccf3a70">pytorch::sigmoid</a> (const af::array &amp;a)</td></tr>
@@ -150,7 +152,8 @@ Functions</h2></td></tr>
 <tr class="separator:a97f9016d270bdb685bf51d1833001797"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Holds the parameters needed for convolution as well as a convenience function to send them to a std::ostream object. </p>
+<div class="textblock"><p>Holds all the implementations of the forward modules. </p>
+<p>Holds the parameters needed for convolution as well as a convenience function to send them to a std::ostream object.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

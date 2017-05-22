@@ -17,5 +17,6 @@ var ops_8hpp =
     [ "sigmoid", "ops_8hpp.html#ac61be684e3426c6f8c53dc794ccf3a70", null ],
     [ "softmax", "ops_8hpp.html#a97f9016d270bdb685bf51d1833001797", null ],
     [ "split_branch", "ops_8hpp.html#a72df22b8266ef90d0b94983f84ad52cb", null ],
-    [ "tanh", "ops_8hpp.html#aaf715d23cef54abd1758cfaa439a0c0a", null ]
+    [ "tanh", "ops_8hpp.html#aaf715d23cef54abd1758cfaa439a0c0a", null ],
+    [ "unpool", "ops_8hpp.html#a12e2103bef62222f09265c609d047299", null ]
 ];

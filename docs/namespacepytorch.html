@@ -117,6 +117,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_pool2d.html">MaxPool2d</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_unpool2d.html">MaxUnpool2d</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_re_l_u.html">ReLU</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_sigmoid.html">Sigmoid</a></td></tr>
@@ -172,6 +174,8 @@ Functions</h2></td></tr>
 <tr class="separator:ae865095aad032ac1ea9516ae5361e0ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacf5782da70434cc8657a5ff4c612fc5"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#aacf5782da70434cc8657a5ff4c612fc5">maxpool</a> (const <a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a> &amp;params, const af::array &amp;input, af::array &amp;indices)</td></tr>
 <tr class="separator:aacf5782da70434cc8657a5ff4c612fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12e2103bef62222f09265c609d047299"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#a12e2103bef62222f09265c609d047299">unpool</a> (const <a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a> &amp;params, const af::array &amp;input, const af::array &amp;indices)</td></tr>
+<tr class="separator:a12e2103bef62222f09265c609d047299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78a38423eda0d20c5b3c61c69a0ce8c4"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#a78a38423eda0d20c5b3c61c69a0ce8c4">avgpool</a> (const <a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a> &amp;params, const af::array &amp;input)</td></tr>
 <tr class="separator:a78a38423eda0d20c5b3c61c69a0ce8c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac61be684e3426c6f8c53dc794ccf3a70"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#ac61be684e3426c6f8c53dc794ccf3a70">sigmoid</a> (const af::array &amp;a)</td></tr>
@@ -300,7 +304,6 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>: implement unpool? </dd></dl>
 
 </div>
 </div>
@@ -361,7 +364,7 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>: optimize this </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000016">Todo:</a></b></dt><dd>: optimize this </dd></dl>
 
 </div>
 </div>
@@ -562,7 +565,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Performs convolution given exported pytorch filters. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>: optimize this</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000015">Todo:</a></b></dt><dd>: optimize this</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filters</td><td>(fh, fw, Cin, Cout) </td></tr>
@@ -950,6 +953,49 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a12e2103bef62222f09265c609d047299"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12e2103bef62222f09265c609d047299">&#9670;&nbsp;</a></span>unpool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">af::array pytorch::unpool </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacepytorch.html#adb50647583b4209bc5d6071d1d406d9e">pooling_params_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>params</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const af::array &amp;&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const af::array &amp;&#160;</td>
+          <td class="paramname"><em>indices</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">Todo:</a></b></dt><dd>: MUST OPTIMIZE THIS IS CRAP </dd></dl>
 
 </div>
 </div>

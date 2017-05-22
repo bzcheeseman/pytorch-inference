@@ -276,6 +276,14 @@ namespace pytorch {
     }
   };
 
+  /**
+   * @class MaxUnool2d (TESTED)
+   * @file "include/layers.hpp"
+   * @brief Equivalent to MaxUnool2d in pytorch
+   *
+   * This layer implements the forward pass of pytorch's nn.MaxUnool2d module. This holds a pointer to a maxpool
+   * layer from which to get the indices for the unpooling process.
+   */
   class MaxUnpool2d : public Layer {
   private:
     pooling_params_t params;
@@ -635,6 +643,7 @@ namespace pytorch {
   //! @todo: add documentation for the rest of the classes
 
   /* Branch - tested */
+  //! @todo: docs
   class Branch : public Layer {
   private:
     int copies;
@@ -654,6 +663,7 @@ namespace pytorch {
     }
   };
 
+  //! @todo: docs
   class Slice2 : public Layer {
   private:
     int dim;
@@ -674,6 +684,7 @@ namespace pytorch {
 
   };
 
+  //! @todo: docs
   class Slice3 : public Layer {
   private:
     int dim;
@@ -694,6 +705,7 @@ namespace pytorch {
 
   };
 
+  //! @todo: docs
   class Slice4 : public Layer {
   private:
     int dim;
@@ -715,6 +727,7 @@ namespace pytorch {
   };
 
   /* Concat2 - tested */
+  //! @todo: docs
   class Concat2 : public Layer {
     int dim;
   public:
@@ -730,6 +743,7 @@ namespace pytorch {
   };
 
   /* Concat3 - tested */
+  //! @todo: docs
   class Concat3 : public Layer {
     int dim;
   public:
@@ -745,6 +759,7 @@ namespace pytorch {
   };
 
   /* Concat4 - higher is not supported by arrayfire - tested */
+  //! @todo: docs
   class Concat4 : public Layer {
     int dim;
   public:
@@ -760,6 +775,7 @@ namespace pytorch {
   };
 
   /* Sigmoid - tested */
+  //! @todo: docs
   class Sigmoid : public Layer {
   public:
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
@@ -772,6 +788,7 @@ namespace pytorch {
   };
 
   /* Tanh - tested */
+  //! @todo: docs
   class Tanh : public Layer {
   public:
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
@@ -784,6 +801,7 @@ namespace pytorch {
   };
 
   /* Hardtanh - tested */
+  //! @todo: docs
   class Hardtanh : public Layer {
     const float low, high;
   public:
@@ -799,6 +817,7 @@ namespace pytorch {
   };
 
   /* ReLU - tested */
+  //! @todo: docs
   class ReLU : public Layer {
   public:
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
@@ -811,6 +830,7 @@ namespace pytorch {
   };
 
   // Softmax is not a stable operation so it's making testing hard...
+  //! @todo: docs
   class Softmax : public Layer { // SO SLOW GOOD LORD
   public:
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
