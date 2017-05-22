@@ -75,7 +75,7 @@ namespace pytorch {
   };
 
   /**
-   * @class Skip (TESTED)
+   * @class Skip "include/layers.hpp"
    * @file "include/layers.hpp"
    * @brief Performs a no-op - makes it so that we can create branching networks.
    */
@@ -101,7 +101,7 @@ namespace pytorch {
   };
 
   /**
-   * @class Conv2d (TESTED)
+   * @class Conv2d "include/layers.hpp"
    * @file "include/layers.hpp"
    * @brief Equivalent to Conv2d in pytorch.
    *
@@ -230,7 +230,7 @@ namespace pytorch {
   };
 
   /**
-   * @class MaxPool2d (TESTED)
+   * @class MaxPool2d "include/layers.hpp"
    * @file "include/layers.hpp"
    * @brief Equivalent to MaxPool2d in pytorch (with a caveat)
    *
@@ -277,7 +277,7 @@ namespace pytorch {
   };
 
   /**
-   * @class MaxUnool2d (TESTED)
+   * @class MaxUnool2d "include/layers.hpp"
    * @file "include/layers.hpp"
    * @brief Equivalent to MaxUnool2d in pytorch
    *
@@ -319,7 +319,7 @@ namespace pytorch {
   };
 
   /**
-   * @class AvgPool2d (TESTED)
+   * @class AvgPool2d "include/layers.hpp"
    * @file "include/layers.hpp"
    * @brief Equivalent to AvgPool2d in pytorch
    *
@@ -362,7 +362,7 @@ namespace pytorch {
   //! @todo: add unpool - it takes a pointer to a maxpool layer maybe?
 
   /**
-   * @class BatchNorm2d (TESTED)
+   * @class BatchNorm2d "include/layers.hpp"
    * @file "include/layers.hpp"
    * @brief Equivalent to BatchNorm2d in pytorch.
    *
@@ -514,7 +514,7 @@ namespace pytorch {
   };
 
   /**
-   * @class Linear (TESTED)
+   * @class Linear "include/layers.hpp"
    * @file "include/layers.hpp"
    * @brief Equivalent to Linear in pytorch
    *
