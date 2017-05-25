@@ -26,7 +26,6 @@
 #define PYTORCH_INFERENCE_BRANCH_IMPL_HPP
 
 // STL
-#include <assert.h>
 #include <vector>
 
 // ArrayFire
@@ -34,7 +33,7 @@
 
 namespace pytorch::impl {
   inline std::vector<af::array> copy_branch(const af::array &input, const int &copies){
-    assert(copies <= 4); // only 4 branches supported for now
+    check_num_leq(copies, 10, __func__);
     std::vector<af::array> out;
     for (int i = 0; i < copies; i++){
       out.push_back(input);

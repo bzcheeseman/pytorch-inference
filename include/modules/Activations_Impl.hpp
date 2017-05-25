@@ -41,7 +41,7 @@ namespace pytorch::impl {
   }
 
   inline af::array relu(const af::array &a){
-    return af::max(a, af::constant(0, a.dims()));  // this should work
+    return af::max(a, af::constant(0, a.dims())); // hopefully this is working like I think it is
   }
 
   inline af::array _softmax(const af::array &a, const af::array &rhs){ // optimize this if possible

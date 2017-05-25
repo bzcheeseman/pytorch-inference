@@ -28,26 +28,30 @@
 #include <arrayfire.h>
 
 namespace pytorch::impl {
-  inline af::array cat2(const af::array &input1,
-                        const af::array &input2,
+
+  inline af::array catn(const std::vector<af::array> &inputs,
                         const int &dim){
-    return af::join(dim, input1, input2);
+    check_num_leq(inputs.size(), 10, __func__);
+
+    int n_arrays = inputs.size();
+
+    af_array *to_cat = new af_array [inputs.size()];
+    af_array *catted = new af_array;
+
+    for (int i = 0; i < n_arrays; i++){
+      to_cat[i] = inputs[i].get();
+    }
+
+    af_join_many(catted, dim, n_arrays, to_cat);
+
+    af::array out (*catted);
+
+    delete[](to_cat);
+    delete(catted);
+
+    return out;
   }
 
-  inline af::array cat3(const af::array &input1,
-                        const af::array &input2,
-                        const af::array &input3,
-                        const int &dim){
-    return af::join(dim, input1, input2, input3);
-  }
-
-  inline af::array cat4(const af::array &input1,
-                        const af::array &input2,
-                        const af::array &input3,
-                        const af::array &input4,
-                        const int &dim){
-    return af::join(dim, input1, input2, input3, input4);
-  }
 } // pytorch::impl
 
 #endif //PYTORCH_INFERENCE_CONCATENATE_IMPL_HPP

@@ -26,7 +26,7 @@
 #define PYTORCH_INFERENCE_CONVOLUTION_IMPL_HPP
 
 // STL
-#include <assert.h>
+#include <iostream>
 
 // ArrayFire
 #include <arrayfire.h>
@@ -70,11 +70,11 @@ namespace pytorch::impl {
     long Cin = input.dims(2); long Cout = filters.dims(3); long batch = input.dims(3);
 
     if (has_bias)
-      assert(bias.dims(2) == Cout);
+      check_size(bias.dims(2), Cout, __func__);
 
-    assert(filters.dims(2) == Cin);
-    assert(filters.dims(0) == params.filter_x);
-    assert(filters.dims(1) == params.filter_y);
+    check_size(filters.dims(2), Cin, __func__);
+    check_size(filters.dims(0), params.filter_x, __func__);
+    check_size(filters.dims(1), params.filter_y, __func__);
 
     long h_in = input.dims(0); long w_in = input.dims(0);
     long h_out = (int)floor((input.dims(0) - params.filter_x + 2*params.pad_x)/params.stride_x + 1);

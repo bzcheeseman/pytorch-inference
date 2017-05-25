@@ -117,7 +117,7 @@ namespace pytorch {
       assert(weights_dims.size() > 0);
       _object *ws = utils("load_tensor", {pycpp::to_python(weights_filename)}, {});
       assert(ws);
-      weights = from_numpy(reinterpret_cast<PyArrayObject_fields *>(ws), weights_dims.size(), weights_dims);
+      weights = from_numpy(reinterpret_cast<PyArrayObject *>(ws), weights_dims.size(), weights_dims);
     }
 
     /**
@@ -133,7 +133,7 @@ namespace pytorch {
       this->has_bias = true;
       _object *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
-      bias = from_numpy(reinterpret_cast<PyArrayObject_fields *>(bs), bias_dims.size(), bias_dims);
+      bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
     }
 
     /**

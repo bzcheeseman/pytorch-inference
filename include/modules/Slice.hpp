@@ -29,68 +29,29 @@
 #include "Slice_Impl.hpp"
 
 namespace pytorch {
+
   //! @todo: docs
-  class Slice2 : public Layer {
+  class Slice : public Layer {
   private:
     int dim;
+    int slices;
   public:
-    Slice2(const int &dim) : dim(dim) {}
+    Slice(const int &dim, const int &slices) : dim(dim), slices(slices) {}
 
     inline int get_dim() const {
       return dim;
     }
 
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return impl::split_branch(input[0], 2, dim);
+      return impl::split_branch(input[0], slices, dim);
     }
 
     inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return impl::split_branch(input[0], 2, dim);
+      return impl::split_branch(input[0], slices, dim);
     }
 
   };
 
-//! @todo: docs
-  class Slice3 : public Layer {
-  private:
-    int dim;
-  public:
-    Slice3(const int &dim) : dim(dim) {}
-
-    inline int get_dim() const {
-      return dim;
-    }
-
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return impl::split_branch(input[0], 3, dim);
-    }
-
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return impl::split_branch(input[0], 3, dim);
-    }
-
-  };
-
-//! @todo: docs
-  class Slice4 : public Layer {
-  private:
-    int dim;
-  public:
-    Slice4(const int &dim) : dim(dim) {}
-
-    inline int get_dim() const {
-      return dim;
-    }
-
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return impl::split_branch(input[0], 4, dim);
-    }
-
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return impl::split_branch(input[0], 4, dim);
-    }
-
-  };
 }
 
 #endif //PYTORCH_INFERENCE_SLICE_HPP

@@ -128,7 +128,7 @@ namespace pytorch {
       assert(filt_dims.size() > 0);
       _object *filts = utils("load_tensor", {pycpp::to_python(filters_filename)}, {});
       assert(filts);
-      filters = from_numpy(reinterpret_cast<PyArrayObject_fields *>(filts), filt_dims.size(), filt_dims);
+      filters = from_numpy(reinterpret_cast<PyArrayObject *>(filts), filt_dims.size(), filt_dims);
     }
 
     /**
@@ -143,7 +143,7 @@ namespace pytorch {
       assert(bias_dims.size() > 0);
       _object *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
-      bias = from_numpy(reinterpret_cast<PyArrayObject_fields *>(bs), bias_dims.size(), bias_dims);
+      bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
     }
 
     /**

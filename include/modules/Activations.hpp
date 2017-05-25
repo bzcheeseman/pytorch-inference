@@ -49,7 +49,7 @@ namespace pytorch {
     }
   };
 
-//! @todo: docs
+  //! @todo: docs
   class Tanh : public Layer {
   public:
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
@@ -61,7 +61,7 @@ namespace pytorch {
     }
   };
 
-//! @todo: docs
+  //! @todo: docs
   class Hardtanh : public Layer {
     const float low, high;
   public:
@@ -76,7 +76,7 @@ namespace pytorch {
     }
   };
 
-//! @todo: docs
+  //! @todo: docs
   class ReLU : public Layer {
   public:
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
@@ -88,8 +88,7 @@ namespace pytorch {
     }
   };
 
-// Softmax is not a stable operation so it's making testing hard...
-//! @todo: docs
+  //! @todo: docs
   class Softmax : public Layer { // SO SLOW GOOD LORD
   public:
     inline std::vector<af::array> forward(const std::vector<af::array> &input){

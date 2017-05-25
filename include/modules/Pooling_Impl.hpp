@@ -27,7 +27,6 @@
 
 // STL
 #include <iostream>
-#include <assert.h>
 
 // ArrayFire
 #include <arrayfire.h>

@@ -25,9 +25,6 @@
 #ifndef PYTORCH_INFERENCE_NORMALIZATION_IMPL_HPP
 #define PYTORCH_INFERENCE_NORMALIZATION_IMPL_HPP
 
-// STL
-#include <assert.h>
-
 // ArrayFire
 #include <arrayfire.h>
 
@@ -40,8 +37,8 @@ namespace pytorch::impl {
                                const float &epsilon,
                                const af::array &input){
 
-    assert(gamma.dims(2) == input.dims(2));
-    assert(beta.dims(2) == input.dims(2));
+    check_size(gamma.dims(2), input.dims(2), __func__);
+    check_size(beta.dims(2), input.dims(2), __func__);
     int h_in = input.dims(0); int w_in = input.dims(1); int batch = input.dims(3);
 
     af::array out = (input - af::tile(running_mean, h_in, w_in, 1, batch))

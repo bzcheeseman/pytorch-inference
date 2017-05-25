@@ -26,7 +26,6 @@
 #define PYTORCH_INFERENCE_SLICE_IMPL_HPP
 
 // STL
-#include <assert.h>
 #include <vector>
 
 // ArrayFire
@@ -35,11 +34,11 @@
 namespace pytorch::impl {
 
   inline std::vector<af::array> split_branch(const af::array &input, const int &slices, const int &dim){
-    assert(input.dims(dim) % slices == 0); // it's gotta be an even split
-    assert(slices <= 4); // we can only concatenate 4 items so don't split more than that
+    check_size(input.dims(dim)%slices, 0, __func__); // it's gotta be an even split
+    check_num_leq(slices, 10, __func__); // we can only concatenate 10 items so don't split more than that
     std::vector<af::array> out;
     switch (dim) { // each array has a slice that is an equal piece of that dimension. Also af::seq is inclusive.
-      case 0 : // change to gfor
+      case 0 : // change to gfor?
         for (int i = 0; i < input.dims(0); i += input.dims(0)/slices) {
           out.push_back(input(af::seq(i, i+input.dims(0)/slices-1), af::span, af::span, af::span));
         }
@@ -63,7 +62,7 @@ namespace pytorch::impl {
         }
         break;
 
-      default: out.push_back(input); break; //no op if dim isn't in range.
+      default: out.push_back(input); std::cerr << "Dimension not in range, no-op." << std::endl; break;
     }
     return out;
   }

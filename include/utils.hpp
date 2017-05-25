@@ -26,9 +26,10 @@
 #define PYTORCH_INFERENCE_EXTRACT_NUMPY_HPP
 
 #include <Python.h>
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include <numpy/arrayobject.h>
 
-#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
+#include <stdexcept>
 
 #include <arrayfire.h>
 
@@ -64,6 +65,28 @@ namespace pytorch {
 
     return out;
 
+  }
+
+  inline void check_size(const int &size1, const int &size2, const std::string &func){
+    if (size1 == size2){
+      return;
+    }
+    else{
+      std::string error = "Incorrect size passed! Sizes: " + std::to_string(size1) + ", " + std::to_string(size2);
+      error += " Function: " + func;
+      throw std::runtime_error(error);
+    }
+  }
+
+  inline void check_num_leq(const int &size1, const int &size2, const std::string &func){
+    if (size1 <= size2){
+      return;
+    }
+    else{
+      std::string error = "Incorrect size passed! Sizes: " + std::to_string(size1) + ", " + std::to_string(size2);
+      error += " Function: " + func;
+      throw std::runtime_error(error);
+    }
   }
 
 } // pytorch

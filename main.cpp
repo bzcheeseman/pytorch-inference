@@ -99,9 +99,11 @@ int main() {
                                             "beta.dat", {1, 16, 1, 1},
                                             "rm.dat", {1, 16, 1, 1},
                                             "rv.dat", {1, 16, 1, 1}, 1e-5));
-  engine.add_layer(new ::pytorch::Tanh);
+  engine.add_layer(new pytorch::Tanh);
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
-  engine.add_layer(new ::pytorch::Sigmoid);
+  engine.add_layer(new pytorch::Sigmoid);
+  engine.add_layer(new pytorch::Slice(2, 4));
+  engine.add_layer(new pytorch::Concat(2, 4));
 //  engine.add_layer(new pytorch::MaxUnpool2d(poolparams,
 //                                            reinterpret_cast<pytorch::MaxPool2d *>(engine.get_layer_ptr(3, 0))));
 //  engine.add_layer(new pytorch::AvgPool2d(poolparams));

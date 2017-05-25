@@ -25,8 +25,6 @@
 #ifndef PYTORCH_INFERENCE_POOLING_HPP
 #define PYTORCH_INFERENCE_POOLING_HPP
 
-// STL
-#include <assert.h>
 #include <vector>
 
 // ArrayFire

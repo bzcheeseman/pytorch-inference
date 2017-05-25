@@ -79,13 +79,13 @@ namespace pytorch {
       for (int i = 0; i < layers.size(); i++){
         std::vector<af::array> temp;
         if (layers[i].size() == 1) {  // works for concat layers
-          assert(out.size() <= 4);
+          check_num_leq(out.size(), 10, __func__);
           // Call forward function
           temp = layers[i][0]->forward(out);
         }
         else{
           temp.clear();
-          assert(out.size() == layers[i].size());  // make sure there are enough inputs
+          check_size(out.size(), layers[i].size(), __func__); // make sure there are enough inputs
           for (int j = 0; j < layers[i].size(); j++){
             // Call forward for each branch
             temp.push_back(layers[i][j]->forward({out[j]})[0]);

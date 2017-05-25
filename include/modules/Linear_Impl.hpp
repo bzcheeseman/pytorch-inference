@@ -25,9 +25,6 @@
 #ifndef PYTORCH_INFERENCE_LINEAR_IMPL_HPP
 #define PYTORCH_INFERENCE_LINEAR_IMPL_HPP
 
-// STL
-#include <assert.h>
-
 // ArrayFire
 #include <arrayfire.h>
 
@@ -47,10 +44,10 @@ namespace pytorch::impl {
     long batch = input.dims(3);
     long flat = input.dims(0) * input.dims(1) * input.dims(2);
 
-    assert(weight.dims(1) == flat);
+    check_size(weight.dims(1), flat, __func__);
 
     if (has_bias)
-      assert(bias.dims(0) == weight.dims(0));
+      check_size(bias.dims(0), weight.dims(0), __func__);
 
     af::array out;
     if (has_bias)
@@ -61,7 +58,6 @@ namespace pytorch::impl {
     out = af::reorder(out, 0, 3, 2, 1);
 
     return out;
-
   }
 }
 

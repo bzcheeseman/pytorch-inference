@@ -29,50 +29,22 @@
 #include "Concatenate_Impl.hpp"
 
 namespace pytorch {
-  //! @todo: docs
-  class Concat2 : public Layer {
+
+  class Concat : public Layer {
     int dim;
+    int n_tensors;
   public:
-    Concat2 (const int &dim) : dim(dim) {}
+    Concat(const int &dim, const int &n_tensors) : dim(dim), n_tensors(n_tensors) {}
 
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return {impl::cat2(input[0], input[1], dim)};
+      return {impl::catn(input, dim)};
     }
 
     inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return {impl::cat2(input[0], input[1], dim)};
+      return {impl::catn(input, dim)};
     }
   };
 
-//! @todo: docs
-  class Concat3 : public Layer {
-    int dim;
-  public:
-    Concat3 (const int &dim) : dim(dim) {}
-
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return {impl::cat3(input[0], input[1], input[2], dim)};
-    }
-
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return {impl::cat3(input[0], input[1], input[2], dim)};
-    }
-  };
-
-//! @todo: docs
-  class Concat4 : public Layer {
-    int dim;
-  public:
-    Concat4 (const int &dim) : dim(dim) {}
-
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return {impl::cat4(input[0], input[1], input[2], input[3], dim)};
-    }
-
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return {impl::cat4(input[0], input[1], input[2], input[3], dim)};
-    }
-  };
 } // pytorch
 
 #endif //PYTORCH_INFERENCE_CONCATENATE_HPP
