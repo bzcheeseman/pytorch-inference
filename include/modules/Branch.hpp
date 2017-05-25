@@ -1,5 +1,5 @@
 //
-// Created by Aman LaChapelle on 5/19/17.
+// Created by Aman LaChapelle on 5/25/17.
 //
 // pytorch_inference
 // Copyright (c) 2017 Aman LaChapelle
@@ -22,34 +22,33 @@
  */
 
 
-#ifndef PYTORCH_INFERENCE_LAYERS_HPP
-#define PYTORCH_INFERENCE_LAYERS_HPP
+#ifndef PYTORCH_INFERENCE_BRANCH_HPP
+#define PYTORCH_INFERENCE_BRANCH_HPP
 
-#include "modules/Layer.hpp"
-
-#include "modules/Activations.hpp"
-#include "modules/Branch.hpp"
-#include "modules/Concatenate.hpp"
-#include "modules/Convolution.hpp"
-#include "modules/Linear.hpp"
-#include "modules/Normalization.hpp"
-#include "modules/Pooling.hpp"
-#include "modules/Slice.hpp"
+// Project
+#include "Layer.hpp"
+#include "Branch_Impl.hpp"
 
 namespace pytorch {
+  //! @todo: docs
+  class Branch : public Layer {
+  private:
+    int copies;
+  public:
+    Branch(const int &copies) : copies(copies){}
 
-  /**
-   * @brief Convenience enum to use whenever you need to specify a dimension (like in Concat)
-   */
-  enum dims {
-    n = 3,
-    k = 2,
-    h = 0,
-    w = 1
+    inline int get_copies() const {
+      return copies;
+    }
+
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return impl::copy_branch(input[0], copies);
+    }
+
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return impl::copy_branch(input[0], copies);
+    }
   };
-
 } // pytorch
 
-
-
-#endif //PYTORCH_INFERENCE_LAYERS_HPP
+#endif //PYTORCH_INFERENCE_BRANCH_HPP

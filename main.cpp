@@ -2,7 +2,6 @@
 
 #include "include/utils.hpp"
 #include "include/py_object.hpp"
-#include "include/ops.hpp"
 #include "include/layers.hpp"
 #include "include/inference_engine.hpp"
 
@@ -100,27 +99,20 @@ int main() {
                                             "beta.dat", {1, 16, 1, 1},
                                             "rm.dat", {1, 16, 1, 1},
                                             "rv.dat", {1, 16, 1, 1}, 1e-5));
-  engine.add_layer(new pytorch::Tanh);
+  engine.add_layer(new ::pytorch::Tanh);
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
-  engine.add_layer(new pytorch::Sigmoid);
-  engine.add_layer(new pytorch::MaxUnpool2d(poolparams,
-                                            reinterpret_cast<pytorch::MaxPool2d *>(engine.get_layer_ptr(3, 0))));
-  engine.add_layer(new pytorch::AvgPool2d(poolparams));
+  engine.add_layer(new ::pytorch::Sigmoid);
+//  engine.add_layer(new pytorch::MaxUnpool2d(poolparams,
+//                                            reinterpret_cast<pytorch::MaxPool2d *>(engine.get_layer_ptr(3, 0))));
+//  engine.add_layer(new pytorch::AvgPool2d(poolparams));
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Hardtanh(-0.1f, 0.1f));
   engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 56*56*16}, false, "lin_bias.dat", {1, 1, 3, 1}));
-  engine.add_layer(new pytorch::ReLU);
+  engine.add_layer(new ::pytorch::ReLU);
 //  engine.add_layer(new pytorch::Softmax);
   af::timer::start();
   auto output = engine.forward(image);
   std::cout << "forward took (s): " << af::timer::stop() << std::endl;
-
-//  auto im = af::randn(4, 4, 3, 1);
-//  af_print(im);
-//  af::array indices;
-//  im = pytorch::maxpool(poolparams, im, indices);
-//  im = pytorch::unpool(poolparams, im, indices);
-//  af_print(im);
 
 
   af_print((pytorch_out - output) / af::max(af::constant(1.f, output.dims()), output));

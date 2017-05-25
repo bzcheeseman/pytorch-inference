@@ -31,7 +31,7 @@
 #include <arrayfire.h>
 
 #include "utils.hpp"
-#include "ops.hpp"
+#include "layers.hpp"
 #include "layers.hpp"
 
 namespace pytorch {
@@ -43,7 +43,7 @@ namespace pytorch {
    */
   class inference_engine {
   private:
-    std::vector<std::vector<pytorch::Layer *>> layers;  // how to speed this up to avoid vtable lookup?
+    std::vector<std::vector<::pytorch::Layer *>> layers;  // how to speed this up to avoid vtable lookup?
     const int device;
 
   public:

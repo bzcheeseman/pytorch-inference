@@ -1,5 +1,5 @@
 //
-// Created by Aman LaChapelle on 5/19/17.
+// Created by Aman LaChapelle on 5/25/17.
 //
 // pytorch_inference
 // Copyright (c) 2017 Aman LaChapelle
@@ -22,34 +22,25 @@
  */
 
 
-#ifndef PYTORCH_INFERENCE_LAYERS_HPP
-#define PYTORCH_INFERENCE_LAYERS_HPP
+#ifndef PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+#define PYTORCH_INFERENCE_BRANCH_IMPL_HPP
 
-#include "modules/Layer.hpp"
+// STL
+#include <assert.h>
+#include <vector>
 
-#include "modules/Activations.hpp"
-#include "modules/Branch.hpp"
-#include "modules/Concatenate.hpp"
-#include "modules/Convolution.hpp"
-#include "modules/Linear.hpp"
-#include "modules/Normalization.hpp"
-#include "modules/Pooling.hpp"
-#include "modules/Slice.hpp"
+// ArrayFire
+#include <arrayfire.h>
 
-namespace pytorch {
+namespace pytorch::impl {
+  inline std::vector<af::array> copy_branch(const af::array &input, const int &copies){
+    assert(copies <= 4); // only 4 branches supported for now
+    std::vector<af::array> out;
+    for (int i = 0; i < copies; i++){
+      out.push_back(input);
+    }
+    return out;
+  }
+} // pytorch::impl
 
-  /**
-   * @brief Convenience enum to use whenever you need to specify a dimension (like in Concat)
-   */
-  enum dims {
-    n = 3,
-    k = 2,
-    h = 0,
-    w = 1
-  };
-
-} // pytorch
-
-
-
-#endif //PYTORCH_INFERENCE_LAYERS_HPP
+#endif //PYTORCH_INFERENCE_BRANCH_IMPL_HPP

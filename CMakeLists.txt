@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(pytorch_inference)
 
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 find_package(PythonInterp 3.6 REQUIRED)
 find_package(PythonLibs 3.6 REQUIRED)
@@ -68,9 +68,24 @@ set(SOURCE_FILES
         main.cpp
         include/inference_engine.hpp
         include/utils.hpp
-        include/ops.hpp
         include/layers.hpp
-    )
+        include/modules/Layer.hpp
+        include/modules/Convolution.hpp
+        include/modules/Pooling.hpp
+        include/modules/Normalization.hpp
+        include/modules/Linear.hpp
+        include/modules/Branch.hpp
+        include/modules/Slice.hpp
+        include/modules/Concatenate.hpp
+        include/modules/Activations.hpp
+        include/modules/Activations_Impl.hpp
+        include/modules/Branch_Impl.hpp
+        include/modules/Concatenate_Impl.hpp
+        include/modules/Convolution_Impl.hpp
+        include/modules/Pooling_Impl.hpp
+        include/modules/Linear_Impl.hpp
+        include/modules/Normalization_Impl.hpp
+        include/modules/Slice_Impl.hpp)
 
 add_executable(pytorch_inference ${SOURCE_FILES})
 target_link_libraries(pytorch_inference  ${PYTHON_LIBRARY} ${EXTRA_LIBS} ${ArrayFire_LIBRARIES})
