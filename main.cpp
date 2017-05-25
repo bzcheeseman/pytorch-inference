@@ -65,7 +65,7 @@ int main() {
                        pycpp::to_python(1),  // vector
                        pycpp::to_python("lin_bias.dat")});
 
-  PyObject *i = test("load_tensor", {pycpp::to_python("img.dat")});
+  PyObject *i = test("load_tensor", {pycpp::to_python("img.dat")}, {});
 
   af::timer::start();
   PyObject *pto = test("test_conv", {pycpp::to_python("filts.dat"),

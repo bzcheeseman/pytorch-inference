@@ -45,3 +45,4 @@ CTestTestfile.cmake
 
 .idea/
 cmake-build-debug/
+xcode-build/

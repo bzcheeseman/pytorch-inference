@@ -185,7 +185,7 @@ namespace pytorch {
     inline void add_filters(const::std::string &filters_filename,
                             const std::vector<int> &filt_dims){
       assert(filt_dims.size() > 0);
-      PyObject *filts = utils("load_tensor", {pycpp::to_python(filters_filename)});
+      PyObject *filts = utils("load_tensor", {pycpp::to_python(filters_filename)}, {});
       assert(filts);
       filters = from_numpy(reinterpret_cast<PyArrayObject *>(filts), filt_dims.size(), filt_dims);
     }
@@ -200,7 +200,7 @@ namespace pytorch {
     inline void add_bias(const std::string &bias_filename,
                          const std::vector<int> &bias_dims){
       assert(bias_dims.size() > 0);
-      PyObject *bs = utils("load_tensor", {pycpp::to_python(bias_filename)});
+      PyObject *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
       bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
     }
@@ -444,7 +444,7 @@ namespace pytorch {
     inline void add_gamma(const std::string &gamma_filename = "",
                           const std::vector<int> &gamma_dims = {}){
       assert(gamma_dims.size() > 0);
-      PyObject *g = utils("load_tensor", {pycpp::to_python(gamma_filename)});
+      PyObject *g = utils("load_tensor", {pycpp::to_python(gamma_filename)}, {});
       assert(g);
       gamma = from_numpy(reinterpret_cast<PyArrayObject *>(g), gamma_dims.size(), gamma_dims);
     }
@@ -458,7 +458,7 @@ namespace pytorch {
     inline void add_beta(const std::string &beta_filename = "",
                           const std::vector<int> &beta_dims = {}){
       assert(beta_dims.size() > 0);
-      PyObject *b = utils("load_tensor", {pycpp::to_python(beta_filename)});
+      PyObject *b = utils("load_tensor", {pycpp::to_python(beta_filename)}, {});
       assert(b);
       beta = from_numpy(reinterpret_cast<PyArrayObject *>(b), beta_dims.size(), beta_dims);
     }
@@ -472,7 +472,7 @@ namespace pytorch {
     inline void add_running_mean(const std::string &running_mean_filename = "",
                           const std::vector<int> &running_mean_dims = {}){
       assert(running_mean_dims.size() > 0);
-      PyObject *rm = utils("load_tensor", {pycpp::to_python(running_mean_filename)});
+      PyObject *rm = utils("load_tensor", {pycpp::to_python(running_mean_filename)}, {});
       assert(rm);
       running_mean = from_numpy(reinterpret_cast<PyArrayObject *>(rm), running_mean_dims.size(), running_mean_dims);
     }
@@ -486,7 +486,7 @@ namespace pytorch {
     inline void add_running_var(const std::string &running_var_filename = "",
                                  const std::vector<int> &running_var_dims = {}){
       assert(running_var_dims.size() > 0);
-      PyObject *rv = utils("load_tensor", {pycpp::to_python(running_var_filename)});
+      PyObject *rv = utils("load_tensor", {pycpp::to_python(running_var_filename)}, {});
       assert(rv);
       running_var = from_numpy(reinterpret_cast<PyArrayObject *>(rv), running_var_dims.size(), running_var_dims);
     }
@@ -587,7 +587,7 @@ namespace pytorch {
     inline void add_weights(const std::string &weights_filename,
                             const std::vector<int> &weights_dims){
       assert(weights_dims.size() > 0);
-      PyObject *ws = utils("load_tensor", {pycpp::to_python(weights_filename)});
+      PyObject *ws = utils("load_tensor", {pycpp::to_python(weights_filename)}, {});
       assert(ws);
       weights = from_numpy(reinterpret_cast<PyArrayObject *>(ws), weights_dims.size(), weights_dims);
     }
@@ -603,7 +603,7 @@ namespace pytorch {
                          const std::vector<int> &bias_dims){
       assert(bias_dims.size() > 0);
       this->has_bias = true;
-      PyObject *bs = utils("load_tensor", {pycpp::to_python(bias_filename)});
+      PyObject *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
       bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
     }

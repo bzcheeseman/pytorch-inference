@@ -43,7 +43,7 @@ namespace pytorch {
    */
   class inference_engine {
   private:
-    std::vector<std::vector<pytorch::Layer *>> layers;
+    std::vector<std::vector<pytorch::Layer *>> layers;  // how to speed this up to avoid vtable lookup?
     const int device;
 
   public:
@@ -51,7 +51,7 @@ namespace pytorch {
                      af::Backend backend = AF_BACKEND_OPENCL,
                      bool quiet = true) : device(device) {
       af::setBackend(backend);
-      af::setDevice(device);
+      af::setDevice(this->device);
       if (!quiet){
         af::info();
       }
