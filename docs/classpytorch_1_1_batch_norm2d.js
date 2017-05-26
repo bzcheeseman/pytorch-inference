@@ -1,6 +1,6 @@
 var classpytorch_1_1_batch_norm2d =
 [
-    [ "BatchNorm2d", "classpytorch_1_1_batch_norm2d.html#acad1a59f2edc4a810ff46458f4da8c82", null ],
+    [ "BatchNorm2d", "classpytorch_1_1_batch_norm2d.html#aef75719c12e89bd66a5e485fa6d62df8", null ],
     [ "BatchNorm2d", "classpytorch_1_1_batch_norm2d.html#a910802963973f5d64fb6d281635a1035", null ],
     [ "add_beta", "classpytorch_1_1_batch_norm2d.html#a54664c298098621bc625e899c96f7af6", null ],
     [ "add_gamma", "classpytorch_1_1_batch_norm2d.html#af29892810fccc85d2bc202c16c5d49fe", null ],

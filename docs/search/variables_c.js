@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['stride_5fx',['stride_x',['../structpytorch_1_1conv__params__t.html#a153b5b2707c00c79060323aea63cccba',1,'pytorch::conv_params_t']]],
-  ['stride_5fy',['stride_y',['../structpytorch_1_1conv__params__t.html#a5d87b4d33727978de892b6b094fa286b',1,'pytorch::conv_params_t']]]
+  ['running_5fmean',['running_mean',['../classpytorch_1_1_batch_norm2d.html#ada48f51ace7479c934b5910fd00ee2ca',1,'pytorch::BatchNorm2d']]],
+  ['running_5fvar',['running_var',['../classpytorch_1_1_batch_norm2d.html#ab401da951fb788f31aa02d58dc01d7a6',1,'pytorch::BatchNorm2d']]]
 ];

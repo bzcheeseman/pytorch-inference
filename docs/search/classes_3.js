@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hardtanh',['Hardtanh',['../classpytorch_1_1_hardtanh.html',1,'pytorch']]]
+  ['difference',['Difference',['../classpytorch_1_1_difference.html',1,'pytorch']]],
+  ['divisor',['Divisor',['../classpytorch_1_1_divisor.html',1,'pytorch']]]
 ];

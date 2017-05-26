@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pycpp',['pycpp',['../namespacepycpp.html',1,'']]],
-  ['pytorch',['pytorch',['../namespacepytorch.html',1,'']]]
+  ['exporter',['exporter',['../namespaceexporter.html',1,'']]]
 ];

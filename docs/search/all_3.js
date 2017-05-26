@@ -1,6 +1,15 @@
 var searchData=
 [
-  ['forward',['forward',['../classpytorch_1_1inference__engine.html#a99aef1e37a3ae96e24784bf803ee4347',1,'pytorch::inference_engine']]],
-  ['from_5fnumpy',['from_numpy',['../namespacepytorch.html#acb1b2c573dffc92bcb33e82ac1eb1ff8',1,'pytorch']]],
-  ['from_5fpython',['from_python',['../namespacepycpp.html#a73640f7b7ba9db3726cf17cf6826efcb',1,'pycpp::from_python(PyObject *pyobj, std::string &amp;cppobj)'],['../namespacepycpp.html#a07aafb9e3eb2934d0f184adfeda1b735',1,'pycpp::from_python(PyObject *pyobj, int &amp;cppobj)'],['../namespacepycpp.html#a055ffcce933ab7f7bb3e8ebb364ca2ff',1,'pycpp::from_python(PyObject *pyobj, long &amp;cppobj)'],['../namespacepycpp.html#a352243768f7a9ce8778ec4a84515ecda',1,'pycpp::from_python(PyObject *pyobj, float &amp;cppobj)'],['../namespacepycpp.html#a1107020b3dd8842ef02779b2a4015f6a',1,'pycpp::from_python(PyObject *pyobj, double &amp;cppobj)'],['../namespacepycpp.html#a07dd0dbd468276e2cba46bec7f12b447',1,'pycpp::from_python(PyObject *pyobj, std::vector&lt; std::string &gt; &amp;cppobj)'],['../namespacepycpp.html#a90ce53e66f78cc3633f39eebf057f086',1,'pycpp::from_python(PyObject *pyobj, std::vector&lt; int &gt; &amp;cppobj)'],['../namespacepycpp.html#a78a8f19fd8e3e0ec6229f4d3e76d33bc',1,'pycpp::from_python(PyObject *pyobj, std::vector&lt; long &gt; &amp;cppobj)'],['../namespacepycpp.html#aadc48e13ace7563bd302001fd3535699',1,'pycpp::from_python(PyObject *pyobj, std::vector&lt; float &gt; &amp;cppobj)'],['../namespacepycpp.html#a28d4561bce1c6f55acc00a46127dd113',1,'pycpp::from_python(PyObject *pyobj, std::vector&lt; double &gt; &amp;cppobj)']]]
+  ['dec',['DEC',['../_c_make_c_compiler_id_8c.html#ad1280362da42492bbc11aa78cbf776ad',1,'DEC():&#160;CMakeCCompilerId.c'],['../_c_make_c_x_x_compiler_id_8cpp.html#ad1280362da42492bbc11aa78cbf776ad',1,'DEC():&#160;CMakeCXXCompilerId.cpp']]],
+  ['device',['device',['../classpytorch_1_1inference__engine.html#aec82911c1890de92c4b67c5239e58968',1,'pytorch::inference_engine']]],
+  ['difference',['Difference',['../classpytorch_1_1_difference.html',1,'pytorch::Difference'],['../classpytorch_1_1_difference.html#a8fe367d2334fa90e2a6dd090f660f6cc',1,'pytorch::Difference::Difference()']]],
+  ['difference_2ehpp',['Difference.hpp',['../_difference_8hpp.html',1,'']]],
+  ['difference_5fimpl_2ehpp',['Difference_Impl.hpp',['../_difference___impl_8hpp.html',1,'']]],
+  ['difn',['difn',['../namespacepytorch_1_1impl.html#a7b4f0f901352164f3a503cfc5413d37c',1,'pytorch::impl']]],
+  ['dim',['dim',['../classpytorch_1_1_concat.html#a79ffdc7a838d6fb1a8906c1e495ae4aa',1,'pytorch::Concat::dim()'],['../classpytorch_1_1_difference.html#a2d67e1e1f9bc650dca5993962ee0519a',1,'pytorch::Difference::dim()'],['../classpytorch_1_1_divisor.html#a693e53a4600eb295f66c57a1f07d716c',1,'pytorch::Divisor::dim()'],['../classpytorch_1_1_product.html#a5efa8f6e76803d1e8a9fe68e69fda7de',1,'pytorch::Product::dim()'],['../classpytorch_1_1_slice.html#a68d0283c6e7e73a710792062f0d40cb5',1,'pytorch::Slice::dim()'],['../classpytorch_1_1_sum.html#a5ec47cebd9215d443497838781c37db8',1,'pytorch::Sum::dim()']]],
+  ['dims',['dims',['../namespacepytorch.html#aa67d3445f1e6d5b9256f2fef9932d196',1,'pytorch']]],
+  ['divisor',['Divisor',['../classpytorch_1_1_divisor.html',1,'pytorch::Divisor'],['../classpytorch_1_1_divisor.html#ab173e0744a192d890e37818545e3238f',1,'pytorch::Divisor::Divisor()']]],
+  ['divisor_2ehpp',['Divisor.hpp',['../_divisor_8hpp.html',1,'']]],
+  ['divisor_5fimpl_2ehpp',['Divisor_Impl.hpp',['../_divisor___impl_8hpp.html',1,'']]],
+  ['divn',['divn',['../namespacepytorch_1_1impl.html#a4a9394e01bef62b3c9b719a8ca57d084',1,'pytorch::impl']]]
 ];

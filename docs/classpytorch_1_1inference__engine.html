@@ -96,18 +96,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad7e33c865e4b301e11c30f22f1ecbcff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e7f29df63846b396d8ca28feb52a307"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a1e7f29df63846b396d8ca28feb52a307">~inference_engine</a> ()</td></tr>
 <tr class="separator:a1e7f29df63846b396d8ca28feb52a307"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a981e02ceeb390fa17323dcf96d285095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a981e02ceeb390fa17323dcf96d285095">add_layer</a> (Layer *l)</td></tr>
+<tr class="memitem:a981e02ceeb390fa17323dcf96d285095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a981e02ceeb390fa17323dcf96d285095">add_layer</a> (<a class="el" href="classpytorch_1_1_layer.html">Layer</a> *l)</td></tr>
 <tr class="separator:a981e02ceeb390fa17323dcf96d285095"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9001b472ac1207702359986da7e045f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a9001b472ac1207702359986da7e045f1">add_layer</a> (std::vector&lt; Layer *&gt;l)</td></tr>
+<tr class="memitem:a9001b472ac1207702359986da7e045f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a9001b472ac1207702359986da7e045f1">add_layer</a> (std::vector&lt; <a class="el" href="classpytorch_1_1_layer.html">Layer</a> *&gt;l)</td></tr>
 <tr class="separator:a9001b472ac1207702359986da7e045f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7899cd68bba2fe0adefd94554b35c8d4"><td class="memItemLeft" align="right" valign="top">Layer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a7899cd68bba2fe0adefd94554b35c8d4">get_layer_ptr</a> (const int &amp;depth, const int &amp;width=0)</td></tr>
+<tr class="memitem:a7899cd68bba2fe0adefd94554b35c8d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpytorch_1_1_layer.html">Layer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a7899cd68bba2fe0adefd94554b35c8d4">get_layer_ptr</a> (const int &amp;depth, const int &amp;width=0)</td></tr>
 <tr class="separator:a7899cd68bba2fe0adefd94554b35c8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99aef1e37a3ae96e24784bf803ee4347"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a99aef1e37a3ae96e24784bf803ee4347">forward</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
 <tr class="separator:a99aef1e37a3ae96e24784bf803ee4347"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a8d2fcadc30b2c2fa067289c7f7d8df43"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; pytorch::Layer * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a8d2fcadc30b2c2fa067289c7f7d8df43">layers</a></td></tr>
+<tr class="memitem:a8d2fcadc30b2c2fa067289c7f7d8df43"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; <a class="el" href="classpytorch_1_1_layer.html">pytorch::Layer</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a8d2fcadc30b2c2fa067289c7f7d8df43">layers</a></td></tr>
 <tr class="separator:a8d2fcadc30b2c2fa067289c7f7d8df43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec82911c1890de92c4b67c5239e58968"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#aec82911c1890de92c4b67c5239e58968">device</a></td></tr>
 <tr class="separator:aec82911c1890de92c4b67c5239e58968"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,7 +193,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void pytorch::inference_engine::add_layer </td>
           <td>(</td>
-          <td class="paramtype">Layer *&#160;</td>
+          <td class="paramtype"><a class="el" href="classpytorch_1_1_layer.html">Layer</a> *&#160;</td>
           <td class="paramname"><em>l</em></td><td>)</td>
           <td></td>
         </tr>
@@ -219,7 +219,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void pytorch::inference_engine::add_layer </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; Layer *&gt;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classpytorch_1_1_layer.html">Layer</a> *&gt;&#160;</td>
           <td class="paramname"><em>l</em></td><td>)</td>
           <td></td>
         </tr>
@@ -269,7 +269,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Layer* pytorch::inference_engine::get_layer_ptr </td>
+          <td class="memname"><a class="el" href="classpytorch_1_1_layer.html">Layer</a>* pytorch::inference_engine::get_layer_ptr </td>
           <td>(</td>
           <td class="paramtype">const int &amp;&#160;</td>
           <td class="paramname"><em>depth</em>, </td>
@@ -328,7 +328,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::vector&lt;pytorch::Layer *&gt; &gt; pytorch::inference_engine::layers</td>
+          <td class="memname">std::vector&lt;std::vector&lt;<a class="el" href="classpytorch_1_1_layer.html">pytorch::Layer</a> *&gt; &gt; pytorch::inference_engine::layers</td>
         </tr>
       </table>
   </td>

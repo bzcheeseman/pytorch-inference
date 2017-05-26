@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('classpytorch_1_1_batch_norm2d.html',''
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="layers_8hpp_source.html">layers.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="_normalization_8hpp_source.html">Normalization.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for pytorch::BatchNorm2d:</div>
 <div class="dyncontent">
@@ -101,9 +101,9 @@ Inheritance diagram for pytorch::BatchNorm2d:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acad1a59f2edc4a810ff46458f4da8c82"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_batch_norm2d.html#acad1a59f2edc4a810ff46458f4da8c82">BatchNorm2d</a> (const af::array &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#a24862bed65a92fe530ec5e7d0008d021">gamma</a>, const af::array &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#a922f732e1115cfa4bdecb4162e607f5d">beta</a>, const float &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#ada48f51ace7479c934b5910fd00ee2ca">running_mean</a>, const float &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#ab401da951fb788f31aa02d58dc01d7a6">running_var</a>, const float &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#a91d1c372502d1d18f5fb8ce90866e8c0">epsilon</a>=1e-5)</td></tr>
-<tr class="memdesc:acad1a59f2edc4a810ff46458f4da8c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classpytorch_1_1_batch_norm2d.html">BatchNorm2d</a> object.  <a href="#acad1a59f2edc4a810ff46458f4da8c82">More...</a><br /></td></tr>
-<tr class="separator:acad1a59f2edc4a810ff46458f4da8c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef75719c12e89bd66a5e485fa6d62df8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_batch_norm2d.html#aef75719c12e89bd66a5e485fa6d62df8">BatchNorm2d</a> (const af::array &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#a24862bed65a92fe530ec5e7d0008d021">gamma</a>, const af::array &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#a922f732e1115cfa4bdecb4162e607f5d">beta</a>, const af::array &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#ada48f51ace7479c934b5910fd00ee2ca">running_mean</a>, const af::array &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#ab401da951fb788f31aa02d58dc01d7a6">running_var</a>, const float &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#a91d1c372502d1d18f5fb8ce90866e8c0">epsilon</a>=1e-5)</td></tr>
+<tr class="memdesc:aef75719c12e89bd66a5e485fa6d62df8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classpytorch_1_1_batch_norm2d.html">BatchNorm2d</a> object.  <a href="#aef75719c12e89bd66a5e485fa6d62df8">More...</a><br /></td></tr>
+<tr class="separator:aef75719c12e89bd66a5e485fa6d62df8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a910802963973f5d64fb6d281635a1035"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_batch_norm2d.html#a910802963973f5d64fb6d281635a1035">BatchNorm2d</a> (const std::string &amp;gamma_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;gamma_dims={}, const std::string &amp;beta_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;beta_dims={}, const std::string &amp;running_mean_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;running_mean_dims={}, const std::string &amp;running_var_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;running_var_dims={}, const float &amp;<a class="el" href="classpytorch_1_1_batch_norm2d.html#a91d1c372502d1d18f5fb8ce90866e8c0">epsilon</a>=1e-5, const std::string &amp;python_home=&quot;../scripts&quot;)</td></tr>
 <tr class="memdesc:a910802963973f5d64fb6d281635a1035"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classpytorch_1_1_batch_norm2d.html">BatchNorm2d</a> object and loads the requisite tensors in from filenames and sizes.  <a href="#a910802963973f5d64fb6d281635a1035">More...</a><br /></td></tr>
 <tr class="separator:a910802963973f5d64fb6d281635a1035"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,11 +141,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a0f155750ee518f0284d59e31030ad6d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpycpp_1_1py__object.html">pycpp::py_object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_batch_norm2d.html#a0f155750ee518f0284d59e31030ad6d9">utils</a></td></tr>
 <tr class="separator:a0f155750ee518f0284d59e31030ad6d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>: add unpool - it takes a pointer to a maxpool layer maybe? </dd></dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="acad1a59f2edc4a810ff46458f4da8c82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acad1a59f2edc4a810ff46458f4da8c82">&#9670;&nbsp;</a></span>BatchNorm2d() <span class="overload">[1/2]</span></h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aef75719c12e89bd66a5e485fa6d62df8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef75719c12e89bd66a5e485fa6d62df8">&#9670;&nbsp;</a></span>BatchNorm2d() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,13 +166,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramtype">const af::array &amp;&#160;</td>
           <td class="paramname"><em>running_mean</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramtype">const af::array &amp;&#160;</td>
           <td class="paramname"><em>running_var</em>, </td>
         </tr>
         <tr>
@@ -700,7 +698,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="layers_8hpp_source.html">layers.hpp</a></li>
+<li><a class="el" href="_normalization_8hpp_source.html">Normalization.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
