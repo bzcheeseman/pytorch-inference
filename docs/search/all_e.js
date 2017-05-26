@@ -5,7 +5,6 @@ var searchData=
   ['pad_5fx',['pad_x',['../structpytorch_1_1conv__params__t.html#a9a836a1c0069939098732268c6d7f85d',1,'pytorch::conv_params_t::pad_x()'],['../structpytorch_1_1pooling__params__t.html#aaf9fb7d640d7f406e657b20793c69f31',1,'pytorch::pooling_params_t::pad_x()']]],
   ['pad_5fy',['pad_y',['../structpytorch_1_1conv__params__t.html#ad2c6e13e7cb6b729b8ac9d279f2020f4',1,'pytorch::conv_params_t::pad_y()'],['../structpytorch_1_1pooling__params__t.html#aa22813d6929e8a78a7dbf15d19c51d29',1,'pytorch::pooling_params_t::pad_y()']]],
   ['params',['params',['../classpytorch_1_1_conv2d.html#a124b1cab460114aa17dfe76ed1b46fce',1,'pytorch::Conv2d::params()'],['../classpytorch_1_1_max_pool2d.html#a01ce0020e17604df233fccdd235d265f',1,'pytorch::MaxPool2d::params()'],['../classpytorch_1_1_max_unpool2d.html#a9b1e85a9ead15064ae02813a7432ee76',1,'pytorch::MaxUnpool2d::params()'],['../classpytorch_1_1_avg_pool2d.html#a1256dba0f7f4207327a70573687aa66b',1,'pytorch::AvgPool2d::params()']]],
-  ['platform_5fid',['PLATFORM_ID',['../_c_make_c_compiler_id_8c.html#adbc5372f40838899018fadbc89bd588b',1,'PLATFORM_ID():&#160;CMakeCCompilerId.c'],['../_c_make_c_x_x_compiler_id_8cpp.html#adbc5372f40838899018fadbc89bd588b',1,'PLATFORM_ID():&#160;CMakeCXXCompilerId.cpp']]],
   ['pooling_2ehpp',['Pooling.hpp',['../_pooling_8hpp.html',1,'']]],
   ['pooling_5fimpl_2ehpp',['Pooling_Impl.hpp',['../_pooling___impl_8hpp.html',1,'']]],
   ['pooling_5fparams_5ft',['pooling_params_t',['../structpytorch_1_1pooling__params__t.html',1,'pytorch']]],

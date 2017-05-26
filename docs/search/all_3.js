@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['dec',['DEC',['../_c_make_c_compiler_id_8c.html#ad1280362da42492bbc11aa78cbf776ad',1,'DEC():&#160;CMakeCCompilerId.c'],['../_c_make_c_x_x_compiler_id_8cpp.html#ad1280362da42492bbc11aa78cbf776ad',1,'DEC():&#160;CMakeCXXCompilerId.cpp']]],
   ['device',['device',['../classpytorch_1_1inference__engine.html#aec82911c1890de92c4b67c5239e58968',1,'pytorch::inference_engine']]],
   ['difference',['Difference',['../classpytorch_1_1_difference.html',1,'pytorch::Difference'],['../classpytorch_1_1_difference.html#a8fe367d2334fa90e2a6dd090f660f6cc',1,'pytorch::Difference::Difference()']]],
   ['difference_2ehpp',['Difference.hpp',['../_difference_8hpp.html',1,'']]],

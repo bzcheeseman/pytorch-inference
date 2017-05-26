@@ -11,7 +11,6 @@ var searchData=
   ['add_5frunning_5fvar',['add_running_var',['../classpytorch_1_1_batch_norm2d.html#a1816381a3443fc87ee9b25efd0cfe6e3',1,'pytorch::BatchNorm2d']]],
   ['add_5fweights',['add_weights',['../classpytorch_1_1_linear.html#a8cbffb226f756dfabc3fcbb80c075cef',1,'pytorch::Linear']]],
   ['almost_5fequal',['almost_equal',['../test_2utils_8hpp.html#a6383e5dd0dc83be45ed706b9cccefe3c',1,'utils.hpp']]],
-  ['architecture_5fid',['ARCHITECTURE_ID',['../_c_make_c_compiler_id_8c.html#aba35d0d200deaeb06aee95ca297acb28',1,'ARCHITECTURE_ID():&#160;CMakeCCompilerId.c'],['../_c_make_c_x_x_compiler_id_8cpp.html#aba35d0d200deaeb06aee95ca297acb28',1,'ARCHITECTURE_ID():&#160;CMakeCXXCompilerId.cpp']]],
   ['avgpool',['avgpool',['../namespacepytorch_1_1impl.html#a21db7b8691d00a3d914b61c254957086',1,'pytorch::impl']]],
   ['avgpool2d',['AvgPool2d',['../classpytorch_1_1_avg_pool2d.html',1,'pytorch::AvgPool2d'],['../classpytorch_1_1_avg_pool2d.html#ad23e05cd109aaa2ddeaf132b0e5cc1f8',1,'pytorch::AvgPool2d::AvgPool2d()']]]
 ];

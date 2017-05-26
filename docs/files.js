@@ -12,8 +12,6 @@ var files =
       [ "Branch", "classpytorch_1_1_branch.html", "classpytorch_1_1_branch" ]
     ] ],
     [ "Branch_Impl.hpp", "_branch___impl_8hpp.html", "_branch___impl_8hpp" ],
-    [ "CMakeCCompilerId.c", "_c_make_c_compiler_id_8c.html", "_c_make_c_compiler_id_8c" ],
-    [ "CMakeCXXCompilerId.cpp", "_c_make_c_x_x_compiler_id_8cpp.html", "_c_make_c_x_x_compiler_id_8cpp" ],
     [ "Concatenate.hpp", "_concatenate_8hpp.html", [
       [ "Concat", "classpytorch_1_1_concat.html", "classpytorch_1_1_concat" ]
     ] ],
@@ -31,8 +29,6 @@ var files =
     ] ],
     [ "Divisor_Impl.hpp", "_divisor___impl_8hpp.html", "_divisor___impl_8hpp" ],
     [ "exporter.py", "exporter_8py.html", "exporter_8py" ],
-    [ "feature_tests.c", "feature__tests_8c.html", "feature__tests_8c" ],
-    [ "feature_tests.cxx", "feature__tests_8cxx.html", "feature__tests_8cxx" ],
     [ "inference_engine.hpp", "inference__engine_8hpp.html", [
       [ "inference_engine", "classpytorch_1_1inference__engine.html", "classpytorch_1_1inference__engine" ]
     ] ],

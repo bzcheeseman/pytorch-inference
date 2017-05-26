@@ -12,8 +12,6 @@ var searchData=
   ['split_5fbranch',['split_branch',['../namespacepytorch_1_1impl.html#a6a973ee240c8410d83500ac11e6f09c6',1,'pytorch::impl']]],
   ['stride_5fx',['stride_x',['../structpytorch_1_1conv__params__t.html#a153b5b2707c00c79060323aea63cccba',1,'pytorch::conv_params_t::stride_x()'],['../structpytorch_1_1pooling__params__t.html#adee744bd0221de1b64012ae4bb625271',1,'pytorch::pooling_params_t::stride_x()']]],
   ['stride_5fy',['stride_y',['../structpytorch_1_1conv__params__t.html#a5d87b4d33727978de892b6b094fa286b',1,'pytorch::conv_params_t::stride_y()'],['../structpytorch_1_1pooling__params__t.html#aa2ab130b5f7946904440aab8f8025db6',1,'pytorch::pooling_params_t::stride_y()']]],
-  ['stringify',['STRINGIFY',['../_c_make_c_compiler_id_8c.html#a43e1cad902b6477bec893cb6430bd6c8',1,'STRINGIFY():&#160;CMakeCCompilerId.c'],['../_c_make_c_x_x_compiler_id_8cpp.html#a43e1cad902b6477bec893cb6430bd6c8',1,'STRINGIFY():&#160;CMakeCXXCompilerId.cpp']]],
-  ['stringify_5fhelper',['STRINGIFY_HELPER',['../_c_make_c_compiler_id_8c.html#a2ae9b72bb13abaabfcf2ee0ba7d3fa1d',1,'STRINGIFY_HELPER():&#160;CMakeCCompilerId.c'],['../_c_make_c_x_x_compiler_id_8cpp.html#a2ae9b72bb13abaabfcf2ee0ba7d3fa1d',1,'STRINGIFY_HELPER():&#160;CMakeCXXCompilerId.cpp']]],
   ['sum',['Sum',['../classpytorch_1_1_sum.html',1,'pytorch::Sum'],['../classpytorch_1_1_sum.html#a81434446d8fc70ad844d5917b2a8080b',1,'pytorch::Sum::Sum()']]],
   ['sum_2ehpp',['Sum.hpp',['../_sum_8hpp.html',1,'']]],
   ['sum_5fimpl_2ehpp',['Sum_Impl.hpp',['../_sum___impl_8hpp.html',1,'']]],

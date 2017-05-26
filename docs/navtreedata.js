@@ -27,7 +27,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -37,7 +36,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_activations_8hpp.html",
-"classpytorch_1_1inference__engine.html#aec82911c1890de92c4b67c5239e58968"
+"layers_8hpp.html#aa67d3445f1e6d5b9256f2fef9932d196a72642ee422e2c907c36ca4762478cb3d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
