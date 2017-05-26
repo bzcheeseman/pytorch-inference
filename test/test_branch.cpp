@@ -21,28 +21,26 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "../include/layers.hpp"
 
-#ifndef PYTORCH_INFERENCE_BRANCH_IMPL_HPP
-#define PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+#include "utils.hpp"
 
-// STL
-#include <vector>
+int main(){
+  std::vector<af::array> tests = test_setup({3}, {4}, {5}, {6},
+                                            {3, 3, 3}, {4, 4, 4}, {5, 5, 5}, {6, 6, 6},
+                                            {"test_branch.dat"},
+                                            "test_branch");
 
-// ArrayFire
-#include <arrayfire.h>
+  // tests now has {input, input_copy1, input_copy2, input_copy3}
+  pytorch::Branch b(pytorch::n);
 
-// Project
-#include "../utils.hpp"
+  af::timer::start();
+  auto branches = b({tests[0]});
+  std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
 
-namespace pytorch::impl {
-  inline std::vector<af::array> copy_branch(const af::array &input, const int &copies){
-    check_num_leq(copies, 10, __func__);
-    std::vector<af::array> out;
-    for (int i = 0; i < copies; i++){
-      out.push_back(input);
-    }
-    return out;
+  for (int i = 0; i < branches.size(); i++){
+    assert(almost_equal(branches[i], tests[i+1]));
   }
-} // pytorch::impl
 
-#endif //PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+
+}

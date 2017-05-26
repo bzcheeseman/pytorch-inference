@@ -87,5 +87,34 @@ set(SOURCE_FILES
         include/modules/Normalization_Impl.hpp
         include/modules/Slice_Impl.hpp)
 
+set(TEST_SOURCE_FILES
+        test/utils.hpp)
+
+set(TESTS_BUILT)
+
+MACRO(add_test name)
+    set(TESTS_BUILT test_${name} ${TESTS_BUILT})
+    add_executable(test_${name} ${TEST_SOURCE_FILES} test/test_${name}.cpp)
+    target_link_libraries(test_${name} ${PYTHON_LIBRARY} ${EXTRA_LIBS} ${ArrayFire_LIBRARIES})
+ENDMACRO()
+
+add_test(activation)
+add_test(branch)
+add_test(concat)
+add_test(convolution)
+add_test(linear)
+add_test(normalization)
+add_test(pooling)
+add_test(slice)
+
+MACRO(test_all)
+    add_custom_target(test_all
+            COMMAND "../test/run_tests.sh"
+            COMMENT "Building all unit tests" VERBATIM
+            )
+ENDMACRO()
+
+test_all()
+
 add_executable(pytorch_inference ${SOURCE_FILES})
 target_link_libraries(pytorch_inference  ${PYTHON_LIBRARY} ${EXTRA_LIBS} ${ArrayFire_LIBRARIES})

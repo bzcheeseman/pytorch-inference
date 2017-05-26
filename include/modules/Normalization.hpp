@@ -68,8 +68,8 @@ namespace pytorch {
      */
     BatchNorm2d(const af::array &gamma,
                 const af::array &beta,
-                const float &running_mean,
-                const float &running_var,
+                const af::array &running_mean,
+                const af::array &running_var,
                 const float &epsilon = 1e-5) : gamma(gamma), beta(beta),
                                                running_mean(running_mean), running_var(running_var),
                                                epsilon(epsilon) {}

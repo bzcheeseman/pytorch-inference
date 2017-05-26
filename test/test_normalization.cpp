@@ -21,28 +21,25 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "../include/layers.hpp"
 
-#ifndef PYTORCH_INFERENCE_BRANCH_IMPL_HPP
-#define PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+#include "utils.hpp"
 
-// STL
-#include <vector>
+int main(){
+  std::vector<af::array> tests = test_setup({1, 1, 1, 1, 2}, {3, 3, 3, 3, 3}, {1, 1, 1, 1, 7}, {1, 1, 1, 1, 7},
+                                            {2}, {3}, {7}, {7},
+                                            {"test_norm_g.dat", "test_norm_b.dat", "test_norm_rm.dat",
+                                             "test_norm_rv.dat", "test_norm_img.dat"},
+                                            "test_norm");
 
-// ArrayFire
-#include <arrayfire.h>
+  // tests now has {gamma, beta, rm, rv, img, pytorch_out}
 
-// Project
-#include "../utils.hpp"
+  pytorch::BatchNorm2d bn(tests[0], tests[1], tests[2], tests[3]);
 
-namespace pytorch::impl {
-  inline std::vector<af::array> copy_branch(const af::array &input, const int &copies){
-    check_num_leq(copies, 10, __func__);
-    std::vector<af::array> out;
-    for (int i = 0; i < copies; i++){
-      out.push_back(input);
-    }
-    return out;
-  }
-} // pytorch::impl
+  af::timer::start();
+  auto lin = bn({tests[4]})[0];
+  std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
 
-#endif //PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+  assert(almost_equal(lin, tests[5]));
+
+}

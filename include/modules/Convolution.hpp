@@ -67,7 +67,7 @@ namespace pytorch {
      */
     Conv2d(const conv_params_t &params,
            const af::array &filters,
-           const af::array &bias) : params(params), filters(filters), bias(bias) { }
+           const af::array &bias) : params(params), filters(filters), bias(bias), has_bias(true) { }
 
     /**
      * @brief Constructs a Conv2d object given the filenames and sizes of the requisite tensors. Also requires

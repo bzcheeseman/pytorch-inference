@@ -21,28 +21,24 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "../include/layers.hpp"
 
-#ifndef PYTORCH_INFERENCE_BRANCH_IMPL_HPP
-#define PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+#include "utils.hpp"
 
-// STL
-#include <vector>
+int main(){
+  std::vector<af::array> tests = test_setup({1, 1, 3}, {1, 1, 1}, {5, 5, 1}, {24, 1, 24},
+                                            {3}, {1}, {5}, {1},
+                                            {"test_lin_weight.dat", "test_linear_bias.dat", "test_linear_img.dat"},
+                                            "test_lin");
 
-// ArrayFire
-#include <arrayfire.h>
+  // tests now has {weight, bias, img, pytorch_out}
 
-// Project
-#include "../utils.hpp"
+  pytorch::Linear l(tests[0], tests[1]);
 
-namespace pytorch::impl {
-  inline std::vector<af::array> copy_branch(const af::array &input, const int &copies){
-    check_num_leq(copies, 10, __func__);
-    std::vector<af::array> out;
-    for (int i = 0; i < copies; i++){
-      out.push_back(input);
-    }
-    return out;
-  }
-} // pytorch::impl
+  af::timer::start();
+  auto lin = l({tests[2]})[0];
+  std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
 
-#endif //PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+  assert(almost_equal(lin, tests[3]));
+
+}

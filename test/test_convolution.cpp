@@ -21,28 +21,26 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "../include/layers.hpp"
 
-#ifndef PYTORCH_INFERENCE_BRANCH_IMPL_HPP
-#define PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+#include "utils.hpp"
 
-// STL
-#include <vector>
+int main(){
+  std::vector<af::array> tests = test_setup({4, 1, 1}, {3, 4, 3}, {3, 1, 28}, {3, 1, 28},
+                                            {1}, {4}, {26}, {26},
+                                            {"test_conv_filter.dat", "test_conv_bias.dat", "test_conv_img.dat"},
+                                            "test_conv");
 
-// ArrayFire
-#include <arrayfire.h>
+  // tests now has {filters, bias, img, pytorch_out}
 
-// Project
-#include "../utils.hpp"
+  pytorch::conv_params_t params = {3, 3, 1, 1, 0, 0};
 
-namespace pytorch::impl {
-  inline std::vector<af::array> copy_branch(const af::array &input, const int &copies){
-    check_num_leq(copies, 10, __func__);
-    std::vector<af::array> out;
-    for (int i = 0; i < copies; i++){
-      out.push_back(input);
-    }
-    return out;
-  }
-} // pytorch::impl
+  pytorch::Conv2d c(params, tests[0], tests[1]);
 
-#endif //PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+  af::timer::start();
+  auto conv = c({tests[2]})[0];
+  std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
+
+  assert(almost_equal(conv, tests[3]));
+
+}

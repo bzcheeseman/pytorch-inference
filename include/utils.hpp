@@ -25,12 +25,15 @@
 #ifndef PYTORCH_INFERENCE_EXTRACT_NUMPY_HPP
 #define PYTORCH_INFERENCE_EXTRACT_NUMPY_HPP
 
+// Python
 #include <Python.h>
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include <numpy/arrayobject.h>
 
+// STL
 #include <stdexcept>
 
+// ArrayFire
 #include <arrayfire.h>
 
 namespace pytorch {

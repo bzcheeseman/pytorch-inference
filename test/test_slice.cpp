@@ -21,28 +21,25 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "../include/layers.hpp"
 
-#ifndef PYTORCH_INFERENCE_BRANCH_IMPL_HPP
-#define PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+#include "utils.hpp"
 
-// STL
-#include <vector>
+int main(){
+  std::vector<af::array> tests = test_setup({1}, {4}, {8}, {8},
+                                            {1, 1}, {2, 2}, {8, 8}, {8, 8},
+                                            {"test_slice_img.dat"},
+                                            "test_slice");
 
-// ArrayFire
-#include <arrayfire.h>
+  // tests now has {img, slice1, slice2}
 
-// Project
-#include "../utils.hpp"
+  pytorch::Slice s(2, pytorch::k);
 
-namespace pytorch::impl {
-  inline std::vector<af::array> copy_branch(const af::array &input, const int &copies){
-    check_num_leq(copies, 10, __func__);
-    std::vector<af::array> out;
-    for (int i = 0; i < copies; i++){
-      out.push_back(input);
-    }
-    return out;
-  }
-} // pytorch::impl
+  af::timer::start();
+  auto sliced = s({tests[0]});
+  std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
 
-#endif //PYTORCH_INFERENCE_BRANCH_IMPL_HPP
+  assert(almost_equal(sliced[0], tests[1]));
+  assert(almost_equal(sliced[1], tests[2]));
+
+}

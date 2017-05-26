@@ -31,6 +31,9 @@
 // ArrayFire
 #include <arrayfire.h>
 
+// Project
+#include "../utils.hpp"
+
 namespace pytorch {
   /**
    * @struct conv_params_t

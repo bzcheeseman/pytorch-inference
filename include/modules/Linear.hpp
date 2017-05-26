@@ -64,7 +64,7 @@ namespace pytorch {
      * @param bias The trained bias tensors. For those comfortable with Py_Cpp. Can be initialized to zero.
      */
     Linear(const af::array &weights,
-           const af::array &bias) : weights(weights), bias(bias) { }
+           const af::array &bias) : weights(weights), bias(bias), has_bias(true) { }
 
     /**
      * @brief Constructs a Linear object given the filenames and sizes of the requisite tensors.

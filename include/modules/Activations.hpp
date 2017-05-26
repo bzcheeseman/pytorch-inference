@@ -65,7 +65,7 @@ namespace pytorch {
   class Hardtanh : public Layer {
     const float low, high;
   public:
-    Hardtanh(const float &low = 1.f, const float &high = 1.f) : low(low), high(high) {}
+    Hardtanh(const float &low = -1.f, const float &high = 1.f) : low(low), high(high) {}
 
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
       return {impl::hardtanh(input[0], low, high)};

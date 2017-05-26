@@ -44,12 +44,15 @@ namespace pytorch::impl {
     return af::max(a, af::constant(0, a.dims())); // hopefully this is working like I think it is
   }
 
-  inline af::array _softmax(const af::array &a, const af::array &rhs){ // optimize this if possible
-    return af::exp(a - af::max<float>(a))/af::sum(af::exp(a - af::max<float>(a)), 0);
-  }
-
   inline af::array softmax(const af::array &a){
-    return af::batchFunc(a, a, _softmax);
+    af::array out (a.dims());
+    af::array sum (a.dims(3));
+    gfor (af::seq i, a.dims(3)){
+      af::array a_vol = a(af::span, af::span, af::span, i);
+      af::array z = af::exp(a_vol - af::max(a_vol));
+      out(af::span, af::span, af::span, i) = z/af::sum(z, 2);
+    }
+    return out;
   }
 } // pytorch::impl
 

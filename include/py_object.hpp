@@ -453,6 +453,32 @@ namespace pycpp {
   }
 
   /**
+   * @brief Makes a PyTuple.
+   *
+   * Makes a python tuple for the purpose of passing arguments to a python function. All arguments to this function MUST
+   * be of type PyObject * as follows: make_tuple({pycpp::to_python(<value_1>), pycpp::to_python(<value_2>)})
+   *
+   * @param l The vector of arguments to be put into the tuple.
+   * @return A PyTuple that can be passed directly to the py_object operator() call.
+   */
+  inline PyObject *make_tuple(std::vector<PyObject *> l){
+
+    int num = l.size();
+
+    if (num == 0){
+      return PyTuple_Pack(0);
+    }
+
+    PyObject *out = PyTuple_New(num);
+
+    for (int i = 0; i < num; i++){
+      PyTuple_SetItem(out, i, *(l.begin()+i));
+    }
+
+    return out;
+  }
+
+  /**
    * @brief Makes a PyDict
    *
    * Makes a python dictionary for the purpose of passing keyword arguments. Note that the order of
@@ -598,7 +624,10 @@ namespace pycpp {
 
       Py_CLEAR(args);
       Py_CLEAR(callable);
-      PyDict_Clear(kwargs);
+
+      if (kwargs)
+        PyDict_Clear(kwargs);
+
       Py_CLEAR(kwargs);
 
       return retval;

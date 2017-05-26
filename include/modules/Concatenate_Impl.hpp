@@ -25,7 +25,11 @@
 #ifndef PYTORCH_INFERENCE_CONCATENATE_IMPL_HPP
 #define PYTORCH_INFERENCE_CONCATENATE_IMPL_HPP
 
+// ArrayFire
 #include <arrayfire.h>
+
+// Project
+#include "../utils.hpp"
 
 namespace pytorch::impl {
 

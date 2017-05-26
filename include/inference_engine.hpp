@@ -73,7 +73,7 @@ namespace pytorch {
       return layers[depth][width];
     }
 
-    inline af::array forward(const af::array &input){
+    inline af::array forward(const af::array &input){ // This is what's slowing us down? Really?
       std::vector<af::array> out;  // first input is input
       out.push_back(input);
       for (int i = 0; i < layers.size(); i++){
