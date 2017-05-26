@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['copies',['copies',['../classpytorch_1_1_branch.html#a911967d890c5619221dba7c77cfe2be0',1,'pytorch::Branch']]]
+  ['layers',['layers',['../classpytorch_1_1inference__engine.html#a8d2fcadc30b2c2fa067289c7f7d8df43',1,'pytorch::inference_engine']]]
 ];

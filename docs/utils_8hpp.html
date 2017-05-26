@@ -89,6 +89,7 @@ $(document).ready(function(){initNavTree('utils_8hpp.html','');});
 <div class="contents">
 <div class="textblock"><code>#include &lt;Python.h&gt;</code><br />
 <code>#include &lt;numpy/arrayobject.h&gt;</code><br />
+<code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;arrayfire.h&gt;</code><br />
 </div>
 <p><a href="utils_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -108,6 +109,10 @@ Functions</h2></td></tr>
 <tr class="memitem:acb1b2c573dffc92bcb33e82ac1eb1ff8"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#acb1b2c573dffc92bcb33e82ac1eb1ff8">pytorch::from_numpy</a> (PyArrayObject *array, int ndim, std::vector&lt; int &gt; dims)</td></tr>
 <tr class="memdesc:acb1b2c573dffc92bcb33e82ac1eb1ff8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a numpy array to an ArrayFire array.  <a href="namespacepytorch.html#acb1b2c573dffc92bcb33e82ac1eb1ff8">More...</a><br /></td></tr>
 <tr class="separator:acb1b2c573dffc92bcb33e82ac1eb1ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1cc28733b0b398cb2e517a7d240e89d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#ae1cc28733b0b398cb2e517a7d240e89d">pytorch::check_size</a> (const int &amp;size1, const int &amp;size2, const std::string &amp;func)</td></tr>
+<tr class="separator:ae1cc28733b0b398cb2e517a7d240e89d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74ec5ba1ae807f246b2599a684afe639"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html#a74ec5ba1ae807f246b2599a684afe639">pytorch::check_num_leq</a> (const int &amp;size1, const int &amp;size2, const std::string &amp;func)</td></tr>
+<tr class="separator:a74ec5ba1ae807f246b2599a684afe639"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ab6e6ee86736f9ebb56e74ae21bf3ff8a"></a>

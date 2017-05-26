@@ -47,8 +47,6 @@ namespace pytorch {
   class inference_engine {
   private:
     std::vector<std::vector<pytorch::Layer *>> layers;  // how to speed this up to avoid vtable lookup?
-    typedef std::function<std::vector<af::array>(std::vector<af::array>)> fwd_type;
-    std::vector<std::vector<fwd_type>> fwd_fns;
     const int device;
 
   public:
@@ -78,31 +76,27 @@ namespace pytorch {
       return layers[depth][width];
     }
 
-    inline void build_fwd(){
-      // need to nest the forward calls
-      ;
-    }
-
-    inline void forward(af::array &output, const af::array &input){
-      std::vector<af::array> out = {input};
+    inline af::array forward(const std::vector<af::array> &input){
+      std::vector<af::array> out = input;
+      check_num_leq(out.size(), 10, __func__); // there are checks in each layer to make sure it's less than 10
       for (int i = 0; i < layers.size(); i++){
-        if (layers[i].size() == 1) {  // works for concat layers
-          check_num_leq(out.size(), 10, __func__);
-          // Call forward function
-          out = layers[i][0]->forward(out); // transfer to std::async
+        if (layers[i].size() == 1) {
+          out = layers[i][0]->forward(out);
         }
         else{
-          std::vector<af::array> temp;
           check_size(out.size(), layers[i].size(), __func__); // make sure there are enough inputs
-          for (int j = 0; j < layers[i].size(); j++){
-            // Call forward for each branch
-            temp.push_back(layers[i][j]->forward({out[j]})[0]);
+          gfor (af::seq j, out.size()){
+            af_print(af::array(j));
+            long idx = af::array(j).host<std::uint32_t>()[0];
+            out[idx] = layers[i][idx]->forward({out[idx]})[0];
           }
-          out = temp;
+//          for (int j = 0; j < layers[i].size(); j++){ // for each branch, turn into std::transform?
+//            out[j] = layers[i][j]->forward({out[j]})[0];
+//          }
         }
       }
 
-      output = out[0]; // must be a single tensor by the end
+      return out[0]; // must be a single tensor by the end
     }
 
   };

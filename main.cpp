@@ -102,24 +102,29 @@ int main() {
   engine.add_layer(new pytorch::Tanh);
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Sigmoid);
-//  engine.add_layer(new pytorch::Slice(2, 4));
-//  engine.add_layer(new pytorch::Concat(2, 4));
+  engine.add_layer(new pytorch::Slice(2, 4));
+  engine.add_layer(new pytorch::Concat(2, 4));
 //  engine.add_layer(new pytorch::MaxUnpool2d(poolparams,
 //                                            reinterpret_cast<pytorch::MaxPool2d *>(engine.get_layer_ptr(3, 0))));
 //  engine.add_layer(new pytorch::AvgPool2d(poolparams));
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Hardtanh(-0.1f, 0.1f));
   engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 56*56*16}, false, "lin_bias.dat", {1, 1, 3, 1}));
-  engine.add_layer(new ::pytorch::ReLU);
+  engine.add_layer(new pytorch::ReLU);
   engine.add_layer(new pytorch::Softmax);
-  af::array output;
-  engine.forward(output, image); // compile forward pass?
 
+  // Check speed
+  int iters = 50;
   af::timer::start();
-  af::eval(output);
-  std::cout << "forward took (s): " << af::timer::stop() << std::endl;
+  for (int i = 0; i < iters; i++){
+    af::array output = engine.forward({image});
+    output.eval();
+  }
+  af::sync();
+  std::cout << "forward took: " << af::timer::stop()/iters << " s (on average)" << std::endl;
 
-
+  // Check correctness
+  af::array output = engine.forward({image});
   af_print(pytorch_out - output);
 //  af_print(pytorch_out);
 //  af_print(output);

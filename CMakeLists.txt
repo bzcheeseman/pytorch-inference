@@ -78,6 +78,7 @@ set(SOURCE_FILES
         include/modules/Slice.hpp
         include/modules/Concatenate.hpp
         include/modules/Activations.hpp
+        include/modules/Sum.hpp
         include/modules/Activations_Impl.hpp
         include/modules/Branch_Impl.hpp
         include/modules/Concatenate_Impl.hpp
@@ -85,7 +86,8 @@ set(SOURCE_FILES
         include/modules/Pooling_Impl.hpp
         include/modules/Linear_Impl.hpp
         include/modules/Normalization_Impl.hpp
-        include/modules/Slice_Impl.hpp)
+        include/modules/Slice_Impl.hpp
+        include/modules/Sum_Impl.hpp)
 
 set(TEST_SOURCE_FILES
         test/utils.hpp)
@@ -106,11 +108,12 @@ add_test(linear)
 add_test(normalization)
 add_test(pooling)
 add_test(slice)
+add_test(sum)
 
 MACRO(test_all)
     add_custom_target(test_all
             COMMAND "../test/run_tests.sh"
-            COMMENT "Building all unit tests" VERBATIM
+            COMMENT "Building and running all unit tests" VERBATIM
             )
 ENDMACRO()
 

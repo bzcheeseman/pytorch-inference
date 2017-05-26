@@ -1,5 +1,5 @@
 //
-// Created by Aman LaChapelle on 5/19/17.
+// Created by Aman LaChapelle on 5/26/17.
 //
 // pytorch_inference
 // Copyright (c) 2017 Aman LaChapelle
@@ -22,35 +22,30 @@
  */
 
 
-#ifndef PYTORCH_INFERENCE_LAYERS_HPP
-#define PYTORCH_INFERENCE_LAYERS_HPP
+#ifndef PYTORCH_INFERENCE_SUM_IMPL_HPP
+#define PYTORCH_INFERENCE_SUM_IMPL_HPP
 
-#include "modules/Layer.hpp"
+// ArrayFire
+#include <arrayfire.h>
 
-#include "modules/Activations.hpp"
-#include "modules/Branch.hpp"
-#include "modules/Concatenate.hpp"
-#include "modules/Convolution.hpp"
-#include "modules/Linear.hpp"
-#include "modules/Normalization.hpp"
-#include "modules/Pooling.hpp"
-#include "modules/Slice.hpp"
-#include "modules/Sum.hpp"
+// Project
+#include "../utils.hpp"
+#include "Concatenate_Impl.hpp"
 
-namespace pytorch {
+namespace pytorch::impl {
 
-  /**
-   * @brief Convenience enum to use whenever you need to specify a dimension (like in Concat)
-   */
-  enum dims {
-    n = 3,
-    k = 2,
-    h = 0,
-    w = 1
-  };
+  inline af::array sumn(const std::vector<af::array> &inputs,
+                        const int &dim){
 
-} // pytorch
+    int n_tensors = inputs.size();
+    af::array out = af::constant(0, inputs[0].dims());
+    for (auto &in : inputs){
+      out += in;
+    }
 
+    return out;
+  }
 
+} // pytorch::impl
 
-#endif //PYTORCH_INFERENCE_LAYERS_HPP
+#endif //PYTORCH_INFERENCE_SUM_IMPL_HPP

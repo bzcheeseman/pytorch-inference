@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['epsilon',['epsilon',['../classpytorch_1_1_batch_norm2d.html#a91d1c372502d1d18f5fb8ce90866e8c0',1,'pytorch::BatchNorm2d']]]
+  ['h',['h',['../namespacepytorch.html#aa67d3445f1e6d5b9256f2fef9932d196a1f250f3998835bb50ff8608dead82418',1,'pytorch']]]
 ];

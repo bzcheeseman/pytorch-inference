@@ -185,6 +185,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ab8dde132aa098e8a1ad9886e28744935"><td class="memItemLeft" align="right" valign="top">PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepycpp.html#ab8dde132aa098e8a1ad9886e28744935">make_tuple</a> (std::initializer_list&lt; PyObject *&gt; l)</td></tr>
 <tr class="memdesc:ab8dde132aa098e8a1ad9886e28744935"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes a PyTuple.  <a href="#ab8dde132aa098e8a1ad9886e28744935">More...</a><br /></td></tr>
 <tr class="separator:ab8dde132aa098e8a1ad9886e28744935"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a965bd02715eba4861dac7958be335c4b"><td class="memItemLeft" align="right" valign="top">PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepycpp.html#a965bd02715eba4861dac7958be335c4b">make_tuple</a> (std::vector&lt; PyObject *&gt; l)</td></tr>
+<tr class="memdesc:a965bd02715eba4861dac7958be335c4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes a PyTuple.  <a href="#a965bd02715eba4861dac7958be335c4b">More...</a><br /></td></tr>
+<tr class="separator:a965bd02715eba4861dac7958be335c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6127eacf66a6dff597f46350d0f272f1"><td class="memItemLeft" align="right" valign="top">PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepycpp.html#a6127eacf66a6dff597f46350d0f272f1">make_dict</a> (std::initializer_list&lt; PyObject *&gt; l)</td></tr>
 <tr class="memdesc:a6127eacf66a6dff597f46350d0f272f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Makes a PyDict.  <a href="#a6127eacf66a6dff597f46350d0f272f1">More...</a><br /></td></tr>
 <tr class="separator:a6127eacf66a6dff597f46350d0f272f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -607,7 +610,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="ab8dde132aa098e8a1ad9886e28744935"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8dde132aa098e8a1ad9886e28744935">&#9670;&nbsp;</a></span>make_tuple()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8dde132aa098e8a1ad9886e28744935">&#9670;&nbsp;</a></span>make_tuple() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -635,6 +638,42 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">l</td><td>The initializer list of arguments to be put into the tuple. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A PyTuple that can be passed directly to the <a class="el" href="classpycpp_1_1py__object.html">py_object</a> operator() call. </dd></dl>
+
+</div>
+</div>
+<a id="a965bd02715eba4861dac7958be335c4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a965bd02715eba4861dac7958be335c4b">&#9670;&nbsp;</a></span>make_tuple() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PyObject* pycpp::make_tuple </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; PyObject *&gt;&#160;</td>
+          <td class="paramname"><em>l</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Makes a PyTuple. </p>
+<p>Makes a python tuple for the purpose of passing arguments to a python function. All arguments to this function MUST be of type PyObject * as follows: make_tuple({pycpp::to_python(&lt;value_1&gt;), pycpp::to_python(&lt;value_2&gt;)})</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>The vector of arguments to be put into the tuple. </td></tr>
   </table>
   </dd>
 </dl>

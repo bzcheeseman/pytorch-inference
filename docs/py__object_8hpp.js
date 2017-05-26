@@ -15,6 +15,7 @@ var py__object_8hpp =
     [ "from_python", "py__object_8hpp.html#a28d4561bce1c6f55acc00a46127dd113", null ],
     [ "make_dict", "py__object_8hpp.html#a6127eacf66a6dff597f46350d0f272f1", null ],
     [ "make_tuple", "py__object_8hpp.html#ab8dde132aa098e8a1ad9886e28744935", null ],
+    [ "make_tuple", "py__object_8hpp.html#a965bd02715eba4861dac7958be335c4b", null ],
     [ "to_python", "py__object_8hpp.html#a7589e2bbb5161df0a000a2e0026e6e95", null ],
     [ "to_python", "py__object_8hpp.html#a7aa3cdbf3423bcde50ad59acb27f6e26", null ],
     [ "to_python", "py__object_8hpp.html#a143bba9575371021c21a4d75d19e3b5c", null ],

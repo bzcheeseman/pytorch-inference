@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['avgpool2d',['AvgPool2d',['../classpytorch_1_1_avg_pool2d.html',1,'pytorch']]]
+  ['inference_5fengine',['inference_engine',['../classpytorch_1_1inference__engine.html',1,'pytorch']]]
 ];

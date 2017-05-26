@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['batchnorm2d',['BatchNorm2d',['../classpytorch_1_1_batch_norm2d.html',1,'pytorch::BatchNorm2d'],['../classpytorch_1_1_batch_norm2d.html#acad1a59f2edc4a810ff46458f4da8c82',1,'pytorch::BatchNorm2d::BatchNorm2d(const af::array &amp;gamma, const af::array &amp;beta, const float &amp;running_mean, const float &amp;running_var, const float &amp;epsilon=1e-5)'],['../classpytorch_1_1_batch_norm2d.html#a910802963973f5d64fb6d281635a1035',1,'pytorch::BatchNorm2d::BatchNorm2d(const std::string &amp;gamma_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;gamma_dims={}, const std::string &amp;beta_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;beta_dims={}, const std::string &amp;running_mean_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;running_mean_dims={}, const std::string &amp;running_var_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;running_var_dims={}, const float &amp;epsilon=1e-5, const std::string &amp;python_home=&quot;../scripts&quot;)'],['../namespacepytorch.html#ae865095aad032ac1ea9516ae5361e0ab',1,'pytorch::batchnorm2d()']]],
-  ['beta',['beta',['../classpytorch_1_1_batch_norm2d.html#a922f732e1115cfa4bdecb4162e607f5d',1,'pytorch::BatchNorm2d']]],
-  ['bias',['bias',['../classpytorch_1_1_conv2d.html#a69aa20f2f1e771bbb4048a682c44a4a7',1,'pytorch::Conv2d::bias()'],['../classpytorch_1_1_linear.html#ae2ec81120db6e196709dc11a67fc9ce8',1,'pytorch::Linear::bias()']]],
-  ['branch',['Branch',['../classpytorch_1_1_branch.html',1,'pytorch::Branch'],['../classpytorch_1_1_branch.html#a20f7615a9da65d34b247ec79a801c06e',1,'pytorch::Branch::Branch()']]]
+  ['device',['device',['../classpytorch_1_1inference__engine.html#aec82911c1890de92c4b67c5239e58968',1,'pytorch::inference_engine']]],
+  ['dims',['dims',['../namespacepytorch.html#aa67d3445f1e6d5b9256f2fef9932d196',1,'pytorch']]]
 ];

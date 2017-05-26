@@ -80,66 +80,25 @@ $(document).ready(function(){initNavTree('layers_8hpp.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">layers.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Holds all the layer interfaces.  
-<a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;arrayfire.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="ops_8hpp_source.html">ops.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="utils_8hpp_source.html">utils.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="py__object_8hpp_source.html">py_object.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;modules/Layer.hpp&quot;</code><br />
+<code>#include &quot;modules/Activations.hpp&quot;</code><br />
+<code>#include &quot;modules/Branch.hpp&quot;</code><br />
+<code>#include &quot;modules/Concatenate.hpp&quot;</code><br />
+<code>#include &quot;modules/Convolution.hpp&quot;</code><br />
+<code>#include &quot;modules/Linear.hpp&quot;</code><br />
+<code>#include &quot;modules/Normalization.hpp&quot;</code><br />
+<code>#include &quot;modules/Pooling.hpp&quot;</code><br />
+<code>#include &quot;modules/Slice.hpp&quot;</code><br />
+<code>#include &quot;modules/Sum.hpp&quot;</code><br />
 </div>
 <p><a href="layers_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_layer.html">pytorch::Layer</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_skip.html">pytorch::Skip</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_conv2d.html">pytorch::Conv2d</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_pool2d.html">pytorch::MaxPool2d</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_max_unpool2d.html">pytorch::MaxUnpool2d</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_avg_pool2d.html">pytorch::AvgPool2d</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_batch_norm2d.html">pytorch::BatchNorm2d</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html">pytorch::Linear</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_branch.html">pytorch::Branch</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_slice2.html">pytorch::Slice2</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_slice3.html">pytorch::Slice3</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_slice4.html">pytorch::Slice4</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_concat2.html">pytorch::Concat2</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_concat3.html">pytorch::Concat3</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_concat4.html">pytorch::Concat4</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_sigmoid.html">pytorch::Sigmoid</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_tanh.html">pytorch::Tanh</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_hardtanh.html">pytorch::Hardtanh</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_re_l_u.html">pytorch::ReLU</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_softmax.html">pytorch::Softmax</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacepytorch"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepytorch.html">pytorch</a></td></tr>
@@ -155,24 +114,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr class="separator:aa67d3445f1e6d5b9256f2fef9932d196"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Holds all the layer interfaces. </p>
-<p>Equivalent to Linear in pytorch.</p>
-<p>Equivalent to BatchNorm2d in pytorch.</p>
-<p>Equivalent to AvgPool2d in pytorch.</p>
-<p>Equivalent to <a class="el" href="class_max_unool2d.html">MaxUnool2d</a> in pytorch.</p>
-<p>Equivalent to MaxPool2d in pytorch (with a caveat)</p>
-<p>Equivalent to Conv2d in pytorch.</p>
-<p>Performs a no-op - makes it so that we can create branching networks.</p>
-<p>Abstract base class for all layers.</p>
-<p>We store pointers to this class in the inference engine which allows us to use a std::vector to store them but still have multiple classes represented. The only requirement is that they implement the forward and operator() methods.</p>
-<p>Implements the forward pass for pytorch's nn.Conv2d module. Note that clearly something needs to happen to get the tensors from python to C++, but I've tried to take care of this through the import constructor.</p>
-<p>This layer implements the forward pass of pytorch's nn.MaxPool2d module. This holds the pooling indices inside itself - unpooling will be another challenge if it's even possible with this framework. For now, we just store the indices in arrayfire format for future use.</p>
-<p>This layer implements the forward pass of pytorch's nn.MaxUnool2d module. This holds a pointer to a maxpool layer from which to get the indices for the unpooling process.</p>
-<p>This layer implements the forward pass of pytorch's nn.AvgPool2d module. It doesn't do anything fancy, just takes the mean of the various windows.</p>
-<p>Implements the forward pass for pytorch's nn.BatchNorm2d module. Note that you do need to extract the proper running mean, running variance, gamma and beta tensors from pytorch.</p>
-<p>Implements the forward pass for pytorch's nn.Linear module. Note that clearly something needs to happen to get the tensors from python to C++, but I've tried to take care of this through the import constructor. </p>
-</div></div><!-- contents -->
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
