@@ -79,6 +79,9 @@ set(SOURCE_FILES
         include/modules/Concatenate.hpp
         include/modules/Activations.hpp
         include/modules/Sum.hpp
+        include/modules/Product.hpp
+        include/modules/Difference.hpp
+        include/modules/Divisor.hpp
         include/modules/Activations_Impl.hpp
         include/modules/Branch_Impl.hpp
         include/modules/Concatenate_Impl.hpp
@@ -87,7 +90,10 @@ set(SOURCE_FILES
         include/modules/Linear_Impl.hpp
         include/modules/Normalization_Impl.hpp
         include/modules/Slice_Impl.hpp
-        include/modules/Sum_Impl.hpp)
+        include/modules/Sum_Impl.hpp
+        include/modules/Product_Impl.hpp
+        include/modules/Difference_Impl.hpp
+        include/modules/Divisor_Impl.hpp)
 
 set(TEST_SOURCE_FILES
         test/utils.hpp)
@@ -109,6 +115,9 @@ add_test(normalization)
 add_test(pooling)
 add_test(slice)
 add_test(sum)
+add_test(diff)
+add_test(product)
+add_test(divisor)
 
 MACRO(test_all)
     add_custom_target(test_all

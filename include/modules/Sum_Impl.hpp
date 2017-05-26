@@ -30,7 +30,6 @@
 
 // Project
 #include "../utils.hpp"
-#include "Concatenate_Impl.hpp"
 
 namespace pytorch::impl {
 

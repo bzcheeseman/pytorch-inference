@@ -1,5 +1,5 @@
 //
-// Created by Aman LaChapelle on 5/19/17.
+// Created by Aman LaChapelle on 5/26/17.
 //
 // pytorch_inference
 // Copyright (c) 2017 Aman LaChapelle
@@ -22,38 +22,29 @@
  */
 
 
-#ifndef PYTORCH_INFERENCE_LAYERS_HPP
-#define PYTORCH_INFERENCE_LAYERS_HPP
+#ifndef PYTORCH_INFERENCE_PRODUCT_HPP
+#define PYTORCH_INFERENCE_PRODUCT_HPP
 
-#include "modules/Layer.hpp"
-
-#include "modules/Activations.hpp"
-#include "modules/Branch.hpp"
-#include "modules/Concatenate.hpp"
-#include "modules/Convolution.hpp"
-#include "modules/Linear.hpp"
-#include "modules/Normalization.hpp"
-#include "modules/Pooling.hpp"
-#include "modules/Slice.hpp"
-#include "modules/Sum.hpp"
-#include "modules/Difference.hpp"
-#include "modules/Product.hpp"
-#include "modules/Divisor.hpp"
+#include "Layer.hpp"
+#include "Product_Impl.hpp"
 
 namespace pytorch {
 
-  /**
-   * @brief Convenience enum to use whenever you need to specify a dimension (like in Concat)
-   */
-  enum dims {
-    n = 3,
-    k = 2,
-    h = 0,
-    w = 1
+  class Product : public Layer {
+    int dim;
+    int n_tensors;
+  public:
+    Product(const int &dim, const int &n_tensors) : dim(dim), n_tensors(n_tensors) {}
+
+    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+      return {impl::prodn(input, dim)};
+    }
+
+    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+      return {impl::prodn(input, dim)};
+    }
   };
 
 } // pytorch
 
-
-
-#endif //PYTORCH_INFERENCE_LAYERS_HPP
+#endif //PYTORCH_INFERENCE_PRODUCT_HPP
