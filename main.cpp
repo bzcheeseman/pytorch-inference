@@ -112,9 +112,11 @@ int main() {
   engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 56*56*16}, false, "lin_bias.dat", {1, 1, 3, 1}));
   engine.add_layer(new ::pytorch::ReLU);
   engine.add_layer(new pytorch::Softmax);
-  engine.build_fwd();
+  af::array output;
+  engine.forward(output, image); // compile forward pass?
+
   af::timer::start();
-  auto output = engine.forward(image);
+  af::eval(output);
   std::cout << "forward took (s): " << af::timer::stop() << std::endl;
 
 

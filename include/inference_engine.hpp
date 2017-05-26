@@ -83,16 +83,13 @@ namespace pytorch {
       ;
     }
 
-    inline af::array forward(const af::array &input){ // This is what's slowing us down? Really?
-      std::vector<af::array> out;  // first input is input
-      out.push_back(input);
-
+    inline void forward(af::array &output, const af::array &input){
+      std::vector<af::array> out = {input};
       for (int i = 0; i < layers.size(); i++){
         if (layers[i].size() == 1) {  // works for concat layers
           check_num_leq(out.size(), 10, __func__);
           // Call forward function
           out = layers[i][0]->forward(out); // transfer to std::async
-//          out = fwd_fns[i][0](out);
         }
         else{
           std::vector<af::array> temp;
@@ -105,7 +102,7 @@ namespace pytorch {
         }
       }
 
-      return out[0]; // must be a single tensor by the end
+      output = out[0]; // must be a single tensor by the end
     }
 
   };
