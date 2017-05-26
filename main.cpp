@@ -102,8 +102,8 @@ int main() {
   engine.add_layer(new pytorch::Tanh);
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Sigmoid);
-  engine.add_layer(new pytorch::Slice(2, 4));
-  engine.add_layer(new pytorch::Concat(2, 4));
+//  engine.add_layer(new pytorch::Slice(2, 4));
+//  engine.add_layer(new pytorch::Concat(2, 4));
 //  engine.add_layer(new pytorch::MaxUnpool2d(poolparams,
 //                                            reinterpret_cast<pytorch::MaxPool2d *>(engine.get_layer_ptr(3, 0))));
 //  engine.add_layer(new pytorch::AvgPool2d(poolparams));
@@ -111,7 +111,8 @@ int main() {
   engine.add_layer(new pytorch::Hardtanh(-0.1f, 0.1f));
   engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 56*56*16}, false, "lin_bias.dat", {1, 1, 3, 1}));
   engine.add_layer(new ::pytorch::ReLU);
-//  engine.add_layer(new pytorch::Softmax);
+  engine.add_layer(new pytorch::Softmax);
+  engine.build_fwd();
   af::timer::start();
   auto output = engine.forward(image);
   std::cout << "forward took (s): " << af::timer::stop() << std::endl;

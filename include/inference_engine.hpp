@@ -27,6 +27,9 @@
 
 #include <fstream>
 #include <sstream>
+#include <future>
+#include <functional>
+#include <vector>
 
 #include <arrayfire.h>
 
@@ -44,6 +47,8 @@ namespace pytorch {
   class inference_engine {
   private:
     std::vector<std::vector<pytorch::Layer *>> layers;  // how to speed this up to avoid vtable lookup?
+    typedef std::function<std::vector<af::array>(std::vector<af::array>)> fwd_type;
+    std::vector<std::vector<fwd_type>> fwd_fns;
     const int device;
 
   public:
@@ -73,14 +78,21 @@ namespace pytorch {
       return layers[depth][width];
     }
 
+    inline void build_fwd(){
+      // need to nest the forward calls
+      ;
+    }
+
     inline af::array forward(const af::array &input){ // This is what's slowing us down? Really?
       std::vector<af::array> out;  // first input is input
       out.push_back(input);
+
       for (int i = 0; i < layers.size(); i++){
         if (layers[i].size() == 1) {  // works for concat layers
           check_num_leq(out.size(), 10, __func__);
           // Call forward function
-          out = layers[i][0]->forward(out);
+          out = layers[i][0]->forward(out); // transfer to std::async
+//          out = fwd_fns[i][0](out);
         }
         else{
           std::vector<af::array> temp;

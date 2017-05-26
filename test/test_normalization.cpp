@@ -26,8 +26,8 @@
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({1, 1, 1, 1, 2}, {3, 3, 3, 3, 3}, {1, 1, 1, 1, 7}, {1, 1, 1, 1, 7},
-                                            {2}, {3}, {7}, {7},
+  std::vector<af::array> tests = test_setup({1, 1, 1, 1, 2}, {32, 32, 32, 32, 32}, {1, 1, 1, 1, 70}, {1, 1, 1, 1, 70},
+                                            {2}, {3}, {70}, {70},
                                             {"test_norm_g.dat", "test_norm_b.dat", "test_norm_rm.dat",
                                              "test_norm_rv.dat", "test_norm_img.dat"},
                                             "test_norm");

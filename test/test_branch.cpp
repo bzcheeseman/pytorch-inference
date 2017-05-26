@@ -26,8 +26,8 @@
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({3}, {4}, {5}, {6},
-                                            {3, 3, 3}, {4, 4, 4}, {5, 5, 5}, {6, 6, 6},
+  std::vector<af::array> tests = test_setup({3}, {32}, {55}, {55},
+                                            {3, 3, 3}, {32, 32, 32}, {55, 55, 55}, {55, 55, 55},
                                             {"test_branch.dat"},
                                             "test_branch");
 

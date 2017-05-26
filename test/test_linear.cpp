@@ -26,7 +26,7 @@
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({1, 1, 3}, {1, 1, 1}, {5, 5, 1}, {24, 1, 24},
+  std::vector<af::array> tests = test_setup({1, 1, 3}, {1, 1, 1}, {5, 5, 1}, {2400, 1, 2400},
                                             {3}, {1}, {5}, {1},
                                             {"test_lin_weight.dat", "test_linear_bias.dat", "test_linear_img.dat"},
                                             "test_lin");

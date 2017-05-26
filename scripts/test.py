@@ -63,5 +63,5 @@ def test_conv(filts_file, bias_file, img_file, lw_file, lb_file, gamma_file, bet
     output = Funct.hardtanh(output, -0.1, 0.1)
     output = Funct.linear(output.view(output.size(0), -1), lw)
     output = Funct.relu(output)
-    # output = Funct.softmax(output)
+    output = Funct.softmax(output)
     return np.float32(output.unsqueeze(2).unsqueeze(3).data.numpy())  # don't forget to put back unsqueezes

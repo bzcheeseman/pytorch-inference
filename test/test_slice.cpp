@@ -26,8 +26,8 @@
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({1}, {4}, {8}, {8},
-                                            {1, 1}, {2, 2}, {8, 8}, {8, 8},
+  std::vector<af::array> tests = test_setup({1}, {4}, {80}, {80},
+                                            {1, 1}, {2, 2}, {80, 80}, {80, 80},
                                             {"test_slice_img.dat"},
                                             "test_slice");
 

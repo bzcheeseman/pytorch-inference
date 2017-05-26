@@ -28,12 +28,12 @@
 int main(){
   std::vector<af::array> tests = test_setup({1, 1, 1},
                                             {2, 3, 4},
-                                            {2, 2, 2},
-                                            {3, 3, 3},
+                                            {45, 45, 45},
+                                            {50, 50, 50},
                                             {1},
                                             {9},
-                                            {2},
-                                            {3},
+                                            {45},
+                                            {50},
                                             {"test_concat1.dat", "test_concat2.dat", "test_concat3.dat"},
                                             "test_concat");
 

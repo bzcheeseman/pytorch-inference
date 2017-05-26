@@ -26,8 +26,8 @@
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({1}, {2}, {8}, {8},
-                                            {1, 1, 1}, {2, 2, 2}, {4, 8, 4}, {4, 8, 4},
+  std::vector<af::array> tests = test_setup({1}, {2}, {64}, {64},
+                                            {1, 1, 1}, {2, 2, 2}, {32, 64, 32}, {32, 64, 32},
                                             {"test_pool_img.dat"},
                                             "test_pool");
 

@@ -50,7 +50,7 @@ namespace pytorch::impl {
     gfor (af::seq i, a.dims(3)){
       af::array a_vol = a(af::span, af::span, af::span, i);
       af::array z = af::exp(a_vol - af::max(a_vol));
-      out(af::span, af::span, af::span, i) = z/af::sum(z, 2);
+      out(af::span, af::span, af::span, i) = z/af::sum(z, -1);
     }
     return out;
   }

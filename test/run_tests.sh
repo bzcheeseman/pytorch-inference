@@ -1,7 +1,7 @@
 #! /bin/bash
 #  assert.sh
 
-QUIET=true
+QUIET=false
 
 cd ../cmake-build-debug
 for test in test_*; do
