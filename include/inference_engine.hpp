@@ -43,7 +43,7 @@ namespace pytorch {
    */
   class inference_engine {
   private:
-    std::vector<std::vector<::pytorch::Layer *>> layers;  // how to speed this up to avoid vtable lookup?
+    std::vector<std::vector<pytorch::Layer *>> layers;  // how to speed this up to avoid vtable lookup?
     const int device;
 
   public:
@@ -77,21 +77,20 @@ namespace pytorch {
       std::vector<af::array> out;  // first input is input
       out.push_back(input);
       for (int i = 0; i < layers.size(); i++){
-        std::vector<af::array> temp;
         if (layers[i].size() == 1) {  // works for concat layers
           check_num_leq(out.size(), 10, __func__);
           // Call forward function
-          temp = layers[i][0]->forward(out);
+          out = layers[i][0]->forward(out);
         }
         else{
-          temp.clear();
+          std::vector<af::array> temp;
           check_size(out.size(), layers[i].size(), __func__); // make sure there are enough inputs
           for (int j = 0; j < layers[i].size(); j++){
             // Call forward for each branch
             temp.push_back(layers[i][j]->forward({out[j]})[0]);
           }
+          out = temp;
         }
-        out = temp;
       }
 
       return out[0]; // must be a single tensor by the end

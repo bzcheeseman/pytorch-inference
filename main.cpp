@@ -117,9 +117,7 @@ int main() {
   std::cout << "forward took (s): " << af::timer::stop() << std::endl;
 
 
-  af_print((pytorch_out - output) / af::max(af::constant(1.f, output.dims()), output));
-                                             // normalize error by the size of the number
-                                             // (some small numerical error for huge numbers)
+  af_print(pytorch_out - output);
 //  af_print(pytorch_out);
 //  af_print(output);
 
