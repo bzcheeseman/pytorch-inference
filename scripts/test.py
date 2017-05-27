@@ -52,7 +52,7 @@ def test_conv(filts_file, bias_file, img_file, lw_file, lb_file, gamma_file, bet
     bn.running_mean = rm.data
     bn.running_var = rv.data
 
-    output = Funct.conv2d(img, weights, padding=(1, 1))
+    output = Funct.conv2d(img, weights, bias, padding=(1, 1))
     output = bn(output)
     output = Funct.tanh(output)
     output, idx = Funct.max_pool2d(output, kernel_size=(2, 2), stride=(2, 2), return_indices=True)
@@ -61,7 +61,7 @@ def test_conv(filts_file, bias_file, img_file, lw_file, lb_file, gamma_file, bet
     # output = Funct.avg_pool2d(output, kernel_size=(2, 2), stride=(2, 2))
     output = Funct.max_pool2d(output, kernel_size=(2, 2), stride=(2, 2))
     output = Funct.hardtanh(output, -0.1, 0.1)
-    output = Funct.linear(output.view(output.size(0), -1), lw)
+    output = Funct.linear(output.view(output.size(0), -1), lw, lb)
     output = Funct.relu(output)
     output = Funct.softmax(output)
     return np.float32(output.unsqueeze(2).unsqueeze(3).data.numpy())  # don't forget to put back unsqueezes

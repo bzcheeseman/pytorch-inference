@@ -10,6 +10,10 @@ for test in test_*; do
         continue;
     fi
 
+    if [ "$test" == "test_exporter" ] ; then
+        continue;
+    fi
+
     echo "Testing: $test"
 
     if [ "$QUIET" == true ] ; then

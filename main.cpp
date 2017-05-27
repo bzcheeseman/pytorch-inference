@@ -94,7 +94,7 @@ int main() {
 //  pytorch::Hardtanh hardtanh(-1, 1);
 
   // Can set up layers like above (commented) or this way, both have the same effect.
-  engine.add_layer(new pytorch::Conv2d(params, "filts.dat", {16, 3, 3, 3}, false, "bias.dat", {1, 16, 1, 1}));
+  engine.add_layer(new pytorch::Conv2d(params, "filts.dat", {16, 3, 3, 3}, "bias.dat", {1, 16, 1, 1}));
   engine.add_layer(new pytorch::BatchNorm2d("gamma.dat", {1, 16, 1, 1},
                                             "beta.dat", {1, 16, 1, 1},
                                             "rm.dat", {1, 16, 1, 1},
@@ -109,7 +109,7 @@ int main() {
 //  engine.add_layer(new pytorch::AvgPool2d(poolparams));
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Hardtanh(-0.1f, 0.1f));
-  engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 56*56*16}, false, "lin_bias.dat", {1, 1, 3, 1}));
+  engine.add_layer(new pytorch::Linear("lin_weight.dat", {1, 1, 3, 56*56*16}, "lin_bias.dat", {1, 1, 3, 1}));
   engine.add_layer(new pytorch::ReLU);
   engine.add_layer(new pytorch::Softmax);
 

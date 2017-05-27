@@ -54,7 +54,7 @@ namespace pytorch {
     af::array weights;
     af::array bias;
     pycpp::py_object utils;
-    bool has_bias;
+    bool has_bias = false;
 
   public:
     /**
@@ -77,15 +77,15 @@ namespace pytorch {
      */
     Linear(const std::string &weights_filename = "",
            const std::vector<int> &weights_dims = {},
-           const bool has_bias = false,
            const std::string &bias_filename = "",
            const std::vector<int> &bias_dims = {},
-           const std::string &python_home = "../scripts") : utils("utils", python_home), has_bias(has_bias) {
+           const std::string &python_home = "../scripts") : utils("utils", python_home) {
 
       if (!weights_filename.empty()){
         this->add_weights(weights_filename, weights_dims);
       }
-      if (!bias_filename.empty() && has_bias){
+      if (!bias_filename.empty()){
+        this->has_bias = true;
         this->add_bias(bias_filename, bias_dims);
       }
     }
@@ -130,10 +130,10 @@ namespace pytorch {
     inline void add_bias(const std::string &bias_filename,
                          const std::vector<int> &bias_dims){
       assert(bias_dims.size() > 0);
-      this->has_bias = true;
       _object *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
       bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
+      this->has_bias = true;
     }
 
     /**

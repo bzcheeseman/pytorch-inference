@@ -55,7 +55,7 @@ namespace pytorch {
     af::array bias;
     conv_params_t params;
     pycpp::py_object utils;
-    bool has_bias;
+    bool has_bias = false;
 
   public:
     /**
@@ -83,18 +83,17 @@ namespace pytorch {
     Conv2d(const conv_params_t &params,
            const std::string &filters_filename = "",
            const std::vector<int> &filt_dims = {},
-           const bool &has_bias = false,
            const std::string &bias_filename = "",
            const std::vector<int> &bias_dims = {},
            const std::string &python_home = "../scripts") : params(params),
-                                                            utils("utils", python_home),
-                                                            has_bias(has_bias) {
+                                                            utils("utils", python_home) {
 
       if (!filters_filename.empty()){
         this->add_filters(filters_filename, filt_dims);
       }
 
-      if (!bias_filename.empty() && has_bias){
+      if (!bias_filename.empty()){
+        this->has_bias = true;
         this->add_bias(bias_filename, bias_dims);
       }
 
@@ -144,6 +143,7 @@ namespace pytorch {
       _object *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
       bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
+      this->has_bias = true;
     }
 
     /**
@@ -154,7 +154,7 @@ namespace pytorch {
      * @return Convolved data size (h_out, w_out, Cout, batch)
      */
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return {impl::conv2d(params, input[0], filters, bias, has_bias)};
+      return {impl::conv2d(params, input[0], filters, bias, this->has_bias)};
     }
 
     /**
@@ -165,7 +165,7 @@ namespace pytorch {
      * @return Convolved data size (h_out, w_out, Cout, batch)
      */
     inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return {impl::conv2d(params, input[0], filters, bias, has_bias)};
+      return {impl::conv2d(params, input[0], filters, bias, this->has_bias)};
     }
 
   };
