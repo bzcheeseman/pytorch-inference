@@ -32,9 +32,8 @@ namespace pytorch {
 
   class Concat : public Layer {
     int dim;
-    int n_tensors;
   public:
-    Concat(const int &dim, const int &n_tensors) : dim(dim), n_tensors(n_tensors) {}
+    Concat(const int &dim) : dim(dim) {}
 
     inline std::vector<af::array> forward(const std::vector<af::array> &input){
       return {impl::catn(input, dim)};

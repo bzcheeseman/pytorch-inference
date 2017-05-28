@@ -57,6 +57,7 @@ def test_conv(filts_file, bias_file, img_file, lw_file, lb_file, gamma_file, bet
     output = Funct.tanh(output)
     output, idx = Funct.max_pool2d(output, kernel_size=(2, 2), stride=(2, 2), return_indices=True)
     output = Funct.sigmoid(output)
+    output = torch.cat([output[:, :8], Funct.relu(output[:, 8:])], 1)
     # output = Funct.max_unpool2d(output, idx, kernel_size=(2, 2), stride=(2, 2))
     # output = Funct.avg_pool2d(output, kernel_size=(2, 2), stride=(2, 2))
     output = Funct.max_pool2d(output, kernel_size=(2, 2), stride=(2, 2))

@@ -86,8 +86,7 @@ namespace pytorch {
         else{
           check_size(out.size(), layers[i].size(), __func__); // make sure there are enough inputs
           gfor (af::seq j, out.size()){
-            af_print(af::array(j));
-            long idx = af::array(j).host<std::uint32_t>()[0];
+            std::uint32_t idx = af::array(j).as(u32).host<std::uint32_t>()[0];
             out[idx] = layers[i][idx]->forward({out[idx]})[0];
           }
 //          for (int j = 0; j < layers[i].size(); j++){ // for each branch, turn into std::transform?

@@ -64,7 +64,9 @@ namespace pytorch {
      * @param bias The trained bias tensors. For those comfortable with Py_Cpp. Can be initialized to zero.
      */
     Linear(const af::array &weights,
-           const af::array &bias) : weights(weights), bias(bias), has_bias(true) { }
+           const af::array &bias) : weights(weights), bias(bias), has_bias(true) {
+      check_size(bias.dims(0), weights.dims(0), __func__);
+    }
 
     /**
      * @brief Constructs a Linear object given the filenames and sizes of the requisite tensors.
@@ -133,15 +135,8 @@ namespace pytorch {
       _object *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
       bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
+      check_size(bias.dims(0), weights.dims(0), __func__);
       this->has_bias = true;
-    }
-
-    /**
-     * @brief Sets whether or not this layer has bias. If no, then this should be called. Otherwise, it's unnecessary.
-     * @param has_bias Whether or not the layer has bias.
-     */
-    inline void set_has_bias(bool has_bias){
-      this->has_bias = has_bias;
     }
 
     /**

@@ -160,20 +160,21 @@ namespace pytorch::impl {
     // need to multiply each of Cout filters onto input
     // so take Cout x fx*fy*Cin . fx*fy*Cin x ox*oy = Cout x ox*oy
 
-    for (int i = 0; i < batch; i++) { // this should be a gfor or something but batched matmul isn't allowed
-      out(af::span, af::span, af::span, i) =
+    gfor (af::seq i, batch) { // This is slow...why?
+      std::uint32_t idx = af::array(i).as(u32).host<std::uint32_t>()[0]; // is this slowing us down?
+      out(af::span, af::span, af::span, idx) =
               af::moddims(
                       af::reorder(
-                              af::matmul(filters(af::span, af::span, 0, 0), in(af::span, af::span, 0, i)),
+                              af::matmul(filters(af::span, af::span, 0, 0), in(af::span, af::span, 0, idx)),
                               3, 1, 2, 0),
                       h_out, w_out, Cout);
       if (has_bias)
-        out(af::span, af::span, af::span, i) += b;
+        out(af::span, af::span, af::span, idx) += b;
     }
 
     return out;
   }
-}
+} // pytorch::impl
 
 
 

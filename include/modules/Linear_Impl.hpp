@@ -46,9 +46,6 @@ namespace pytorch::impl {
 
     check_size(weight.dims(1), flat, __func__);
 
-    if (has_bias)
-      check_size(bias.dims(0), weight.dims(0), __func__);
-
     af::array out;
     if (has_bias)
       out = af::tile(bias, 1, batch) + af::matmul(weight, af::moddims(af::transpose(input), flat, batch));

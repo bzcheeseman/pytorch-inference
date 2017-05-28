@@ -39,9 +39,10 @@ namespace pytorch::impl {
 
     int n_arrays = inputs.size();
 
-    af_array *to_cat = new af_array [inputs.size()];
+    af_array *to_cat = new af_array [n_arrays];
     af_array *catted = new af_array;
 
+#pragma clang loop unroll(enable)
     for (int i = 0; i < n_arrays; i++){
       to_cat[i] = inputs[i].get();
     }

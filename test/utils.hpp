@@ -97,7 +97,7 @@ inline std::vector<af::array> test_setup(const std::vector<int> &n,
 
 }
 
-inline bool almost_equal(const af::array &first, const af::array &second, const float &epsilon=1e-4){
+inline bool almost_equal(const af::array &first, const af::array &second, const float &epsilon=1e-7){
   if (!af::allTrue<bool>(second - epsilon <= first <= second + epsilon ||
                                    first - epsilon <= second <= first + epsilon)){
     return true;
