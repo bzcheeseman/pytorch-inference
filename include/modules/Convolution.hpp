@@ -67,7 +67,15 @@ namespace pytorch {
      */
     Conv2d(const conv_params_t &params,
            const af::array &filters,
-           const af::array &bias) : params(params), filters(filters), bias(bias), has_bias(true) { }
+           const af::array &bias) : params(params), has_bias(true) {
+      int Cout = filters.dims(3); int Cin = filters.dims(2);
+      this->filters = af::reorder(filters, 3, 0, 1, 2);
+      this->filters = af::moddims(filters, Cout, params.filter_x * params.filter_y * Cin);
+
+      check_size(bias.dims(2), Cout, __func__);
+      this->bias = bias;
+
+    }
 
     /**
      * @brief Constructs a Conv2d object given the filenames and sizes of the requisite tensors. Also requires
@@ -128,6 +136,9 @@ namespace pytorch {
       _object *filts = utils("load_tensor", {pycpp::to_python(filters_filename)}, {});
       assert(filts);
       filters = from_numpy(reinterpret_cast<PyArrayObject *>(filts), filt_dims.size(), filt_dims);
+      int Cout = filters.dims(3); int Cin = filters.dims(2);
+      filters = af::reorder(filters, 3, 0, 1, 2);
+      filters = af::moddims(filters, Cout, params.filter_x * params.filter_y * Cin);
     }
 
     /**
@@ -143,6 +154,7 @@ namespace pytorch {
       _object *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
       bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
+      check_size(bias.dims(2), filters.dims(0), __func__);
       this->has_bias = true;
     }
 

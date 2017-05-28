@@ -2,7 +2,10 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 import torchvision as tv
+from torchvision.datasets import CIFAR10
 import os
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 def export(module, name):
@@ -177,7 +180,52 @@ def emit_module_cpp(module, name):
 
 
 def run():
-    net = tv.models.alexnet(True)
+    alexnet = tv.models.alexnet(True).cuda()
+    net = nn.Linear(1000, 10)
+
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(net.parameters(), lr=1e-3, weight_decay=1e-6)
+
+    transform = tv.transforms.Compose(
+        [tv.transforms.Scale(224),
+         tv.transforms.ToTensor(),
+         tv.transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+
+    def imshow(img, name):
+        # print(img)
+        # img = img / 2 + 0.5     # unnormalize
+        npimg = np.float32(img.numpy())
+        plt.imshow(np.transpose(npimg, (1, 2, 0)))
+        plt.savefig("../data/cifar/%s.jpg"%name)
+
+    data = CIFAR10("../data", transform=transform, download=True)
+
+    # for i in range(len(data)):
+    #     imshow(data[i][0], "img_%d"%i)
+
+    train_loader = torch.utils.data.DataLoader(data, batch_size=10, shuffle=True, num_workers=4)
+
+    running_loss = 0.0
+    for epoch in range(5):
+        for i, data in enumerate(train_loader, 0):
+            image, label = data
+            image = Variable(image).cuda()
+            label = Variable(label)
+
+            optimizer.zero_grad()
+            thousand = alexnet(image).detach().cpu()
+            prediction = net(thousand)
+            loss = criterion(prediction, label)
+            loss.backward()
+            running_loss += loss.data[0]
+            optimizer.step()
+
+        print("Avg loss: ", running_loss/len(train_loader))
+        running_loss = 0.0
+
+    net = nn.Sequential(alexnet, net, nn.Softmax())
+    print(net(data[19]))
+
     print(emit_module_cpp(net, "alexnet"))
 
 if __name__ == "__main__":

@@ -24,7 +24,7 @@
 #include "../include/layers.hpp"
 #include "../include/inference_engine.hpp"
 
-af::array alexnet_forward(const af::array &input) { // alexnet works (or seems to!)
+af::array alexnet_forward(const af::array &input) {
   pytorch::inference_engine engine;
 
   pytorch::conv_params_t convparams1 = {11, 11, 4, 4, 2, 2};
@@ -71,6 +71,10 @@ af::array alexnet_forward(const af::array &input) { // alexnet works (or seems t
   engine.add_layer(&relu7);
   pytorch::Linear lin3("../save/alexnet/lin3.weight.dat", {1, 1, 1000, 4096}, "../save/alexnet/lin3.bias.dat", {1, 1, 1000, 1});
   engine.add_layer(&lin3);
+  pytorch::Linear lin4("../save/alexnet/lin4.weight.dat", {1, 1, 10, 1000}, "../save/alexnet/lin4.bias.dat", {1, 1, 10, 1});
+  engine.add_layer(&lin4);
+  pytorch::Softmax softmax1;
+  engine.add_layer(&softmax1);
 
   af::array output = engine.forward({input});
   output.eval();
@@ -78,8 +82,11 @@ af::array alexnet_forward(const af::array &input) { // alexnet works (or seems t
   return output;
 }
 
-int main(){
-  af::array input = af::randn(224, 224, 3, 1);
+int main(){ // add softmax
+  af::array input;
+  input = af::loadImage("../data/cifar/img_18.jpg", true)/255.f; // should be a bird (also don't use .png)
+  input = af::resize(input, 224, 224);
+//  std::cout << input.dims() << std::endl;
   auto output = alexnet_forward(input);
   af_print(output);
 }
