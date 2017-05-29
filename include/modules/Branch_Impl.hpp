@@ -37,10 +37,7 @@
 namespace pytorch::impl {
   inline std::vector<af::array> copy_branch(const af::array &input, const int &copies){
     check_num_leq(copies, 10, __func__);
-    std::vector<af::array> out;
-    for (int i = 0; i < copies; i++){
-      out.push_back(input);
-    }
+    std::vector<af::array> out (copies, input);
     return out;
   }
 } // pytorch::impl

@@ -35,6 +35,7 @@
 
 // ArrayFire
 #include <arrayfire.h>
+#include <future>
 
 namespace pytorch {
 
@@ -90,6 +91,16 @@ namespace pytorch {
       error += " Function: " + func;
       throw std::runtime_error(error);
     }
+  }
+
+  template<class Layer>
+  inline std::vector<std::future<af::array>> async_for(std::vector<Layer *> f, std::vector<af::array> inputs){
+    std::vector<std::future<af::array>> out;
+    int n_out = f.size();
+    for (int i = 0; i < n_out; i++){
+      out.push_back(std::async(std::launch::async, &Layer::forward, f[i], inputs[i]));
+    }
+    return out;
   }
 
 } // pytorch

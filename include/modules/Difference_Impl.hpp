@@ -25,6 +25,9 @@
 #ifndef PYTORCH_INFERENCE_DIFFERENCE_IMPL_HPP
 #define PYTORCH_INFERENCE_DIFFERENCE_IMPL_HPP
 
+// STL
+#include <algorithm>
+
 // ArrayFire
 #include <arrayfire.h>
 
@@ -38,10 +41,9 @@ namespace pytorch::impl {
 
     int n_tensors = inputs.size();
     af::array out = inputs[0];
-    for (int i = 0; i < n_tensors; i++){
-      out -= inputs[i];
+    for (auto &a : inputs){
+      out -= a;
     }
-
     return out;
   }
 

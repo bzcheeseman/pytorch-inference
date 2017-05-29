@@ -27,9 +27,9 @@
 
 #include <fstream>
 #include <sstream>
-#include <future>
-#include <functional>
+#include <cstdint>
 #include <vector>
+#include <algorithm>
 
 #include <arrayfire.h>
 
@@ -79,21 +79,19 @@ namespace pytorch {
     inline af::array forward(const std::vector<af::array> &input){
       std::vector<af::array> out = input;
       check_num_leq(out.size(), 10, __func__); // there are checks in each layer to make sure it's less than 10
-      for (int i = 0; i < layers.size(); i++){
-        if (layers[i].size() == 1) {
-          out = layers[i][0]->forward(out);
+      for (auto &layer : layers){
+        if (layer.size() == 1) {
+          out = layer[0]->forward(out);
         }
         else{
-          check_size(out.size(), layers[i].size(), __func__); // make sure there are enough inputs
-          gfor (af::seq j, out.size()){
-            std::uint32_t idx = af::array(j).as(u32).host<std::uint32_t>()[0];
-            out[idx] = layers[i][idx]->forward({out[idx]})[0];
-          }
-//          for (int j = 0; j < layers[i].size(); j++){ // for each branch, turn into std::transform?
-//            out[j] = layers[i][j]->forward({out[j]})[0];
-//          }
+          check_size(out.size(), layer.size(), __func__); // make sure there are enough inputs
+          std::transform(out.begin(), out.end(), out.begin(),
+                         [&](const af::array &a) -> af::array {
+                           return layer[&a - &out[0]]->forward({a})[0];
+                         });
         }
       }
+
 
       return out[0]; // must be a single tensor by the end
     }

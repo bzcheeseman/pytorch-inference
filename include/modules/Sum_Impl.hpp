@@ -41,7 +41,6 @@ namespace pytorch::impl {
     for (auto &in : inputs){
       out += in;
     }
-
     return out;
   }
 

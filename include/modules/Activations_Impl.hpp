@@ -46,11 +46,11 @@ namespace pytorch::impl {
 
   inline af::array softmax(const af::array &a){
     af::array out (a.dims());
-    af::array sum (a.dims(3));
     gfor (af::seq i, a.dims(3)){
-      af::array a_vol = a(af::span, af::span, af::span, i);
-      af::array z = af::exp(a_vol - af::max(a_vol));
-      out(af::span, af::span, af::span, i) = z/af::sum(z, -1);
+      out(af::span, af::span, af::span, i) = af::exp(a(af::span, af::span, af::span, i) -
+                                                             af::max(a(af::span, af::span, af::span, i)))
+                                             /af::sum(af::exp(a(af::span, af::span, af::span, i) -
+                                                              af::max(a(af::span, af::span, af::span, i))), -1);
     }
     return out;
   }

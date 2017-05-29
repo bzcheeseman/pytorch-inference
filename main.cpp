@@ -103,7 +103,7 @@ int main() {
   engine.add_layer(new pytorch::MaxPool2d(poolparams));
   engine.add_layer(new pytorch::Sigmoid);
   engine.add_layer(new pytorch::Slice(pytorch::k, 2));
-  engine.add_layer({new pytorch::Skip, new pytorch::ReLU});
+  engine.add_layer({new pytorch::Skip, new pytorch::Tanh});
   engine.add_layer(new pytorch::Concat(pytorch::k));
 //  engine.add_layer(new pytorch::MaxUnpool2d(poolparams,
 //                                            reinterpret_cast<pytorch::MaxPool2d *>(engine.get_layer_ptr(3, 0))));
