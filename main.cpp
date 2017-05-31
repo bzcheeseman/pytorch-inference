@@ -77,7 +77,6 @@ int main() {
   // Initialize the engine (sets up the backend)
   pytorch::inference_engine engine;
 
-
   // Load up the image and target
   auto image = pytorch::from_numpy((PyArrayObject *)i, 4, {2, 3, 224, 224});
   auto pytorch_out = pytorch::from_numpy((PyArrayObject *)pto, 4, {2, 3, 1, 1});
@@ -127,8 +126,6 @@ int main() {
   // Check correctness
   af::array output = engine.forward({image});
   af_print(pytorch_out - output);
-//  af_print(pytorch_out);
-//  af_print(output);
 
   return 0;
 }

@@ -2,8 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(pytorch_inference)
 
 set(CMAKE_CXX_STANDARD 17)
-#set(CMAKE_CXX_COMPILER /usr/local/bin/g++-7)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Ofast -funroll-loops")
 
 find_package(PythonInterp 3.6 REQUIRED)
 find_package(PythonLibs 3.6 REQUIRED)
@@ -99,36 +98,34 @@ set(SOURCE_FILES
 set(TEST_SOURCE_FILES
         test/utils.hpp)
 
-set(TESTS_BUILT)
-
-MACRO(add_test name)
-    set(TESTS_BUILT test_${name} ${TESTS_BUILT})
+MACRO(add_pti_test name)
     add_executable(test_${name} ${TEST_SOURCE_FILES} test/test_${name}.cpp)
     target_link_libraries(test_${name} ${PYTHON_LIBRARY} ${EXTRA_LIBS} ${ArrayFire_LIBRARIES})
-ENDMACRO()
-
-add_test(activation)
-add_test(branch)
-add_test(concat)
-add_test(convolution)
-add_test(linear)
-add_test(normalization)
-add_test(pooling)
-add_test(slice)
-add_test(sum)
-add_test(diff)
-add_test(product)
-add_test(divisor)
-add_test(exporter)
-
-MACRO(test_all)
-    add_custom_target(test_all
-            COMMAND "../test/run_tests.sh"
-            COMMENT "Building and running all unit tests" VERBATIM
+    add_test(NAME ${name}
+            COMMAND test_${name}
             )
 ENDMACRO()
 
-test_all()
+enable_testing()
+
+add_pti_test(activation)
+add_pti_test(branch)
+add_pti_test(concat)
+add_pti_test(convolution)
+add_pti_test(linear)
+add_pti_test(normalization)
+add_pti_test(pooling)
+add_pti_test(slice)
+add_pti_test(sum)
+add_pti_test(diff)
+add_pti_test(product)
+add_pti_test(divisor)
+add_pti_test(exporter)
+
+add_custom_target(test_all
+        COMMAND ctest
+        COMMENT "Testing All" VERBATIM
+        )
 
 add_executable(pytorch_inference ${SOURCE_FILES})
 target_link_libraries(pytorch_inference  ${PYTHON_LIBRARY} ${EXTRA_LIBS} ${ArrayFire_LIBRARIES})

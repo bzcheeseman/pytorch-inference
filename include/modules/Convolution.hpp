@@ -71,7 +71,6 @@ namespace pytorch {
       int Cout = filters.dims(3); int Cin = filters.dims(2);
       this->filters = af::reorder(filters, 3, 0, 1, 2);
       this->filters = af::moddims(filters, Cout, params.filter_x * params.filter_y * Cin);
-
       check_size(bias.dims(2), Cout, __func__);
       this->bias = bias;
 

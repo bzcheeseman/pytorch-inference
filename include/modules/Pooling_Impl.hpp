@@ -69,7 +69,6 @@ namespace pytorch::impl {
     af::max(maxima, idx, in, 0);
     af::array out = af::array(maxima, h_out, w_out, input.dims(2), input.dims(3));
     indices = idx;
-//    indices = af::array(idx, h_out, w_out, input.dims(2), input.dims(3));
 
     return out;
 
@@ -93,6 +92,7 @@ namespace pytorch::impl {
                               params.pad_x, params.pad_y);
 
     af::array idx;
+#pragma #pragma omp target teams distribute parallel for collapse(2)
     for (int i = 0; i < batch; i++){ // there's gotta be a way to speed this up...
       for (int j = 0; j < C; j++){
         gfor (af::seq k, out.dims(1)){

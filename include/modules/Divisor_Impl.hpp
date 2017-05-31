@@ -37,12 +37,13 @@
 namespace pytorch::impl {
 
   inline af::array divn(const std::vector<af::array> &inputs,
-                         const int &dim){
+                         const int &dim){ // this didn't work
 
     int n_tensors = inputs.size();
     af::array out = inputs[0];
-    for (auto &a : inputs){
-      out /= a;
+#pragma omp target device(0) map(out, inputs)
+    for (int i = 1; i < n_tensors; i++){
+      out /= inputs[i];
     }
     return out;
   }

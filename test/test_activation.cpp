@@ -26,11 +26,11 @@
 #include "utils.hpp"
 
 int main() {
-  std::vector<af::array> tests = test_setup({3}, {16}, {55}, {55},
-                                            {3, 3, 3, 3, 3},
-                                            {16, 16, 16, 16, 16},
-                                            {55, 55, 55, 55, 55},
-                                            {55, 55, 55, 55, 55},
+  std::vector<af::array> tests = test_setup({30}, {1}, {500}, {1},
+                                            {30, 30, 30, 30, 30},
+                                            {1, 1, 1, 1, 1},
+                                            {500, 500, 500, 500, 500},
+                                            {1, 1, 1, 1, 1},
                                             {"test_activation.dat"},
                                             "test_act");
 

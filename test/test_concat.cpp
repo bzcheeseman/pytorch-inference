@@ -39,12 +39,14 @@ int main(){
 
   // tests has {input1, input2, input3, pytorch_output}
 
-  pytorch::Concat c(pytorch::k, 3);
+  pytorch::Concat c(pytorch::k);
   af::timer::start();
   auto catted = c({tests[0], tests[1], tests[2]})[0];
   std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
 
   assert(almost_equal(catted, tests[3]));
+
+  return 0;
 
 }
 

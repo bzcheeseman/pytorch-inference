@@ -41,16 +41,15 @@ namespace pytorch::impl {
   }
 
   inline af::array relu(const af::array &a){
-    return af::max(a, af::constant(0, a.dims())); // hopefully this is working like I think it is
+    return af::max(a, af::constant(0, a.dims()));
   }
 
-  inline af::array softmax(const af::array &a){
+  inline af::array softmax(const af::array &a){ // fails when the k dimension is 1
     af::array out (a.dims());
     gfor (af::seq i, a.dims(3)){
-      out(af::span, af::span, af::span, i) = af::exp(a(af::span, af::span, af::span, i) -
-                                                             af::max(a(af::span, af::span, af::span, i)))
-                                             /af::sum(af::exp(a(af::span, af::span, af::span, i) -
-                                                              af::max(a(af::span, af::span, af::span, i))), -1);
+      af::array a_vol = a(af::span, af::span, af::span, i);
+      out(af::span, af::span, af::span, i) =
+              af::exp(a_vol - af::max(a_vol))/af::sum(af::exp(a_vol - af::max(a_vol)));
     }
     return out;
   }

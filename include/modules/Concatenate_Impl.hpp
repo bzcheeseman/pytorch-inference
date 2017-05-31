@@ -25,7 +25,6 @@
 #ifndef PYTORCH_INFERENCE_CONCATENATE_IMPL_HPP
 #define PYTORCH_INFERENCE_CONCATENATE_IMPL_HPP
 
-// STL
 #include <algorithm>
 
 // ArrayFire
@@ -42,16 +41,18 @@ namespace pytorch::impl {
 
     int n_arrays = inputs.size();
 
-    std::vector<af_array> to_cat;
+    std::vector<af_array> to_cat (n_arrays);
     af::array out;
     af_array outp = out.get();
-
+    
     std::transform(inputs.begin(), inputs.end(), to_cat.begin(),
-                   [&](const af::array &a) -> af_array {
+                   [](const af::array &a) -> af_array {
                      return a.get();
                    });
 
     af_join_many(&outp, dim, n_arrays, to_cat.data());
+
+    out = af::array(outp);
 
     return out;
   }

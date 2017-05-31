@@ -27,7 +27,7 @@
 
 int main(){
   std::vector<af::array> tests = test_setup({1, 1, 1, 1, 2}, {32, 32, 32, 32, 32}, {1, 1, 1, 1, 70}, {1, 1, 1, 1, 70},
-                                            {2}, {3}, {70}, {70},
+                                            {2}, {32}, {70}, {70},
                                             {"test_norm_g.dat", "test_norm_b.dat", "test_norm_rm.dat",
                                              "test_norm_rv.dat", "test_norm_img.dat"},
                                             "test_norm");

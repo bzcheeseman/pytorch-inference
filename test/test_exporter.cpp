@@ -25,7 +25,7 @@
 #include "../include/inference_engine.hpp"
 
 af::array alexnet_forward(const af::array &input) {
-  pytorch::inference_engine engine (1, AF_BACKEND_OPENCL, false);
+  pytorch::inference_engine engine;
 
   pytorch::conv_params_t convparams1 = {11, 11, 4, 4, 2, 2};
   pytorch::Conv2d conv1(convparams1, "../save/alexnet/conv1.weight.dat", {64, 3, 11, 11}, "../save/alexnet/conv1.bias.dat", {1, 64, 1, 1});
@@ -82,13 +82,8 @@ af::array alexnet_forward(const af::array &input) {
   return output;
 }
 
-int main(){ // add softmax
-  af::setBackend(AF_BACKEND_OPENCL);
-  af::setDevice(1);
-  af::array input;
-  input = af::loadImage("../data/cifar/img_18.jpg", true)/255.f; // should be a bird (also don't use .png)
+int main() {
+  af::array input = af::loadImage("../data/cifar/img_18.jpg", true)/255.f;
   input = af::resize(input, 224, 224);
-//  std::cout << input.dims() << std::endl;
-  auto output = alexnet_forward(input);
-  af_print(output);
+  af_print(alexnet_forward({input}));
 }

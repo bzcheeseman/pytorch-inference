@@ -42,5 +42,6 @@ int main(){
     assert(almost_equal(branches[i], tests[i+1]));
   }
 
+  return 0;
 
 }

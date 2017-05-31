@@ -97,14 +97,12 @@ inline std::vector<af::array> test_setup(const std::vector<int> &n,
 
 }
 
-inline bool almost_equal(const af::array &first, const af::array &second, const float &epsilon=1e-7){
-  if (!af::allTrue<bool>(second - epsilon <= first <= second + epsilon ||
-                                   first - epsilon <= second <= first + epsilon)){
+inline bool almost_equal(const af::array &first, const af::array &second,
+                         const float &epsilon=std::numeric_limits<float>::epsilon()*100){
+  if (!af::allTrue<bool>(-epsilon <= first - second <= epsilon)){
     return true;
   }
   else{
-    af_print(second - epsilon <= first <= second + epsilon ||
-             first - epsilon <= second <= first + epsilon); // all zero?
     af_print(first); af_print(second);
     return false;
   }

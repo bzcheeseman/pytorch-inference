@@ -10,12 +10,12 @@ def test_act(filename):
     tanh = Funct.tanh(input)
     hardtanh = Funct.hardtanh(input, -2.5, 2.5)
     relu = Funct.relu(input)
-    softmax = Funct.softmax(input)
+    softmax = Funct.softmax(input.squeeze())
 
     return [
         np.float32(sigmoid.data.numpy()),
         np.float32(tanh.data.numpy()),
         np.float32(hardtanh.data.numpy()),
         np.float32(relu.data.numpy()),
-        np.float32(softmax.data.numpy())
+        np.float32(softmax.unsqueeze(1).unsqueeze(3).data.numpy())
     ]
