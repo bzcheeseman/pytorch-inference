@@ -26,7 +26,7 @@
 #define PYTORCH_INFERENCE_INFERENCE_ENGINE_HPP
 
 #include <algorithm>
-
+#include <functional>
 
 #include <arrayfire.h>
 
@@ -82,10 +82,10 @@ namespace pytorch {
         }
         else{
           check_size(out.size(), layer.size(), __func__); // make sure there are enough inputs
-          std::transform(out.begin(), out.end(), out.begin(),
-                         [&](const af::array &a) -> af::array {
-                           return layer[&a - &out[0]]->forward({a})[0];
-                         });
+          int wid = layer.size();
+          for (int i = 0; i < wid; i++){
+            out[i] = layer[i]->forward({out[i]})[0];
+          }
         }
       }
 

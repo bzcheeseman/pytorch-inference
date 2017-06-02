@@ -44,7 +44,7 @@ namespace pytorch::impl {
     return af::max(a, af::constant(0, a.dims()));
   }
 
-  inline af::array softmax(const af::array &a){ // fails when the k dimension is 1
+  inline af::array softmax(const af::array &a){ // only suitable for vectors(!)
     af::array out (a.dims());
     gfor (af::seq i, a.dims(3)){
       af::array a_vol = a(af::span, af::span, af::span, i);

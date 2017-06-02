@@ -69,11 +69,10 @@ namespace pytorch {
            const af::array &filters,
            const af::array &bias) : params(params), has_bias(true) {
       int Cout = filters.dims(3); int Cin = filters.dims(2);
-      this->filters = af::reorder(filters, 3, 0, 1, 2);
-      this->filters = af::moddims(filters, Cout, params.filter_x * params.filter_y * Cin);
+      this->filters = af::unwrap(filters, params.filter_x, params.filter_y, params.filter_x, params.filter_y, 0, 0);
+      this->filters = af::reorder(this->filters, 3, 0, 2, 1);
       check_size(bias.dims(2), Cout, __func__);
       this->bias = bias;
-
     }
 
     /**
@@ -136,8 +135,8 @@ namespace pytorch {
       assert(filts);
       filters = from_numpy(reinterpret_cast<PyArrayObject *>(filts), filt_dims.size(), filt_dims);
       int Cout = filters.dims(3); int Cin = filters.dims(2);
-      filters = af::reorder(filters, 3, 0, 1, 2);
-      filters = af::moddims(filters, Cout, params.filter_x * params.filter_y * Cin);
+      filters = af::unwrap(filters, params.filter_x, params.filter_y, params.filter_x, params.filter_y, 0, 0);
+      filters = af::reorder(filters, 3, 0, 2, 1);
     }
 
     /**

@@ -7,9 +7,9 @@ import numpy as np
 def test_pool(img_file):
     img = Variable(torch.load(img_file))
 
-    maxpool, idx = Funct.max_pool2d(img, (2, 2), stride=(2, 2), return_indices=True)
-    maxunpool = Funct.max_unpool2d(maxpool, idx, kernel_size=(2, 2), stride=(2, 2))
-    avgpool = Funct.avg_pool2d(img, (2, 2), stride=(2, 2))
+    maxpool, idx = Funct.max_pool2d(img, (2, 1), stride=(2, 1), padding=(1, 0), return_indices=True)
+    maxunpool = Funct.max_unpool2d(maxpool, idx, kernel_size=(2, 1), stride=(2, 1), padding=(1, 0))
+    avgpool = Funct.avg_pool2d(img, (2, 1), stride=(2, 1), padding=(1, 0))
 
     return [
         np.float32(maxpool.data.numpy()),

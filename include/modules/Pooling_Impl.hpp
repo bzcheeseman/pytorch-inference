@@ -74,10 +74,15 @@ namespace pytorch::impl {
 
   }
 
-  //! @todo: MUST OPTIMIZE THIS IS CRAP
+  //! @todo: optimize this crap
   inline af::array unpool(const pooling_params_t &params,
                           const af::array &input,
                           const af::array &indices){
+
+    if (!(af::getActiveBackend() == AF_BACKEND_CPU)){
+      std::cerr << "Unpooling not supported on OpenCL due to ArrayFire bug!" << std::endl;
+      assert(af::getActiveBackend() == AF_BACKEND_CPU);
+    }
 
     int h_in = input.dims(0); int w_in = input.dims(1);
     int h_out = (h_in - 1) * params.stride_x - 2*params.pad_x + params.filter_x;
@@ -87,18 +92,15 @@ namespace pytorch::impl {
     af::array out = af::unwrap(af::constant(0, h_out, w_out, C, batch), params.filter_x, params.filter_y,
                                params.stride_x, params.stride_y,
                                params.pad_x, params.pad_y);
-    af::array in = af::unwrap(af::resize(input, h_out, w_out, AF_INTERP_LOWER), params.filter_x, params.filter_y,
-                              params.stride_x, params.stride_y,
-                              params.pad_x, params.pad_y);
 
-    af::array idx;
-#pragma #pragma omp target teams distribute parallel for collapse(2)
-    for (int i = 0; i < batch; i++){ // there's gotta be a way to speed this up...
+    af::array in, rowIdx, colIdx, temp;
+    for (int i = 0; i < batch; i++){
       for (int j = 0; j < C; j++){
-        gfor (af::seq k, out.dims(1)){
-          idx = indices(0, k, j, i).as(u32);
-          out(idx.host<std::uint32_t>()[0], k, j, i) = in(idx.host<std::uint32_t>()[0], k, j, i);
-        }
+        in = af::moddims(input(af::span, af::span, j, i), out.dims(1));
+        colIdx = af::array(af::seq(out.dims(1))).as(s32);
+        rowIdx = af::flat(indices(0, af::span, j, i)).as(s32);
+        temp = af::sparse(out.dims(0), out.dims(1), in, rowIdx, colIdx, AF_STORAGE_COO); // this changes on conversion to dense?
+        out(af::span, af::span, j, i) = af::dense(temp);
       }
     }
 

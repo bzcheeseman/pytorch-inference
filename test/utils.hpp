@@ -98,8 +98,9 @@ inline std::vector<af::array> test_setup(const std::vector<int> &n,
 }
 
 inline bool almost_equal(const af::array &first, const af::array &second,
-                         const float &epsilon=std::numeric_limits<float>::epsilon()*100){
-  if (!af::allTrue<bool>(-epsilon <= first - second <= epsilon)){
+                         const float &epsilon=std::numeric_limits<float>::epsilon()*500){
+  af::array condition = af::flat(af::abs(first - second) <= epsilon);
+  if (af::allTrue<bool>(condition)){
     return true;
   }
   else{

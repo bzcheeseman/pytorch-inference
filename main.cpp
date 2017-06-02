@@ -114,7 +114,7 @@ int main() {
   engine.add_layer(new pytorch::Softmax);
 
   // Check speed
-  int iters = 50;
+  int iters = 10;
   af::timer::start();
   for (int i = 0; i < iters; i++){
     af::array output = engine.forward({image});
@@ -125,7 +125,7 @@ int main() {
 
   // Check correctness
   af::array output = engine.forward({image});
-  af_print(pytorch_out - output);
+  af_print((pytorch_out - output));
 
   return 0;
 }
