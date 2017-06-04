@@ -74,7 +74,7 @@ namespace pytorch::impl {
 
   }
 
-  //! @todo: optimize this crap
+  //! @todo: try to get this working with opencl
   inline af::array unpool(const pooling_params_t &params,
                           const af::array &input,
                           const af::array &indices){
@@ -99,7 +99,7 @@ namespace pytorch::impl {
         in = af::moddims(input(af::span, af::span, j, i), out.dims(1));
         colIdx = af::array(af::seq(out.dims(1))).as(s32);
         rowIdx = af::flat(indices(0, af::span, j, i)).as(s32);
-        temp = af::sparse(out.dims(0), out.dims(1), in, rowIdx, colIdx, AF_STORAGE_COO); // this changes on conversion to dense?
+        temp = af::sparse(out.dims(0), out.dims(1), in, rowIdx, colIdx, AF_STORAGE_COO);
         out(af::span, af::span, j, i) = af::dense(temp);
       }
     }

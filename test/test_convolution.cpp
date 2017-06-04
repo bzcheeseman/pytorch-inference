@@ -26,8 +26,8 @@
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({32, 1, 3}, {3, 32, 3}, {3, 1, 226}, {3, 1, 226},
-                                            {3}, {32}, {224}, {224},
+  std::vector<af::array> tests = test_setup({64, 1, 5}, {3, 64, 3}, {3, 1, 226}, {3, 1, 226},
+                                            {5}, {64}, {224}, {224},
                                             {"test_conv_filter.dat", "test_conv_bias.dat", "test_conv_img.dat"},
                                             "test_conv");
 
