@@ -82,26 +82,23 @@ namespace pytorch::impl {
                               params.stride_x, params.stride_y,
                               params.pad_x, params.pad_y);
     in = af::moddims(af::reorder(in, 0, 2, 1, 3), in.dims(0)*Cin, in.dims(1), 1, batch);
-    af::array b = af::constant(0, Cout, h_out*w_out, batch, 1);
+    af::array out = af::constant(0, Cout, h_out*w_out, batch, 1);
     if (has_bias)
-      b = af::tile(af::reorder(bias, 2, 3, 0, 1), 1, h_out*w_out, batch, 1);
+      out += af::tile(af::reorder(bias, 2, 3, 0, 1), 1, h_out*w_out, batch, 1);
 
     // input is (fx*fy, ox*oy, Cin, n)
     // filters is (Cout, fx*fy, Cin)
     // need to multiply each of Cout filters onto input
     // so take Cout x fx*fy*Cin . Cin*fx*fy x ox*oy = Cout x ox*oy
 
-    af::array sum = af::constant(0, Cout, h_out*w_out, batch, 1);
-    for (int i = 0; i < batch; i++) {
+    for (int i = batch-1; i >= 0; i--) {
 //      for (int k = 0; k < Cin; k++){ // faster for larger input planes (e.g. full size images)
-//        sum(af::span, af::span, i, 0) += af::matmul(filters(af::span, af::span, k, 0), in(af::span, af::span, k, i));
+//        b(af::span, af::span, i, 0) += af::matmul(filters(af::span, af::span, k, 0), in(af::span, af::span, k, i));
 //      }
-      sum(af::span, af::span, i, 0) += af::matmul(filters(af::span, af::span, 0, 0), in(af::span, af::span, 0, i));
+      out(af::span, af::span, i, 0) += af::matmul(filters(af::span, af::span, 0, 0), in(af::span, af::span, 0, i));
     }
 
-    af::array out = af::moddims(af::reorder(sum + b, 1, 3, 0, 2), h_out, w_out, Cout, batch);
-
-    return out;
+    return af::moddims(af::reorder(out, 1, 3, 0, 2), h_out, w_out, Cout, batch);
   }
 } // pytorch::impl
 

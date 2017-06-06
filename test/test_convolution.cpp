@@ -38,8 +38,13 @@ int main(){
   pytorch::Conv2d c(params, tests[0], tests[1]);
 
   af::timer::start();
-  auto conv = c({tests[2]})[0];
-  std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
+  af::array conv;
+  for (int j = 50-1; j != 0; j--){
+    conv = c({tests[2]})[0];
+    conv.eval();
+  }
+  af::sync();
+  std::cout << "arrayfire forward took (s): " << af::timer::stop()/50 << "(avg)" << std::endl;
 
   assert(almost_equal(conv, tests[3]));
 

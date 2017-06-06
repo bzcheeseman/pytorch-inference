@@ -2,8 +2,12 @@ cmake_minimum_required(VERSION 3.5)
 project(pytorch_inference)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_C_COMPILER /usr/local/bin/clang-3.7)
+set(CMAKE_CXX_COMPILER /usr/local/bin/clang++-3.7)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 find_package(PythonInterp 3.6 REQUIRED)
 find_package(PythonLibs 3.6 REQUIRED)
@@ -59,9 +63,9 @@ find_package(OpenCL)
 set(EXTRA_LIBS ${CMAKE_THREAD_LIBS_INIT} ${OpenCL_LIBRARIES})
 
 # If cuda works, then uncomment this (and make sure you installed arrayfire with CUDA!)
-#find_package(CUDA)
-#find_package(NVVM) # this FIND script can be found in the ArrayFire CMake example repository
-#set(EXTRA_LIBS ${CMAKE_THREAD_LIBS_INIT} ${CUDA_LIBRARIES} ${NVVM_LIB})
+find_package(CUDA)
+find_package(NVVM) # this FIND script can be found in the ArrayFire CMake example repository
+set(EXTRA_LIBS ${CMAKE_THREAD_LIBS_INIT} ${CUDA_LIBRARIES} ${NVVM_LIB})
 
 # ArrayFire is the OpenCL backend, from ArrayFire #####################################
 

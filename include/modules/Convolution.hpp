@@ -71,7 +71,7 @@ namespace pytorch {
       int Cout = filters.dims(3); int Cin = filters.dims(2);
       this->filters = af::unwrap(filters, params.filter_x, params.filter_y, params.filter_x, params.filter_y, 0, 0);
       this->filters = af::reorder(this->filters, 3, 0, 2, 1);
-      this->filters = af::moddims(this->filters, Cout, this->filters.dims(1)*Cin); // uncomment to use nested for impl
+      this->filters = af::moddims(this->filters, Cout, this->filters.dims(1)*Cin); // comment to use nested for impl
       check_size(bias.dims(2), Cout, __func__);
       this->bias = bias;
     }
@@ -138,7 +138,7 @@ namespace pytorch {
       int Cout = filters.dims(3); int Cin = filters.dims(2);
       filters = af::unwrap(filters, params.filter_x, params.filter_y, params.filter_x, params.filter_y, 0, 0);
       filters = af::reorder(filters, 3, 0, 2, 1);
-      filters = af::moddims(filters, Cout, filters.dims(1)*Cin); // uncomment to use nested for impl
+      filters = af::moddims(filters, Cout, filters.dims(1)*Cin); // comment to use nested for impl
     }
 
     /**

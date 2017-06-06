@@ -36,8 +36,13 @@ int main(){
   pytorch::Linear l(tests[0], tests[1]);
 
   af::timer::start();
-  auto lin = l({tests[2]})[0];
-  std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
+  af::array lin;
+  for (int j = 50-1; j != 0; j--){
+    lin = l({tests[2]})[0];
+    lin.eval();
+  }
+  af::sync();
+  std::cout << "arrayfire forward took (s): " << af::timer::stop()/50 << "(avg)" << std::endl;
 
   assert(almost_equal(lin, tests[3]));
 

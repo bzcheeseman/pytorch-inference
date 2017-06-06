@@ -39,7 +39,7 @@ namespace pytorch::impl {
     int n_tensors = inputs.size();
     af::array out = inputs[0];
 #pragma omp target device(0) map(out, inputs)
-    for (int i = 1; i < n_tensors; i++){
+    for (int i = n_tensors-1; i > 0; i--){
       out += inputs[i];
     }
     return out;

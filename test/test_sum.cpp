@@ -41,8 +41,13 @@ int main(){
 
   pytorch::Sum s(pytorch::k, 3);
   af::timer::start();
-  auto summed = s({tests[0], tests[1], tests[2]})[0];
-  std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
+  af::array summed;
+  for (int j = 49; j >= 0; j--){
+    summed = s({tests[0], tests[1], tests[2]})[0];
+    summed.eval();
+  }
+  af::sync();
+  std::cout << "arrayfire forward took (s): " << af::timer::stop()/50 << "(avg)" << std::endl;
 
   assert(almost_equal(summed, tests[3]));
 

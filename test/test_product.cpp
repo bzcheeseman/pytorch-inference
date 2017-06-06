@@ -41,8 +41,13 @@ int main(){
 
   pytorch::Product p(pytorch::k, 3);
   af::timer::start();
-  auto prod = p({tests[0], tests[1], tests[2]})[0];
-  std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
+  af::array prod;
+  for (int j = 49; j >= 0; j--){
+    prod = p({tests[0], tests[1], tests[2]})[0];
+    prod.eval();
+  }
+  af::sync();
+  std::cout << "arrayfire forward took (s): " << af::timer::stop()/50 << "(avg)" << std::endl;
 
   assert(almost_equal(prod, tests[3]));
 

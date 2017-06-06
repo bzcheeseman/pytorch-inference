@@ -48,7 +48,7 @@ namespace pytorch {
 
   public:
     inference_engine(const int &device = 0,
-                     af::Backend backend = AF_BACKEND_OPENCL,
+                     af::Backend backend = AF_BACKEND_CUDA,
                      bool quiet = true) : device(device) {
       af::setBackend(backend);
       af::setDevice(this->device);
