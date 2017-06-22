@@ -81,7 +81,7 @@ namespace pytorch::impl {
     af::array in = af::unwrap(input, params.filter_x, params.filter_y,
                               params.stride_x, params.stride_y,
                               params.pad_x, params.pad_y);
-    in = af::moddims(af::reorder(in, 0, 2, 1, 3), in.dims(0)*Cin, in.dims(1), 1, batch);
+    in = af::moddims(af::reorder(in, 0, 2, 1, 3), in.dims(0)*Cin, in.dims(1), 1, batch); // comment to use nested for impl
     af::array out = af::constant(0, Cout, h_out*w_out, batch, 1);
     if (has_bias)
       out += af::tile(af::reorder(bias, 2, 3, 0, 1), 1, h_out*w_out, batch, 1);
@@ -93,7 +93,7 @@ namespace pytorch::impl {
 
     for (int i = batch-1; i >= 0; i--) {
 //      for (int k = 0; k < Cin; k++){ // faster for larger input planes (e.g. full size images)
-//        b(af::span, af::span, i, 0) += af::matmul(filters(af::span, af::span, k, 0), in(af::span, af::span, k, i));
+//        out(af::span, af::span, i, 0) += af::matmul(filters(af::span, af::span, k, 0), in(af::span, af::span, k, i));
 //      }
       out(af::span, af::span, i, 0) += af::matmul(filters(af::span, af::span, 0, 0), in(af::span, af::span, 0, i));
     }

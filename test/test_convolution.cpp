@@ -26,14 +26,14 @@
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({64, 1, 5}, {3, 64, 3}, {3, 1, 226}, {3, 1, 226},
-                                            {5}, {64}, {224}, {224},
+  std::vector<af::array> tests = test_setup({64, 1, 5}, {3, 64, 3}, {7, 1, 226}, {7, 1, 226},
+                                            {5}, {64}, {110}, {110},
                                             {"test_conv_filter.dat", "test_conv_bias.dat", "test_conv_img.dat"},
                                             "test_conv");
 
   // tests now has {filters, bias, img, pytorch_out}
 
-  pytorch::conv_params_t params = {3, 3, 1, 1, 0, 0};
+  pytorch::conv_params_t params = {7, 7, 2, 2, 0, 0};
 
   pytorch::Conv2d c(params, tests[0], tests[1]);
 

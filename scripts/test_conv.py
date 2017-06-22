@@ -9,5 +9,5 @@ def test_conv(filts_file, bias_file, img_file):
     bias = Variable(torch.load(bias_file))
     img = Variable(torch.load(img_file))
 
-    output = Funct.conv2d(img, filts, bias.squeeze())
+    output = Funct.conv2d(img, filts, bias.squeeze(), stride=(2, 2))
     return np.float32(output.data.numpy())
