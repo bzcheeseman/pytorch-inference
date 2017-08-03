@@ -10,3 +10,6 @@ def save_tensor(n, k, h, w, filename):
 def load_tensor(filename):
     tensor = torch.load(filename)
     return np.float32(tensor.cpu().numpy())
+
+def load_numpy_tensor(filename):
+    return np.load(filename)
