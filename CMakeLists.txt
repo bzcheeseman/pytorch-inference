@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 project(pytorch_inference)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_C_COMPILER /usr/local/bin/clang-3.7)
-set(CMAKE_CXX_COMPILER /usr/local/bin/clang++-3.7)
+#set(CMAKE_C_COMPILER /usr/local/bin/clang-3.7)
+#set(CMAKE_CXX_COMPILER /usr/local/bin/clang++-3.7)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
@@ -69,68 +69,68 @@ set(EXTRA_LIBS ${CMAKE_THREAD_LIBS_INIT} ${CUDA_LIBRARIES} ${NVVM_LIB})
 
 # ArrayFire is the OpenCL backend, from ArrayFire #####################################
 
-set(SOURCE_FILES
-        main.cpp
-        include/inference_engine.hpp
-        include/utils.hpp
-        include/layers.hpp
-        include/modules/Layer.hpp
-        include/modules/Convolution.hpp
-        include/modules/Pooling.hpp
-        include/modules/Normalization.hpp
-        include/modules/Linear.hpp
-        include/modules/Branch.hpp
-        include/modules/Slice.hpp
-        include/modules/Concatenate.hpp
-        include/modules/Activations.hpp
-        include/modules/Sum.hpp
-        include/modules/Product.hpp
-        include/modules/Difference.hpp
-        include/modules/Divisor.hpp
-        include/modules/Activations_Impl.hpp
-        include/modules/Branch_Impl.hpp
-        include/modules/Concatenate_Impl.hpp
-        include/modules/Convolution_Impl.hpp
-        include/modules/Pooling_Impl.hpp
-        include/modules/Linear_Impl.hpp
-        include/modules/Normalization_Impl.hpp
-        include/modules/Slice_Impl.hpp
-        include/modules/Sum_Impl.hpp
-        include/modules/Product_Impl.hpp
-        include/modules/Difference_Impl.hpp
-        include/modules/Divisor_Impl.hpp)
-
-set(TEST_SOURCE_FILES
-        test/utils.hpp)
-
-MACRO(add_pti_test name)
-    add_executable(test_${name} ${TEST_SOURCE_FILES} test/test_${name}.cpp)
-    target_link_libraries(test_${name} ${PYTHON_LIBRARY} ${EXTRA_LIBS} ${ArrayFire_LIBRARIES})
-    add_test(NAME ${name}
-            COMMAND test_${name}
-            )
-ENDMACRO()
-
-enable_testing()
-
-add_pti_test(activation)
-add_pti_test(branch)
-add_pti_test(concat)
-add_pti_test(convolution)
-add_pti_test(linear)
-add_pti_test(normalization)
-add_pti_test(pooling)
-add_pti_test(slice)
-add_pti_test(sum)
-add_pti_test(diff)
-add_pti_test(product)
-add_pti_test(divisor)
-add_pti_test(exporter)
-
-add_custom_target(test_all
-        COMMAND ctest
-        COMMENT "Testing All" VERBATIM
-        )
-
-add_executable(pytorch_inference ${SOURCE_FILES})
-target_link_libraries(pytorch_inference  ${PYTHON_LIBRARY} ${EXTRA_LIBS} ${ArrayFire_LIBRARIES})
+#set(SOURCE_FILES
+#        main.cpp
+#        include/inference_engine.hpp
+#        include/utils.hpp
+#        include/layers.hpp
+#        include/modules/Layer.hpp
+#        include/modules/Convolution.hpp
+#        include/modules/Pooling.hpp
+#        include/modules/Normalization.hpp
+#        include/modules/Linear.hpp
+#        include/modules/Branch.hpp
+#        include/modules/Slice.hpp
+#        include/modules/Concatenate.hpp
+#        include/modules/Activations.hpp
+#        include/modules/Sum.hpp
+#        include/modules/Product.hpp
+#        include/modules/Difference.hpp
+#        include/modules/Divisor.hpp
+#        include/modules/Activations_Impl.hpp
+#        include/modules/Branch_Impl.hpp
+#        include/modules/Concatenate_Impl.hpp
+#        include/modules/Convolution_Impl.hpp
+#        include/modules/Pooling_Impl.hpp
+#        include/modules/Linear_Impl.hpp
+#        include/modules/Normalization_Impl.hpp
+#        include/modules/Slice_Impl.hpp
+#        include/modules/Sum_Impl.hpp
+#        include/modules/Product_Impl.hpp
+#        include/modules/Difference_Impl.hpp
+#        include/modules/Divisor_Impl.hpp)
+#
+#set(TEST_SOURCE_FILES
+#        test/utils.hpp)
+#
+#MACRO(add_pti_test name)
+#    add_executable(test_${name} ${TEST_SOURCE_FILES} test/test_${name}.cpp)
+#    target_link_libraries(test_${name} ${PYTHON_LIBRARY} ${EXTRA_LIBS} ${ArrayFire_LIBRARIES})
+#    add_test(NAME ${name}
+#            COMMAND test_${name}
+#            )
+#ENDMACRO()
+#
+#enable_testing()
+#
+#add_pti_test(activation)
+#add_pti_test(branch)
+#add_pti_test(concat)
+#add_pti_test(convolution)
+#add_pti_test(linear)
+#add_pti_test(normalization)
+#add_pti_test(pooling)
+#add_pti_test(slice)
+#add_pti_test(sum)
+#add_pti_test(diff)
+#add_pti_test(product)
+#add_pti_test(divisor)
+#add_pti_test(exporter)
+#
+#add_custom_target(test_all
+#        COMMAND ctest
+#        COMMENT "Testing All" VERBATIM
+#        )
+#
+#add_executable(pytorch_inference ${SOURCE_FILES})
+#target_link_libraries(pytorch_inference  ${PYTHON_LIBRARY} ${EXTRA_LIBS} ${ArrayFire_LIBRARIES})
