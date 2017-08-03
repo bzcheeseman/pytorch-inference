@@ -46,7 +46,13 @@ namespace pytorch {
     }
 
     int n, k, h, w;
-    n = dims[0]; k = dims[1]; h = dims[2]; w = dims[3];
+
+    switch (ndim){ // this is not the best way to do this but it's the easy way
+      case 1: h =  dims[0]; n = 1; k = 1; w = 1; break;
+      case 2: h = dims[0]; w = dims[1]; n = 1; k = 1; break;
+      case 3: n = dims[0]; h = dims[1]; w = dims[2]; k = 1; break;
+      case 4: n = dims[0]; k = dims[1]; h = dims[2]; w = dims[3]; break;
+    }
 
     af::array out (w, h, k, n, reinterpret_cast<float *>(PyArray_DATA(array)), afHost);  // errors out here
     out = af::reorder(out, 1, 0, 2, 3);  // reorder to arrayfire specs (h, w, k, batch)
