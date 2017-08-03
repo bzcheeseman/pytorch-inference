@@ -101,7 +101,7 @@ namespace pytorch {
     inline void add_weights(const std::string &weights_filename,
                             const std::vector<int> &weights_dims){
       assert(weights_dims.size() > 0);
-      _object *ws = utils("load_tensor", {pycpp::to_python(weights_filename)}, {});
+      _object *ws = utils("load_numpy_tensor", {pycpp::to_python(weights_filename)}, {});
       assert(ws);
       weights = from_numpy(reinterpret_cast<PyArrayObject *>(ws), weights_dims.size(), weights_dims);
     }
@@ -116,7 +116,7 @@ namespace pytorch {
     inline void add_bias(const std::string &bias_filename,
                          const std::vector<int> &bias_dims){
       assert(bias_dims.size() > 0);
-      _object *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
+      _object *bs = utils("load_numpy_tensor", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
       bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
       check_size(bias.dims(0), weights.dims(0), __func__);

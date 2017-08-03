@@ -11,17 +11,17 @@ find_package(PythonInterp 3.5 REQUIRED)
 find_package(PythonLibs 3.5 REQUIRED)
 
 # Documentation ######################################################################
-find_package(Doxygen)
-
-if(DOXYGEN_FOUND)
-    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile @ONLY)
-    add_custom_target(docs
-            COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile git add ${CMAKE_CURRENT_SOURCE_DIR}/docs
-            SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile
-            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs/
-            COMMENT "Generating API documentation with Doxygen" VERBATIM
-            )
-endif(DOXYGEN_FOUND)
+#find_package(Doxygen)
+#
+#if(DOXYGEN_FOUND)
+#    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile @ONLY)
+#    add_custom_target(docs
+#            COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile git add ${CMAKE_CURRENT_SOURCE_DIR}/docs
+#            SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile
+#            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs/
+#            COMMENT "Generating API documentation with Doxygen" VERBATIM
+#            )
+#endif(DOXYGEN_FOUND)
 
 # Documentation ######################################################################
 

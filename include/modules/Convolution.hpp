@@ -116,7 +116,7 @@ namespace pytorch {
     inline void add_filters(const std::string &filters_filename,
                             const std::vector<int> &filt_dims){
       assert(filt_dims.size() > 0);
-      _object *filts = utils("load_tensor", {pycpp::to_python(filters_filename)}, {});
+      _object *filts = utils("load_numpy_tensor", {pycpp::to_python(filters_filename)}, {});
       assert(filts);
       filters = from_numpy(reinterpret_cast<PyArrayObject *>(filts), filt_dims.size(), filt_dims);
       int Cout = filters.dims(3); int Cin = filters.dims(2);
@@ -135,7 +135,7 @@ namespace pytorch {
     inline void add_bias(const std::string &bias_filename,
                          const std::vector<int> &bias_dims){
       assert(bias_dims.size() > 0);
-      _object *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
+      _object *bs = utils("load_numpy_tensor", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
       bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
       check_size(bias.dims(2), filters.dims(0), __func__);

@@ -107,7 +107,7 @@ namespace pytorch {
     inline void add_gamma(const std::string &gamma_filename = "",
                           const std::vector<int> &gamma_dims = {}){
       assert(gamma_dims.size() > 0);
-      PyObject *g = utils("load_tensor", {pycpp::to_python(gamma_filename)}, {});
+      PyObject *g = utils("load_numpy_tensor", {pycpp::to_python(gamma_filename)}, {});
       assert(g);
       gamma = from_numpy(reinterpret_cast<PyArrayObject *>(g), gamma_dims.size(), gamma_dims);
     }
@@ -121,7 +121,7 @@ namespace pytorch {
     inline void add_beta(const std::string &beta_filename = "",
                          const std::vector<int> &beta_dims = {}){
       assert(beta_dims.size() > 0);
-      PyObject *b = utils("load_tensor", {pycpp::to_python(beta_filename)}, {});
+      PyObject *b = utils("load_numpy_tensor", {pycpp::to_python(beta_filename)}, {});
       assert(b);
       beta = from_numpy(reinterpret_cast<PyArrayObject *>(b), beta_dims.size(), beta_dims);
     }
@@ -135,7 +135,7 @@ namespace pytorch {
     inline void add_running_mean(const std::string &running_mean_filename = "",
                                  const std::vector<int> &running_mean_dims = {}){
       assert(running_mean_dims.size() > 0);
-      PyObject *rm = utils("load_tensor", {pycpp::to_python(running_mean_filename)}, {});
+      PyObject *rm = utils("load_numpy_tensor", {pycpp::to_python(running_mean_filename)}, {});
       assert(rm);
       running_mean = from_numpy(reinterpret_cast<PyArrayObject *>(rm), running_mean_dims.size(), running_mean_dims);
     }
@@ -149,7 +149,7 @@ namespace pytorch {
     inline void add_running_var(const std::string &running_var_filename = "",
                                 const std::vector<int> &running_var_dims = {}){
       assert(running_var_dims.size() > 0);
-      PyObject *rv = utils("load_tensor", {pycpp::to_python(running_var_filename)}, {});
+      PyObject *rv = utils("load_numpy_tensor", {pycpp::to_python(running_var_filename)}, {});
       assert(rv);
       running_var = from_numpy(reinterpret_cast<PyArrayObject *>(rv), running_var_dims.size(), running_var_dims);
     }
