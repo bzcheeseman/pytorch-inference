@@ -19,7 +19,7 @@
 
 // Project
 #include "Layer.hpp"
-#include "Normalization_Impl.hpp"
+#include "../functional/normalization.hpp"
 #include "../py_object.hpp"
 #include "../utils.hpp"
 
@@ -34,10 +34,10 @@ namespace pytorch {
    */
   class BatchNorm2d : public Layer {
   private:
-    af::array gamma;
-    af::array beta;
-    af::array running_mean;
-    af::array running_var;
+    tensor gamma;
+    tensor beta;
+    tensor running_mean;
+    tensor running_var;
     float epsilon;
     pycpp::py_object utils;
   public:
@@ -50,10 +50,10 @@ namespace pytorch {
      * @param running_var The running variance for the batchnorm operation.
      * @param epsilon A factor in the denominator of the transform that adds stability.
      */
-    BatchNorm2d(const af::array &gamma,
-                const af::array &beta,
-                const af::array &running_mean,
-                const af::array &running_var,
+    BatchNorm2d(const tensor &gamma,
+                const tensor &beta,
+                const tensor &running_mean,
+                const tensor &running_var,
                 const float &epsilon = 1e-5) : gamma(gamma), beta(beta),
                                                running_mean(running_mean), running_var(running_var),
                                                epsilon(epsilon) {}
@@ -61,13 +61,13 @@ namespace pytorch {
     /**
      * @brief Constructs a BatchNorm2d object and loads the requisite tensors in from filenames and sizes.
      *
-     * @param gamma_filename The file where gamma can be found. Will be loaded with torch.load(filename).
+     * @param gamma_filename The file where gamma can be found. Will be loaded with numpy.load(filename).
      * @param gamma_dims The dimensions of gamma in pytorch convention (n, k, h, w) (usually = (1, k, 1, 1))
-     * @param beta_filename The file where beta can be found. Will be loaded with torch.load(filename).
+     * @param beta_filename The file where beta can be found. Will be loaded with numpy.load(filename).
      * @param beta_dims The dimensions of beta in pytorch convention (n, k, h, w) (usually = (1, k, 1, 1))
-     * @param running_mean_filename The file where running_mean can be found. Will be loaded with torch.load(filename).
+     * @param running_mean_filename The file where running_mean can be found. Will be loaded with numpy.load(filename).
      * @param running_mean_dims The dimensions of running_mean in pytorch convention (n, k, h, w) (usually = (1, k, 1, 1))
-     * @param running_var_filename the file where running_var can be found. Will be loaded with torch.load(filename).
+     * @param running_var_filename the file where running_var can be found. Will be loaded with numpy.load(filename).
      * @param running_var_dims The dimensions of running_var in pytorch convention (n, k, h, w) (usually = (1, k, 1, 1))
      * @param epsilon A float for numerical stability, 1e-5 by default.
      * @param python_home Where the utility scripts are - holds the loading script necessary to load up the tensors.
@@ -99,59 +99,65 @@ namespace pytorch {
     }
 
     /**
+     * @brief Default destructor - may need some more functionality.
+     * TODO: add filter/bias saving on destroy, corresponding constructor to remake layer
+     */
+    virtual ~BatchNorm2d() = default;
+
+    /**
      * @brief Adds gamma to the layer if the name wasn't passed to the constructor
      *
-     * @param gamma_filename The file where gamma can be found. Will be loaded with torch.load(filename).
+     * @param gamma_filename The file where gamma can be found. Will be loaded with numpy.load(filename).
      * @param gamma_dims The dimensions of gamma in pytorch convention (n, k, h, w) (usually = (1, k, 1, 1))
      */
     inline void add_gamma(const std::string &gamma_filename = "",
                           const std::vector<int> &gamma_dims = {}){
       assert(gamma_dims.size() > 0);
-      PyObject *g = utils("load_tensor", {pycpp::to_python(gamma_filename)}, {});
+      PyObject *g = utils("load_array", {pycpp::to_python(gamma_filename)}, {});
       assert(g);
-      gamma = from_numpy(reinterpret_cast<PyArrayObject *>(g), gamma_dims.size(), gamma_dims);
+      gamma = internal::from_numpy(reinterpret_cast<PyArrayObject *>(g), gamma_dims.size(), gamma_dims);
     }
 
     /**
      * @brief Adds beta if it wasn't added by the constructor.
      *
-     * @param beta_filename The file where beta can be found. Will be loaded with torch.load(filename).
+     * @param beta_filename The file where beta can be found. Will be loaded with numpy.load(filename).
      * @param beta_dims The dimensions of beta in pytorch convention (n, k, h, w) (usually = (1, k, 1, 1))
      */
     inline void add_beta(const std::string &beta_filename = "",
                          const std::vector<int> &beta_dims = {}){
       assert(beta_dims.size() > 0);
-      PyObject *b = utils("load_tensor", {pycpp::to_python(beta_filename)}, {});
+      PyObject *b = utils("load_array", {pycpp::to_python(beta_filename)}, {});
       assert(b);
-      beta = from_numpy(reinterpret_cast<PyArrayObject *>(b), beta_dims.size(), beta_dims);
+      beta = internal::from_numpy(reinterpret_cast<PyArrayObject *>(b), beta_dims.size(), beta_dims);
     }
 
     /**
      * @brief Adds running_mean if it wasn't added by the constructor.
      *
-     * @param running_mean_filename The file where running_mean can be found. Will be loaded with torch.load(filename).
+     * @param running_mean_filename The file where running_mean can be found. Will be loaded with numpy.load(filename).
      * @param running_mean_dims The dimensions of running_mean in pytorch convention (n, k, h, w) (usually = (1, k, 1, 1))
      */
     inline void add_running_mean(const std::string &running_mean_filename = "",
                                  const std::vector<int> &running_mean_dims = {}){
       assert(running_mean_dims.size() > 0);
-      PyObject *rm = utils("load_tensor", {pycpp::to_python(running_mean_filename)}, {});
+      PyObject *rm = utils("load_array", {pycpp::to_python(running_mean_filename)}, {});
       assert(rm);
-      running_mean = from_numpy(reinterpret_cast<PyArrayObject *>(rm), running_mean_dims.size(), running_mean_dims);
+      running_mean = internal::from_numpy(reinterpret_cast<PyArrayObject *>(rm), running_mean_dims.size(), running_mean_dims);
     }
 
     /**
      * @brief Adds running_var if it wasn't added by the constructor.
      *
-     * @param running_var_filename the file where running_var can be found. Will be loaded with torch.load(filename).
+     * @param running_var_filename the file where running_var can be found. Will be loaded with numpy.load(filename).
      * @param running_var_dims The dimensions of running_var in pytorch convention (n, k, h, w) (usually = (1, k, 1, 1))
      */
     inline void add_running_var(const std::string &running_var_filename = "",
                                 const std::vector<int> &running_var_dims = {}){
       assert(running_var_dims.size() > 0);
-      PyObject *rv = utils("load_tensor", {pycpp::to_python(running_var_filename)}, {});
+      PyObject *rv = utils("load_array", {pycpp::to_python(running_var_filename)}, {});
       assert(rv);
-      running_var = from_numpy(reinterpret_cast<PyArrayObject *>(rv), running_var_dims.size(), running_var_dims);
+      running_var = internal::from_numpy(reinterpret_cast<PyArrayObject *>(rv), running_var_dims.size(), running_var_dims);
     }
 
     /**
@@ -160,8 +166,8 @@ namespace pytorch {
      * @param input The input data to be normalized.
      * @return The normalized data. The size has not changed.
      */
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return {impl::batchnorm2d(gamma, beta, running_mean, running_var, epsilon, input[0])};
+    inline std::vector<tensor> forward(const std::vector<tensor> &input){
+      return {functional::batchnorm2d(gamma, beta, running_mean, running_var, epsilon, input[0])};
     }
 
     /**
@@ -170,8 +176,8 @@ namespace pytorch {
      * @param input The input data to be normalized.
      * @return The normalized data. The size has not changed.
      */
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return {impl::batchnorm2d(gamma, beta, running_mean, running_var, epsilon, input[0])};
+    inline std::vector<tensor> operator()(const std::vector<tensor> &input){
+      return {functional::batchnorm2d(gamma, beta, running_mean, running_var, epsilon, input[0])};
     }
 
   };

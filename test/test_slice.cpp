@@ -11,7 +11,7 @@
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({1}, {4}, {80}, {80},
+  std::vector<pytorch::tensor> tests = test_setup({1}, {4}, {80}, {80},
                                             {1, 1}, {2, 2}, {80, 80}, {80, 80},
                                             {"test_slice_img.dat"},
                                             "test_slice");

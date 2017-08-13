@@ -57,15 +57,14 @@ namespace pytorch {
       return layers[depth][width];
     }
 
-    inline af::array forward(const std::vector<af::array> &input){
-      std::vector<af::array> out = input;
-      check_num_leq(out.size(), 10, __func__); // there are checks in each layer to make sure it's less than 10
+    inline tensor forward(const std::vector<tensor> &input){
+      std::vector<tensor> out = input;
       for (auto &layer : layers){
         if (layer.size() == 1) {
           out = layer[0]->forward(out);
         }
         else{
-          check_size(out.size(), layer.size(), __func__); // make sure there are enough inputs
+          internal::check_size(out.size(), layer.size(), __func__); // make sure there are enough inputs
           int wid = layer.size();
           for (int i = 0; i < wid; i++){
             out[i] = layer[i]->forward({out[i]})[0];

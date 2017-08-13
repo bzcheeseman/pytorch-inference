@@ -12,7 +12,10 @@
 // ArrayFire
 #include <arrayfire.h>
 
-namespace pytorch::impl {
+// Project
+#include "../storage/tensor.hpp"
+
+namespace pytorch::functional {
   /**
    * @brief Performs the linear transformation y = Wx + b
    *
@@ -21,22 +24,22 @@ namespace pytorch::impl {
    * @param input The input x
    * @return The transformed input (a.k.a. output) y
    */
-  inline af::array linear(const af::array &input,
-                          const af::array &weight,
-                          const af::array &bias,
+  inline tensor linear(const tensor &input,
+                          const tensor &weight,
+                          const tensor &bias,
                           const bool &has_bias){
-    long batch = input.dims(3);
-    long flat = input.dims(0) * input.dims(1) * input.dims(2);
+    long batch = input.data().dims(3);
+    long flat = input.data().dims(0) * input.data().dims(1) * input.data().dims(2);
 
-    check_size(weight.dims(1), flat, __func__);
+    internal::check_size(weight.data().dims(1), flat, __func__);
 
-    af::array out = af::matmul(weight, af::moddims(af::transpose(input), flat, batch));
+    af::array out = af::matmul(weight.data(), af::moddims(af::transpose(input.data()), flat, batch));
     if (has_bias)
-      out += af::tile(bias, 1, batch);
+      out += af::tile(bias.data(), 1, batch);
 
     out = af::reorder(out, 0, 3, 2, 1);
 
-    return out;
+    return tensor(out);
   }
 }
 

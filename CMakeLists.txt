@@ -87,18 +87,22 @@ set(SOURCE_FILES
         include/modules/Product.hpp
         include/modules/Difference.hpp
         include/modules/Divisor.hpp
-        include/modules/Activations_Impl.hpp
-        include/modules/Branch_Impl.hpp
-        include/modules/Concatenate_Impl.hpp
-        include/modules/Convolution_Impl.hpp
-        include/modules/Pooling_Impl.hpp
-        include/modules/Linear_Impl.hpp
-        include/modules/Normalization_Impl.hpp
-        include/modules/Slice_Impl.hpp
-        include/modules/Sum_Impl.hpp
-        include/modules/Product_Impl.hpp
-        include/modules/Difference_Impl.hpp
-        include/modules/Divisor_Impl.hpp)
+        include/functional/activations.hpp
+        include/functional/branch.hpp
+        include/functional/concatenate.hpp
+        include/functional/convolution.hpp
+        include/functional/pooling.hpp
+        include/functional/linear.hpp
+        include/functional/normalization.hpp
+        include/functional/slice.hpp
+        include/functional/sum.hpp
+        include/functional/product.hpp
+        include/functional/difference.hpp
+        include/functional/divisor.hpp
+        include/modules/RNN.hpp
+        include/functional/rnn.hpp
+
+        include/storage/tensor.hpp)
 
 set(TEST_SOURCE_FILES
         test/utils.hpp)
@@ -126,6 +130,7 @@ add_pti_test(diff)
 add_pti_test(product)
 add_pti_test(divisor)
 add_pti_test(exporter)
+add_pti_test(rnn)
 
 add_custom_target(test_all
         COMMAND ctest

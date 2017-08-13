@@ -32,7 +32,7 @@ def emit_module_cpp(module, name):
     linear_counter = 1
 
     output_string_overall = "#include \"../include/layers.hpp\"\n#include \"../include/inference_engine.hpp\"\n\n"
-    output_string_overall += "af::array %s_forward(const af::array &input) {\n" % name
+    output_string_overall += "pytorch::tensor %s_forward(const pytorch::tensor &input) {\n" % name
     output_string_overall += "pytorch::inference_engine engine;\n\n"
 
     for mod in module.modules():
@@ -174,14 +174,14 @@ def emit_module_cpp(module, name):
             output_string_overall += out_string
             # print(out_string)
 
-    output_string_overall += "\naf::array output = engine.forward({input});\noutput.eval();\naf::sync();" \
+    output_string_overall += "\npytorch::tensor output = engine.forward({input});\noutput.eval();\naf::sync();" \
                              "\nreturn output;\n}"
     return output_string_overall
 
 
 def run():
     alexnet = tv.models.alexnet(True).cuda()
-    net = nn.Linear(1000, 10)
+    net = nn.Linear(1000, 10).cuda()
 
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(net.parameters(), lr=1e-3, weight_decay=1e-6)
@@ -203,18 +203,23 @@ def run():
     # for i in range(len(data)):
     #     imshow(data[i][0], "img_%d"%i)
 
-    train_loader = torch.utils.data.DataLoader(data, batch_size=10, shuffle=True, num_workers=4)
+    train_loader = torch.utils.data.DataLoader(data, batch_size=10, shuffle=False, num_workers=4)
+
+    feats = []
+    for i, data in enumerate(train_loader, 0):
+        image, label = data
+        image = Variable(image).cuda()
+        thousand = alexnet(image).detach()
+        feats.append(thousand)
 
     running_loss = 0.0
     for epoch in range(5):
         for i, data in enumerate(train_loader, 0):
             image, label = data
-            image = Variable(image).cuda()
-            label = Variable(label)
+            label = Variable(label).cuda()
 
             optimizer.zero_grad()
-            thousand = alexnet(image).detach().cpu()
-            prediction = net(thousand)
+            prediction = net(feats[i])
             loss = criterion(prediction, label)
             loss.backward()
             running_loss += loss.data[0]

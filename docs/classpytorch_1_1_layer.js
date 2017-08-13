@@ -1,5 +1,5 @@
 var classpytorch_1_1_layer =
 [
-    [ "forward", "classpytorch_1_1_layer.html#a1abb45857b18f70a9a95ae16a69f968d", null ],
-    [ "operator()", "classpytorch_1_1_layer.html#a7a766ac20be5e818e497e6f2f05a2c8d", null ]
+    [ "forward", "classpytorch_1_1_layer.html#aa4eef41dde3e7a2b6853e4ff4d553ed3", null ],
+    [ "operator()", "classpytorch_1_1_layer.html#a99a644aa88713cb9f6803224c5156f24", null ]
 ];

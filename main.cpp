@@ -10,61 +10,61 @@ int main() {
   // Set up data - this just creates random tensors in the specified shapes
   pycpp::python_home = "../scripts";
   pycpp::py_object test ("test");
-  test("save_tensor", {pycpp::to_python(16), // out_filters
+  test("save_array", {pycpp::to_python(16), // out_filters
                        pycpp::to_python(3), // in_filters
                        pycpp::to_python(3),
                        pycpp::to_python(3),
                        pycpp::to_python("filts.dat")});
 
-  test("save_tensor", {pycpp::to_python(1),
+  test("save_array", {pycpp::to_python(1),
                        pycpp::to_python(16), // out_filters
                        pycpp::to_python(1),
                        pycpp::to_python(1),
                        pycpp::to_python("bias.dat")});
 
-  test("save_tensor", {pycpp::to_python(1),
+  test("save_array", {pycpp::to_python(1),
                        pycpp::to_python(16),
                        pycpp::to_python(1),
                        pycpp::to_python(1),
                        pycpp::to_python("gamma.dat")});
 
-  test("save_tensor", {pycpp::to_python(1),
+  test("save_array", {pycpp::to_python(1),
                        pycpp::to_python(16),
                        pycpp::to_python(1),
                        pycpp::to_python(1),
                        pycpp::to_python("beta.dat")});
 
-  test("save_tensor", {pycpp::to_python(1),
+  test("save_array", {pycpp::to_python(1),
                        pycpp::to_python(16),
                        pycpp::to_python(1),
                        pycpp::to_python(1),
                        pycpp::to_python("rm.dat")});
 
-  test("save_tensor", {pycpp::to_python(1),
+  test("save_array", {pycpp::to_python(1),
                        pycpp::to_python(16),
                        pycpp::to_python(1),
                        pycpp::to_python(1),
                        pycpp::to_python("rv.dat")});
 
-  test("save_tensor", {pycpp::to_python(2), // batch
+  test("save_array", {pycpp::to_python(2), // batch
                        pycpp::to_python(3), // in_filters
                        pycpp::to_python(224), // change back to 224
                        pycpp::to_python(224), // change back to 224
                        pycpp::to_python("img.dat")});
 
-  test("save_tensor", {pycpp::to_python(1),  // no batch
+  test("save_array", {pycpp::to_python(1),  // no batch
                        pycpp::to_python(1),  // no filters
                        pycpp::to_python(3),  // output size
                        pycpp::to_python(56*56*16),  // input size
                        pycpp::to_python("lin_weight.dat")});
 
-  test("save_tensor", {pycpp::to_python(1),  // no batch
+  test("save_array", {pycpp::to_python(1),  // no batch
                        pycpp::to_python(1),  // no filters
                        pycpp::to_python(3),  // output size
                        pycpp::to_python(1),  // vector
                        pycpp::to_python("lin_bias.dat")});
 
-  PyObject *i = test("load_tensor", {pycpp::to_python("img.dat")}, {});
+  PyObject *i = test("load_array", {pycpp::to_python("img.dat")}, {});
 
   af::timer::start();
   PyObject *pto = test("test_conv", {pycpp::to_python("filts.dat"),
@@ -78,10 +78,10 @@ int main() {
   pytorch::inference_engine engine;
 
   // Load up the image and target
-  auto image = pytorch::from_numpy((PyArrayObject *)i, 4, {2, 3, 224, 224});
-  auto pytorch_out = pytorch::from_numpy((PyArrayObject *)pto, 4, {2, 3, 1, 1});
+  pytorch::tensor image = pytorch::internal::from_numpy((PyArrayObject *)i, 4, {2, 3, 224, 224});
+  pytorch::tensor pytorch_out = pytorch::internal::from_numpy((PyArrayObject *)pto, 4, {2, 3, 1, 1});
   // need to reorder if it's coming out of a linear layer
-  pytorch_out = af::array(pytorch_out, 3, 1, 1, 2);  // Get the output from pytorch - this is the result we
+  pytorch_out = af::array(pytorch_out.data(), 3, 1, 1, 2);  // Get the output from pytorch - this is the result we
                                                        // want to replicate
 
   pytorch::conv_params_t params = {3, 3, 1, 1, 1, 1};  // filter_x, filter_y, stride_x, stride_y, pad_x, pad_y
@@ -117,15 +117,15 @@ int main() {
   int iters = 10;
   af::timer::start();
   for (int i = 0; i < iters; i++){
-    af::array output = engine.forward({image});
+    pytorch::tensor output = engine.forward({image});
     output.eval();
   }
   af::sync();
   std::cout << "forward took: " << af::timer::stop()/iters << " s (on average)" << std::endl;
 
   // Check correctness
-  af::array output = engine.forward({image});
-  af_print((pytorch_out - output));
+  pytorch::tensor output = engine.forward({image});
+  af_print((pytorch_out.data() - output.data()));
 
   return 0;
 }

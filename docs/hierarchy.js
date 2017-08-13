@@ -1,6 +1,5 @@
 var hierarchy =
 [
-    [ "pytorch::conv_params_t", "structpytorch_1_1conv__params__t.html", null ],
     [ "pytorch::inference_engine", "classpytorch_1_1inference__engine.html", null ],
     [ "pytorch::Layer", "classpytorch_1_1_layer.html", [
       [ "pytorch::AvgPool2d", "classpytorch_1_1_avg_pool2d.html", null ],
@@ -24,6 +23,6 @@ var hierarchy =
       [ "pytorch::Tanh", "classpytorch_1_1_tanh.html", null ]
     ] ],
     [ "MaxUnool2d", "class_max_unool2d.html", null ],
-    [ "pytorch::pooling_params_t", "structpytorch_1_1pooling__params__t.html", null ],
-    [ "pycpp::py_object", "classpycpp_1_1py__object.html", null ]
+    [ "pycpp::py_object", "classpycpp_1_1py__object.html", null ],
+    [ "pytorch::RNN", "classpytorch_1_1_r_n_n.html", null ]
 ];

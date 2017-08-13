@@ -12,7 +12,7 @@
 
 int main(){
   af::setBackend(AF_BACKEND_CPU);
-  std::vector<af::array> tests = test_setup({5}, {32}, {64}, {64},
+  std::vector<pytorch::tensor> tests = test_setup({5}, {32}, {64}, {64},
                                             {5, 5, 5}, {32, 32, 32}, {33, 64, 33}, {64, 64, 64},
                                             {"test_pool_img.dat"},
                                             "test_pool");

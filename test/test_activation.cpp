@@ -11,10 +11,10 @@
 #include "utils.hpp"
 
 int main() {
-  std::vector<af::array> tests = test_setup({30}, {1}, {500}, {1},
+  std::vector<pytorch::tensor> tests = test_setup({30}, {1}, {50}, {1},
                                             {30, 30, 30, 30, 30},
                                             {1, 1, 1, 1, 1},
-                                            {500, 500, 500, 500, 500},
+                                            {50, 50, 50, 50, 50},
                                             {1, 1, 1, 1, 1},
                                             {"test_activation.dat"},
                                             "test_act");
@@ -27,7 +27,7 @@ int main() {
   auto tanh_out = t({tests[0]})[0];
   auto hardtanh_out = ht({tests[0]})[0];
   auto relu_out = r({tests[0]})[0];
-  auto softmax_out = so({tests[0]})[0];
+  auto softmax_out = so({tests[0]})[0];  // can only use softmax on vectors
   std::cout << "arrayfire forward took (s): " << af::timer::stop() << std::endl;
 
   assert(almost_equal(sigmoid_out, tests[1]));

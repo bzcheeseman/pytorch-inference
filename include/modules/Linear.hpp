@@ -20,7 +20,7 @@
 
 // Project
 #include "Layer.hpp"
-#include "Linear_Impl.hpp"
+#include "../functional/linear.hpp"
 #include "../py_object.hpp"
 #include "../utils.hpp"
 
@@ -35,8 +35,8 @@ namespace pytorch {
    */
   class Linear : public Layer {
   private:
-    af::array weights;
-    af::array bias;
+    tensor weights;
+    tensor bias;
     pycpp::py_object utils;
     bool has_bias = false;
 
@@ -47,17 +47,17 @@ namespace pytorch {
      * @param weights The trained weight tensors. For those comfortable with Py_Cpp.
      * @param bias The trained bias tensors. For those comfortable with Py_Cpp. Can be initialized to zero.
      */
-    Linear(const af::array &weights,
-           const af::array &bias) : weights(weights), bias(bias), has_bias(true) {
-      check_size(bias.dims(0), weights.dims(0), __func__);
+    Linear(const tensor &weights,
+           const tensor &bias) : weights(weights), bias(bias), has_bias(true) {
+      internal::check_size(bias.data().dims(0), weights.data().dims(0), __func__);
     }
 
     /**
      * @brief Constructs a Linear object given the filenames and sizes of the requisite tensors.
      *
-     * @param weights_filename The file where the weights tensor is saved. Will be loaded with torch.load(filename).
+     * @param weights_filename The file where the weights tensor is saved. Will be loaded with numpy.load(filename).
      * @param weights_dims The dimensions of the weights tensor in pytorch convention - (batch, channels, h, w)
-     * @param bias_filename The file where the bias tensor is saved. Will be loaded with torch.load(filename).
+     * @param bias_filename The file where the bias tensor is saved. Will be loaded with numpy.load(filename).
      * @param bias_dims The dimensions of the bias tensor in pytorch convention - (batch, channels, h, w)
      * @param python_home Where the utility scripts are - holds the loading script necessary to load up the tensors.
      */
@@ -88,6 +88,7 @@ namespace pytorch {
 
     /**
      * @brief Destructor - for now trivial, may need to take on some functionality.
+     * TODO: add filter/bias saving on destroy, corresponding constructor to remake layer
      */
     virtual ~Linear() {}
 
@@ -95,31 +96,31 @@ namespace pytorch {
      * @brief Read in weights from a file given here if it wasn't passed to the constructor. Overwrites
      * current contents of this->weights.
      *
-     * @param weights_filename The file where the weights tensor is saved. Will be loaded with torch.load(filename).
+     * @param weights_filename The file where the weights tensor is saved. Will be loaded with numpy.load(filename).
      * @param weights_dims The dimensions of the weights tensor in pytorch convention - (batch, channels, h, w)
      */
     inline void add_weights(const std::string &weights_filename,
                             const std::vector<int> &weights_dims){
       assert(weights_dims.size() > 0);
-      _object *ws = utils("load_tensor", {pycpp::to_python(weights_filename)}, {});
+      _object *ws = utils("load_array", {pycpp::to_python(weights_filename)}, {});
       assert(ws);
-      weights = from_numpy(reinterpret_cast<PyArrayObject *>(ws), weights_dims.size(), weights_dims);
+      weights = internal::from_numpy(reinterpret_cast<PyArrayObject *>(ws), weights_dims.size(), weights_dims);
     }
 
     /**
      * @brief Read in bias from a file given here if it wasn't passed to the constructor. Overwrites
      * current contents of this->bias.
      *
-     * @param bias_filename The file where the bias tensor is saved. Will be loaded with torch.load(filename).
+     * @param bias_filename The file where the bias tensor is saved. Will be loaded with numpy.load(filename).
      * @param bias_dims The dimensions of the bias tensor in pytorch convention - (batch, channels, h, w)
      */
     inline void add_bias(const std::string &bias_filename,
                          const std::vector<int> &bias_dims){
       assert(bias_dims.size() > 0);
-      _object *bs = utils("load_tensor", {pycpp::to_python(bias_filename)}, {});
+      _object *bs = utils("load_array", {pycpp::to_python(bias_filename)}, {});
       assert(bs);
-      bias = from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
-      check_size(bias.dims(0), weights.dims(0), __func__);
+      bias = internal::from_numpy(reinterpret_cast<PyArrayObject *>(bs), bias_dims.size(), bias_dims);
+      internal::check_size(bias.data().dims(0), weights.data().dims(0), __func__);
       this->has_bias = true;
     }
 
@@ -130,8 +131,8 @@ namespace pytorch {
      * @param input Input data size (dims_in, 1, 1, batch)
      * @return Transformed data size (dims_out, 1, batch)
      */
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return {impl::linear(input[0], weights, bias, this->has_bias)};
+    inline std::vector<tensor> forward(const std::vector<tensor> &input){
+      return {functional::linear(input[0], weights, bias, this->has_bias)};
     }
 
     /**
@@ -141,8 +142,8 @@ namespace pytorch {
      * @param input Input data size (dims_in, 1, 1, batch)
      * @return Transformed data size (dims_out, 1, batch)
      */
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return {impl::linear(input[0], weights, bias, this->has_bias)};
+    inline std::vector<tensor> operator()(const std::vector<tensor> &input){
+      return {functional::linear(input[0], weights, bias, this->has_bias)};
     }
 
   };

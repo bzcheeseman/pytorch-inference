@@ -103,12 +103,12 @@ Inheritance diagram for pytorch::Sum:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a81434446d8fc70ad844d5917b2a8080b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_sum.html#a81434446d8fc70ad844d5917b2a8080b">Sum</a> (const int &amp;<a class="el" href="classpytorch_1_1_sum.html#a5ec47cebd9215d443497838781c37db8">dim</a>, const int &amp;<a class="el" href="classpytorch_1_1_sum.html#acceacfb58348a3a3113c1b102672be0c">n_tensors</a>)</td></tr>
 <tr class="separator:a81434446d8fc70ad844d5917b2a8080b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a245f536c69ac5a00cae3da031323f379"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_sum.html#a245f536c69ac5a00cae3da031323f379">forward</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
-<tr class="memdesc:a245f536c69ac5a00cae3da031323f379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function for this layer.  <a href="#a245f536c69ac5a00cae3da031323f379">More...</a><br /></td></tr>
-<tr class="separator:a245f536c69ac5a00cae3da031323f379"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8cabf11163b25c80425d2bbca0e6558"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_sum.html#aa8cabf11163b25c80425d2bbca0e6558">operator()</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
-<tr class="memdesc:aa8cabf11163b25c80425d2bbca0e6558"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function for this layer.  <a href="#aa8cabf11163b25c80425d2bbca0e6558">More...</a><br /></td></tr>
-<tr class="separator:aa8cabf11163b25c80425d2bbca0e6558"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75f4e818f774e804c7f4dca9603e238b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; tensor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_sum.html#a75f4e818f774e804c7f4dca9603e238b">forward</a> (const std::vector&lt; tensor &gt; &amp;input)</td></tr>
+<tr class="memdesc:a75f4e818f774e804c7f4dca9603e238b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function for this layer.  <a href="#a75f4e818f774e804c7f4dca9603e238b">More...</a><br /></td></tr>
+<tr class="separator:a75f4e818f774e804c7f4dca9603e238b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a406c26d6b58262fded9ffae3963714d0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; tensor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_sum.html#a406c26d6b58262fded9ffae3963714d0">operator()</a> (const std::vector&lt; tensor &gt; &amp;input)</td></tr>
+<tr class="memdesc:a406c26d6b58262fded9ffae3963714d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function for this layer.  <a href="#a406c26d6b58262fded9ffae3963714d0">More...</a><br /></td></tr>
+<tr class="separator:a406c26d6b58262fded9ffae3963714d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -155,8 +155,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a245f536c69ac5a00cae3da031323f379"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a245f536c69ac5a00cae3da031323f379">&#9670;&nbsp;</a></span>forward()</h2>
+<a id="a75f4e818f774e804c7f4dca9603e238b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75f4e818f774e804c7f4dca9603e238b">&#9670;&nbsp;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,9 +165,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;af::array&gt; pytorch::Sum::forward </td>
+          <td class="memname">std::vector&lt;tensor&gt; pytorch::Sum::forward </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; af::array &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; tensor &gt; &amp;&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
           <td></td>
         </tr>
@@ -188,12 +188,12 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The output of this layer </dd></dl>
 
-<p>Implements <a class="el" href="classpytorch_1_1_layer.html#a1abb45857b18f70a9a95ae16a69f968d">pytorch::Layer</a>.</p>
+<p>Implements <a class="el" href="classpytorch_1_1_layer.html#aa4eef41dde3e7a2b6853e4ff4d553ed3">pytorch::Layer</a>.</p>
 
 </div>
 </div>
-<a id="aa8cabf11163b25c80425d2bbca0e6558"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8cabf11163b25c80425d2bbca0e6558">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a406c26d6b58262fded9ffae3963714d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a406c26d6b58262fded9ffae3963714d0">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,9 +202,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;af::array&gt; pytorch::Sum::operator() </td>
+          <td class="memname">std::vector&lt;tensor&gt; pytorch::Sum::operator() </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; af::array &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; tensor &gt; &amp;&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
           <td></td>
         </tr>
@@ -225,7 +225,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The output of this layer </dd></dl>
 
-<p>Implements <a class="el" href="classpytorch_1_1_layer.html#a7a766ac20be5e818e497e6f2f05a2c8d">pytorch::Layer</a>.</p>
+<p>Implements <a class="el" href="classpytorch_1_1_layer.html#a99a644aa88713cb9f6803224c5156f24">pytorch::Layer</a>.</p>
 
 </div>
 </div>

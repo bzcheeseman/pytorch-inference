@@ -18,12 +18,10 @@
 // Project
 #include "../utils.hpp"
 
-namespace pytorch::impl {
-  inline std::vector<af::array> copy_branch(const af::array &input, const int &copies){
-    check_num_leq(copies, 10, __func__);
-    std::vector<af::array> out (copies, input);
-    return out;
+namespace pytorch::functional {
+  inline std::vector<tensor> copy_branch(const tensor &input, const int &copies){
+    return std::vector<tensor> (copies, input);
   }
-} // pytorch::impl
+} // pytorch::functional
 
 #endif //PYTORCH_INFERENCE_BRANCH_IMPL_HPP

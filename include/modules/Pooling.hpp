@@ -17,7 +17,7 @@
 
 // Project
 #include "Layer.hpp"
-#include "Pooling_Impl.hpp"
+#include "../functional/pooling.hpp"
 
 namespace pytorch {
   /**
@@ -32,7 +32,7 @@ namespace pytorch {
   class MaxPool2d : public Layer {
   private:
     pooling_params_t params;
-    af::array indices;
+    tensor indices;
   public:
     /**
      * @brief Constructs the MaxPool2d layer. Requires pooling parameters that are functionally equivalent to
@@ -42,7 +42,7 @@ namespace pytorch {
      */
     MaxPool2d(const pooling_params_t &params) : params(params) {}
 
-    inline af::array get_indices() const {
+    inline tensor get_indices() const {
       return indices;
     }
 
@@ -52,8 +52,8 @@ namespace pytorch {
      * @param input The input array to be pooled
      * @return The pooled array
      */
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return {impl::maxpool(params, input[0], indices)};
+    inline std::vector<tensor> forward(const std::vector<tensor> &input){
+      return {functional::maxpool(params, input[0], indices)};
     }
 
     /**
@@ -62,8 +62,8 @@ namespace pytorch {
      * @param input The input array to be pooled
      * @return The pooled array
      */
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return {impl::maxpool(params, input[0], indices)};
+    inline std::vector<tensor> operator()(const std::vector<tensor> &input){
+      return {functional::maxpool(params, input[0], indices)};
     }
   };
 
@@ -94,8 +94,8 @@ namespace pytorch {
      * @param input The input array to be unpooled
      * @return The unpooled array
      */
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return {impl::unpool(params, input[0], mp_ref->get_indices())};
+    inline std::vector<tensor> forward(const std::vector<tensor> &input){
+      return {functional::unpool(params, input[0], mp_ref->get_indices())};
     }
 
     /**
@@ -104,8 +104,8 @@ namespace pytorch {
      * @param input The input array to be unpooled
      * @return The unpooled array
      */
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return {impl::unpool(params, input[0], mp_ref->get_indices())};
+    inline std::vector<tensor> operator()(const std::vector<tensor> &input){
+      return {functional::unpool(params, input[0], mp_ref->get_indices())};
     }
   };
 
@@ -135,8 +135,8 @@ namespace pytorch {
      * @param input The input array to be pooled
      * @return The pooled array
      */
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return {impl::avgpool(params, input[0])};
+    inline std::vector<tensor> forward(const std::vector<tensor> &input){
+      return {functional::avgpool(params, input[0])};
     }
 
     /**
@@ -145,8 +145,8 @@ namespace pytorch {
      * @param input The input array to be pooled
      * @return The pooled array
      */
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return {impl::avgpool(params, input[0])};
+    inline std::vector<tensor> operator()(const std::vector<tensor> &input){
+      return {functional::avgpool(params, input[0])};
     }
   };
 } // pytorch

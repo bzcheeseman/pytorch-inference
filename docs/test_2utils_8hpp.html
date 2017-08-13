@@ -91,6 +91,7 @@ $(document).ready(function(){initNavTree('test_2utils_8hpp.html','');});
 <code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;arrayfire.h&gt;</code><br />
+<code>#include &quot;../include/storage/tensor.hpp&quot;</code><br />
 <code>#include &quot;<a class="el" href="include_2utils_8hpp_source.html">../include/utils.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="py__object_8hpp_source.html">../include/py_object.hpp</a>&quot;</code><br />
 </div>
@@ -103,10 +104,12 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8b35521ac52846b0f926b91755016c0d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test_2utils_8hpp.html#a8b35521ac52846b0f926b91755016c0d">test_setup</a> (const std::vector&lt; int &gt; &amp;n, const std::vector&lt; int &gt; &amp;k, const std::vector&lt; int &gt; &amp;h, const std::vector&lt; int &gt; &amp;w, const std::vector&lt; int &gt; &amp;out_n, const std::vector&lt; int &gt; &amp;out_k, const std::vector&lt; int &gt; &amp;out_h, const std::vector&lt; int &gt; &amp;out_w, const std::vector&lt; std::string &gt; &amp;save_file, const std::string &amp;python_function)</td></tr>
-<tr class="separator:a8b35521ac52846b0f926b91755016c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6383e5dd0dc83be45ed706b9cccefe3c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test_2utils_8hpp.html#a6383e5dd0dc83be45ed706b9cccefe3c">almost_equal</a> (const af::array &amp;first, const af::array &amp;second, const float &amp;epsilon=1e-4)</td></tr>
-<tr class="separator:a6383e5dd0dc83be45ed706b9cccefe3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b15d040035aa5605640323c6acfb841"><td class="memItemLeft" align="right" valign="top">std::vector&lt; pytorch::tensor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test_2utils_8hpp.html#a3b15d040035aa5605640323c6acfb841">test_setup</a> (const std::vector&lt; int &gt; &amp;n, const std::vector&lt; int &gt; &amp;k, const std::vector&lt; int &gt; &amp;h, const std::vector&lt; int &gt; &amp;w, const std::vector&lt; int &gt; &amp;out_n, const std::vector&lt; int &gt; &amp;out_k, const std::vector&lt; int &gt; &amp;out_h, const std::vector&lt; int &gt; &amp;out_w, const std::vector&lt; std::string &gt; &amp;save_file, const std::string &amp;python_function)</td></tr>
+<tr class="separator:a3b15d040035aa5605640323c6acfb841"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae349690ebc71ecdef15c57b442312052"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test_2utils_8hpp.html#ae349690ebc71ecdef15c57b442312052">almost_equal</a> (const af::array &amp;first, const af::array &amp;second, const float &amp;epsilon=std::numeric_limits&lt; float &gt;::epsilon() *500)</td></tr>
+<tr class="separator:ae349690ebc71ecdef15c57b442312052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19d4791ea932ecbf108243d4c38c2f6c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test_2utils_8hpp.html#a19d4791ea932ecbf108243d4c38c2f6c">almost_equal</a> (const pytorch::tensor &amp;first, const pytorch::tensor &amp;second, const float &amp;epsilon=std::numeric_limits&lt; float &gt;::epsilon() *500)</td></tr>
+<tr class="separator:a19d4791ea932ecbf108243d4c38c2f6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ab6e6ee86736f9ebb56e74ae21bf3ff8a"></a>
@@ -124,8 +127,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a6383e5dd0dc83be45ed706b9cccefe3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6383e5dd0dc83be45ed706b9cccefe3c">&#9670;&nbsp;</a></span>almost_equal()</h2>
+<a id="ae349690ebc71ecdef15c57b442312052"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae349690ebc71ecdef15c57b442312052">&#9670;&nbsp;</a></span>almost_equal() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -149,7 +152,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const float &amp;&#160;</td>
-          <td class="paramname"><em>epsilon</em> = <code>1e-4</code>&#160;</td>
+          <td class="paramname"><em>epsilon</em> = <code>std::numeric_limits&lt;float&gt;::epsilon()*500</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -166,8 +169,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8b35521ac52846b0f926b91755016c0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b35521ac52846b0f926b91755016c0d">&#9670;&nbsp;</a></span>test_setup()</h2>
+<a id="a19d4791ea932ecbf108243d4c38c2f6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19d4791ea932ecbf108243d4c38c2f6c">&#9670;&nbsp;</a></span>almost_equal() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -176,7 +179,49 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;af::array&gt; test_setup </td>
+          <td class="memname">bool almost_equal </td>
+          <td>(</td>
+          <td class="paramtype">const pytorch::tensor &amp;&#160;</td>
+          <td class="paramname"><em>first</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const pytorch::tensor &amp;&#160;</td>
+          <td class="paramname"><em>second</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float &amp;&#160;</td>
+          <td class="paramname"><em>epsilon</em> = <code>std::numeric_limits&lt;float&gt;::epsilon()*500</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b15d040035aa5605640323c6acfb841"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b15d040035aa5605640323c6acfb841">&#9670;&nbsp;</a></span>test_setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;pytorch::tensor&gt; test_setup </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
           <td class="paramname"><em>n</em>, </td>

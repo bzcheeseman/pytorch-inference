@@ -8,7 +8,6 @@ var searchData=
   ['add_5frunning_5fmean',['add_running_mean',['../classpytorch_1_1_batch_norm2d.html#a44601eef2233bbf8cb6da963bcf1520e',1,'pytorch::BatchNorm2d']]],
   ['add_5frunning_5fvar',['add_running_var',['../classpytorch_1_1_batch_norm2d.html#a1816381a3443fc87ee9b25efd0cfe6e3',1,'pytorch::BatchNorm2d']]],
   ['add_5fweights',['add_weights',['../classpytorch_1_1_linear.html#a8cbffb226f756dfabc3fcbb80c075cef',1,'pytorch::Linear']]],
-  ['almost_5fequal',['almost_equal',['../test_2utils_8hpp.html#a6383e5dd0dc83be45ed706b9cccefe3c',1,'utils.hpp']]],
-  ['avgpool',['avgpool',['../namespacepytorch_1_1impl.html#a21db7b8691d00a3d914b61c254957086',1,'pytorch::impl']]],
+  ['almost_5fequal',['almost_equal',['../test_2utils_8hpp.html#ae349690ebc71ecdef15c57b442312052',1,'almost_equal(const af::array &amp;first, const af::array &amp;second, const float &amp;epsilon=std::numeric_limits&lt; float &gt;::epsilon() *500):&#160;utils.hpp'],['../test_2utils_8hpp.html#a19d4791ea932ecbf108243d4c38c2f6c',1,'almost_equal(const pytorch::tensor &amp;first, const pytorch::tensor &amp;second, const float &amp;epsilon=std::numeric_limits&lt; float &gt;::epsilon() *500):&#160;utils.hpp']]],
   ['avgpool2d',['AvgPool2d',['../classpytorch_1_1_avg_pool2d.html#ad23e05cd109aaa2ddeaf132b0e5cc1f8',1,'pytorch::AvgPool2d']]]
 ];

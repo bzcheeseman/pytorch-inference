@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['impl',['impl',['../namespacepytorch_1_1impl.html',1,'pytorch']]],
+  ['internal',['internal',['../namespacepytorch_1_1internal.html',1,'pytorch']]],
   ['pycpp',['pycpp',['../namespacepycpp.html',1,'']]],
   ['pytorch',['pytorch',['../namespacepytorch.html',1,'']]]
 ];

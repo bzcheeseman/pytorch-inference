@@ -11,7 +11,7 @@
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({1, 1, 1},
+  std::vector<pytorch::tensor> tests = test_setup({1, 1, 1},
                                             {2, 2, 2},
                                             {45, 45, 45},
                                             {50, 50, 50},

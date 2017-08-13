@@ -23,10 +23,11 @@
 #include <arrayfire.h>
 
 // Project
+#include "../include/storage/tensor.hpp"
 #include "../include/utils.hpp"
 #include "../include/py_object.hpp"
 
-inline std::vector<af::array> test_setup(const std::vector<int> &n,
+inline std::vector<pytorch::tensor> test_setup(const std::vector<int> &n,
                                          const std::vector<int> &k,
                                          const std::vector<int> &h,
                                          const std::vector<int> &w,
@@ -40,7 +41,7 @@ inline std::vector<af::array> test_setup(const std::vector<int> &n,
   pycpp::py_object utils ("utils", "../scripts");
   pycpp::py_object py_function (python_function, "../scripts");
   assert(n.size() == k.size() && k.size() == h.size() && h.size() == w.size() && w.size() == save_file.size());
-  std::vector<af::array> out;
+  std::vector<pytorch::tensor> out;
   int n_tensors = n.size();
   std::vector<PyObject *> python_func_args;
   for (int i = 0; i < n_tensors; i++){
@@ -52,7 +53,7 @@ inline std::vector<af::array> test_setup(const std::vector<int> &n,
     python_func_args.push_back(pycpp::to_python(save_file[i]));
 
     PyObject *tensor = utils("load_tensor", {pycpp::to_python(save_file[i])}, {});
-    out.push_back(pytorch::from_numpy(reinterpret_cast<PyArrayObject *>(tensor), 4,
+    out.push_back(pytorch::internal::from_numpy(reinterpret_cast<PyArrayObject *>(tensor), 4,
                                       {n[i], k[i], h[i], w[i]}));
 
   }
@@ -69,13 +70,13 @@ inline std::vector<af::array> test_setup(const std::vector<int> &n,
     long len = PyList_Size(pto);
     for (int i = 0; i < len; i++){
       PyObject *item = PyList_GetItem(pto, i);
-      out.push_back(pytorch::from_numpy(reinterpret_cast<PyArrayObject *>(item), 4,
-                                        {out_n[i], out_k[i], out_h[i], out_w[i]}));
+      out.push_back(pytorch::tensor(pytorch::internal::from_numpy(reinterpret_cast<PyArrayObject *>(item), 4,
+                                        {out_n[i], out_k[i], out_h[i], out_w[i]})));
     }
   }
   else{ // if it isn't a list then it's one tensor
-    out.push_back(pytorch::from_numpy(reinterpret_cast<PyArrayObject *>(pto), 4,
-                                      {out_n[0], out_k[0], out_h[0], out_w[0]}));
+    out.push_back(pytorch::tensor(pytorch::internal::from_numpy(reinterpret_cast<PyArrayObject *>(pto), 4,
+                                      {out_n[0], out_k[0], out_h[0], out_w[0]})));
   }
 
   return out; // out has {input_tensors, pytorch_output_tensors} in that order exactly
@@ -89,7 +90,19 @@ inline bool almost_equal(const af::array &first, const af::array &second,
     return true;
   }
   else{
-    af_print(first); af_print(second);
+    af_print(first); af_print(second); af_print(first - second);
+    return false;
+  }
+}
+
+inline bool almost_equal(const pytorch::tensor &first, const pytorch::tensor &second,
+                         const float &epsilon=std::numeric_limits<float>::epsilon()*500){
+  af::array condition = af::flat(af::abs(first.data() - second.data()) <= epsilon);
+  if (af::allTrue<bool>(condition)){
+    return true;
+  }
+  else{
+    af_print(first.data()); af_print(second.data()); af_print(first.data() - second.data());
     return false;
   }
 }
