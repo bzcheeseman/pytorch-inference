@@ -24,9 +24,9 @@ script:
   - mkdir build; cd build
   - cmake .. -DCMAKE_BUILD_TYPE=Release
   - make; make install
-  - cd ../../pytorch-inference
-  - mkdir build; cd build
-  - cmake --build . --target test_all -- -j 4
+#  - cd ../../pytorch-inference
+#  - mkdir build; cd build
+#  - cmake --build . --target test_all -- -j 4
 compiler:
   - gcc
   - clang
