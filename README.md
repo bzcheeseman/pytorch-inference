@@ -1,4 +1,4 @@
-# pytorch-inference
+# pytorch-inference  https://travis-ci.org/bzcheeseman/pytorch-inference.svg?branch=master
 
 ### Purpose
 I realize that including all of pytorch's functionality in an OpenCL implementation
