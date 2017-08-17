@@ -129,8 +129,8 @@ add_pti_test(sum)
 add_pti_test(diff)
 add_pti_test(product)
 add_pti_test(divisor)
-add_pti_test(exporter)
-add_pti_test(rnn)
+#add_pti_test(exporter)
+#add_pti_test(rnn)
 
 add_custom_target(test_all
         COMMAND ctest

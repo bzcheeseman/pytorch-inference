@@ -15,6 +15,7 @@ addons:
       - libopenblas-dev libfftw3-dev liblapacke-dev
       - libboost-all-dev
       - opencl-headers
+      - libglfw3-dev libfontconfig1-dev
 script:
   - git clone https://github.com/arrayfire/arrayfire.git
   - cd arrayfire
