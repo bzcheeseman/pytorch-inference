@@ -1,6 +1,6 @@
 # pytorch-inference
 
-[![Build Status](https://travis-ci.org/bzcheeseman/pytorch-inference.svg?branch=master)](https://travis-ci.org/bzcheeseman/pytorch-inference)
+[![Build Status](https://travis-ci.org/bzcheeseman/pytorch-inference.svg?branch=dev)](https://travis-ci.org/bzcheeseman/pytorch-inference)
 
 ### Purpose
 I realize that including all of pytorch's functionality in an OpenCL implementation
