@@ -180,8 +180,8 @@ def emit_module_cpp(module, name):
 
 
 def run():
-    alexnet = tv.models.alexnet(True).cuda()
-    net = nn.Linear(1000, 10).cuda()
+    alexnet = tv.models.alexnet(True)
+    net = nn.Linear(1000, 10)
 
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(net.parameters(), lr=1e-3, weight_decay=1e-6)
@@ -203,15 +203,16 @@ def run():
     # for i in range(len(data)):
     #     imshow(data[i][0], "img_%d"%i)
 
-    train_loader = torch.utils.data.DataLoader(data, batch_size=10, shuffle=False, num_workers=4)
+    train_loader = torch.utils.data.DataLoader(data, batch_size=2, shuffle=False, num_workers=4)
 
     feats = []
     for i, data in enumerate(train_loader, 0):
         image, label = data
-        image = Variable(image).cuda()
+        image = Variable(image)
         thousand = alexnet(image).detach()
         feats.append(thousand)
 
+    net.cuda()
     running_loss = 0.0
     for epoch in range(5):
         for i, data in enumerate(train_loader, 0):
@@ -219,7 +220,7 @@ def run():
             label = Variable(label).cuda()
 
             optimizer.zero_grad()
-            prediction = net(feats[i])
+            prediction = net(feats[i].cuda())
             loss = criterion(prediction, label)
             loss.backward()
             running_loss += loss.data[0]
