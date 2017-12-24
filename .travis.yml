@@ -1,11 +1,11 @@
 language: cpp
 sudo: required
-dist: trusty
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
       - llvm-toolchain-precise-3.6
+      - keithw/glfw3
     packages:
       - gcc-5
       - g++-5
@@ -17,21 +17,18 @@ addons:
       - opencl-headers
       - libglfw3-dev libfontconfig1-dev
 script:
-  - git clone https://github.com/arrayfire/arrayfire.git
+  - git clone --recursive --single-branch --branch v3.5.0 https://github.com/arrayfire/arrayfire.git
   - cd arrayfire
-  - git submodule init
-  - git submodule update
-  - mkdir build; cd build
-  - cmake .. -DCMAKE_BUILD_TYPE=Release
-  - make; make install
-#  - cd ../../pytorch-inference
-#  - mkdir build; cd build
-#  - cmake --build . --target test_all -- -j 4
+  - mkdir -p build && cd build
+  - cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=OFF -DBUILD_TEST=OFF
+  - make && sudo make install
+  - cd ../../pytorch-inference
+  - mkdir build && cd build
+  - cmake --build . --target test_all -- -j 4
 compiler:
   - gcc
   - clang
 os:
-  - osx
   - linux
 branches:
   only:
