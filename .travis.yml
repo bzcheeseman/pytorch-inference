@@ -22,7 +22,7 @@ script:
   - mkdir -p build && cd build
   - cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=OFF -DBUILD_TEST=OFF
   - make && sudo make install
-  - cd ../../pytorch-inference
+  - cd ../..
   - mkdir build && cd build
   - cmake --build . --target test_all -- -j 4
 compiler:
