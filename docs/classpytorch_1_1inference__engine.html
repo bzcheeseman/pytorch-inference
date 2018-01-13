@@ -92,8 +92,8 @@ $(document).ready(function(){initNavTree('classpytorch_1_1inference__engine.html
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad7e33c865e4b301e11c30f22f1ecbcff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#ad7e33c865e4b301e11c30f22f1ecbcff">inference_engine</a> (const int &amp;<a class="el" href="classpytorch_1_1inference__engine.html#aec82911c1890de92c4b67c5239e58968">device</a>=0, af::Backend backend=AF_BACKEND_OPENCL, bool quiet=true)</td></tr>
-<tr class="separator:ad7e33c865e4b301e11c30f22f1ecbcff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad70b0abe62302c3a014c276375f6e8ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#ad70b0abe62302c3a014c276375f6e8ff">inference_engine</a> (const int &amp;<a class="el" href="classpytorch_1_1inference__engine.html#aec82911c1890de92c4b67c5239e58968">device</a>=0, af::Backend backend=AF_BACKEND_CUDA, bool quiet=true)</td></tr>
+<tr class="separator:ad70b0abe62302c3a014c276375f6e8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e7f29df63846b396d8ca28feb52a307"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a1e7f29df63846b396d8ca28feb52a307">~inference_engine</a> ()</td></tr>
 <tr class="separator:a1e7f29df63846b396d8ca28feb52a307"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a981e02ceeb390fa17323dcf96d285095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a981e02ceeb390fa17323dcf96d285095">add_layer</a> (<a class="el" href="classpytorch_1_1_layer.html">Layer</a> *l)</td></tr>
@@ -102,8 +102,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9001b472ac1207702359986da7e045f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7899cd68bba2fe0adefd94554b35c8d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpytorch_1_1_layer.html">Layer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a7899cd68bba2fe0adefd94554b35c8d4">get_layer_ptr</a> (const int &amp;depth, const int &amp;width=0)</td></tr>
 <tr class="separator:a7899cd68bba2fe0adefd94554b35c8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99aef1e37a3ae96e24784bf803ee4347"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a99aef1e37a3ae96e24784bf803ee4347">forward</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
-<tr class="separator:a99aef1e37a3ae96e24784bf803ee4347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e4fae0bf05f9ae3c3a4041cb432bffe"><td class="memItemLeft" align="right" valign="top">tensor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1inference__engine.html#a1e4fae0bf05f9ae3c3a4041cb432bffe">forward</a> (const std::vector&lt; tensor &gt; &amp;input)</td></tr>
+<tr class="separator:a1e4fae0bf05f9ae3c3a4041cb432bffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -113,8 +113,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aec82911c1890de92c4b67c5239e58968"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ad7e33c865e4b301e11c30f22f1ecbcff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7e33c865e4b301e11c30f22f1ecbcff">&#9670;&nbsp;</a></span>inference_engine()</h2>
+<a id="ad70b0abe62302c3a014c276375f6e8ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad70b0abe62302c3a014c276375f6e8ff">&#9670;&nbsp;</a></span>inference_engine()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,7 +132,7 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">af::Backend&#160;</td>
-          <td class="paramname"><em>backend</em> = <code>AF_BACKEND_OPENCL</code>, </td>
+          <td class="paramname"><em>backend</em> = <code>AF_BACKEND_CUDA</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -233,8 +233,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a99aef1e37a3ae96e24784bf803ee4347"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99aef1e37a3ae96e24784bf803ee4347">&#9670;&nbsp;</a></span>forward()</h2>
+<a id="a1e4fae0bf05f9ae3c3a4041cb432bffe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e4fae0bf05f9ae3c3a4041cb432bffe">&#9670;&nbsp;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -243,9 +243,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">af::array pytorch::inference_engine::forward </td>
+          <td class="memname">tensor pytorch::inference_engine::forward </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; af::array &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; tensor &gt; &amp;&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
           <td></td>
         </tr>

@@ -12,6 +12,15 @@ def make_tensor(n, k, h, w=None):
     return np.float32(tensor.numpy())  # this np.float32 cast is crucial
 
 
+def load_array(filename):
+    return np.float32(np.load(filename + ".npy"))
+
+
+def save_array(n, k, h, w, filename):
+    tensor = torch.zeros(n, k, h, w).uniform_(0, .1)
+    np.save(filename, tensor.numpy())
+
+
 def save_tensor(n, k, h, w, filename):
     tensor = torch.zeros(n, k, h, w).uniform_(0, .1)
     torch.save(tensor, filename)

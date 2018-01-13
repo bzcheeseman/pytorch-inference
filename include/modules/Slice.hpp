@@ -10,7 +10,7 @@
 #define PYTORCH_INFERENCE_SLICE_HPP
 
 #include "Layer.hpp"
-#include "Slice_Impl.hpp"
+#include "../functional/slice.hpp"
 
 namespace pytorch {
 
@@ -26,12 +26,12 @@ namespace pytorch {
       return dim;
     }
 
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return impl::split_branch(input[0], slices, dim);
+    inline std::vector<tensor> forward(const std::vector<tensor> &input){
+      return functional::split_branch(input[0], slices, dim);
     }
 
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return impl::split_branch(input[0], slices, dim);
+    inline std::vector<tensor> operator()(const std::vector<tensor> &input){
+      return functional::split_branch(input[0], slices, dim);
     }
 
   };

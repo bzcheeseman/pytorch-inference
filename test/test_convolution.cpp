@@ -7,11 +7,12 @@
 //
 
 #include "../include/layers.hpp"
+#include "../include/storage/tensor.hpp"
 
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({64, 1, 5}, {3, 64, 3}, {7, 1, 226}, {7, 1, 226},
+  std::vector<pytorch::tensor> tests = test_setup({64, 1, 5}, {3, 64, 3}, {7, 1, 226}, {7, 1, 226},
                                             {5}, {64}, {110}, {110},
                                             {"test_conv_filter.dat", "test_conv_bias.dat", "test_conv_img.dat"},
                                             "test_conv");
@@ -23,9 +24,9 @@ int main(){
   pytorch::Conv2d c(params, tests[0], tests[1]);
 
   af::timer::start();
-  af::array conv;
+  pytorch::tensor conv;
   for (int j = 50-1; j != 0; j--){
-    conv = c({tests[2]})[0];
+    conv = c({tests[2]})[0].data();
     conv.eval();
   }
   af::sync();

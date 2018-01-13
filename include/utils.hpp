@@ -19,12 +19,12 @@
 
 // ArrayFire
 #include <arrayfire.h>
-#include <future>
 
-namespace pytorch {
+namespace pytorch::internal {
 
   /**
-   * @brief Converts a numpy array to an ArrayFire array
+   * @brief Converts a numpy array to an ArrayFire array. It is necessary to specify all 4 dimensions if there is
+   *        a specific ordering required, otherwise it will be padded from the end with ones.
    *
    * @param array numpy ndarray (PyArrayObject *) object
    * @param ndim Number of dimensions, usually 4
@@ -45,10 +45,14 @@ namespace pytorch {
       assert(dims[i] == array_dims[i]);  // make sure dimensions are right
     }
 
+    for (int i = dims.size(); i < 4; i++){
+      dims.push_back(1);
+    }
+
     int n, k, h, w;
     n = dims[0]; k = dims[1]; h = dims[2]; w = dims[3];
 
-    af::array out (w, h, k, n, reinterpret_cast<float *>(PyArray_DATA(array)), afHost);  // errors out here
+    af::array out (w, h, k, n, reinterpret_cast<float *>(PyArray_DATA(array)));  // errors out here
     out = af::reorder(out, 1, 0, 2, 3);  // reorder to arrayfire specs (h, w, k, batch)
 
     return out;
@@ -59,34 +63,24 @@ namespace pytorch {
     if (size1 == size2){
       return;
     }
-    else{
-      std::string error = "Incorrect size passed! Sizes: " + std::to_string(size1) + ", " + std::to_string(size2);
-      error += " Function: " + func;
-      throw std::runtime_error(error);
-    }
+
+    std::string error = "Incorrect size passed! Sizes: " + std::to_string(size1) + ", " + std::to_string(size2);
+    error += " Function: " + func;
+    throw std::runtime_error(error);
+
   }
 
   inline void check_num_leq(const int &size1, const int &size2, const std::string &func){
     if (size1 <= size2){
       return;
     }
-    else{
-      std::string error = "Incorrect size passed! Sizes: " + std::to_string(size1) + ", " + std::to_string(size2);
-      error += " Function: " + func;
-      throw std::runtime_error(error);
-    }
+
+    std::string error = "Incorrect size passed! Sizes: " + std::to_string(size1) + ", " + std::to_string(size2);
+    error += " Function: " + func;
+    throw std::runtime_error(error);
+
   }
 
-  template<class Layer>
-  inline std::vector<std::future<af::array>> async_for(std::vector<Layer *> f, std::vector<af::array> inputs){
-    std::vector<std::future<af::array>> out;
-    int n_out = f.size();
-    for (int i = 0; i < n_out; i++){
-      out.push_back(std::async(std::launch::async, &Layer::forward, f[i], inputs[i]));
-    }
-    return out;
-  }
-
-} // pytorch
+} // pytorch::internal
 
 #endif //PYTORCH_INFERENCE_EXTRACT_NUMPY_HPP

@@ -9,9 +9,13 @@
 #ifndef PYTORCH_INFERENCE_BRANCH_HPP
 #define PYTORCH_INFERENCE_BRANCH_HPP
 
+// STL
+#include <vector>
+
 // Project
 #include "Layer.hpp"
-#include "Branch_Impl.hpp"
+#include "../functional/branch.hpp"
+#include "../storage/tensor.hpp"
 
 namespace pytorch {
   //! @todo: docs
@@ -19,18 +23,18 @@ namespace pytorch {
   private:
     int copies;
   public:
-    Branch(const int &copies) : copies(copies){}
+    explicit Branch(const int &copies) : copies(copies){}
 
     inline int get_copies() const {
       return copies;
     }
 
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return impl::copy_branch(input[0], copies);
+    inline std::vector<tensor> forward(const std::vector<tensor> &input){
+      return functional::copy_branch(input[0], copies);
     }
 
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return impl::copy_branch(input[0], copies);
+    inline std::vector<tensor> operator()(const std::vector<tensor> &input){
+      return functional::copy_branch(input[0], copies);
     }
   };
 } // pytorch

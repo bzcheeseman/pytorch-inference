@@ -101,12 +101,12 @@ Inheritance diagram for pytorch::Linear:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a47740884c0ce199daecd9958bd6b6ca3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a47740884c0ce199daecd9958bd6b6ca3">Linear</a> (const af::array &amp;<a class="el" href="classpytorch_1_1_linear.html#a1ce5755565afc4f3de332e3f6836f3bd">weights</a>, const af::array &amp;<a class="el" href="classpytorch_1_1_linear.html#ae2ec81120db6e196709dc11a67fc9ce8">bias</a>)</td></tr>
-<tr class="memdesc:a47740884c0ce199daecd9958bd6b6ca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classpytorch_1_1_linear.html">Linear</a> object given weights, and bias tensors.  <a href="#a47740884c0ce199daecd9958bd6b6ca3">More...</a><br /></td></tr>
-<tr class="separator:a47740884c0ce199daecd9958bd6b6ca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad061ae2fec18baa95cc7b9b854b57f92"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#ad061ae2fec18baa95cc7b9b854b57f92">Linear</a> (const std::string &amp;weights_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;weights_dims={}, const bool <a class="el" href="classpytorch_1_1_linear.html#af77334f2b9d31c019e91834651dd5fe4">has_bias</a>=false, const std::string &amp;bias_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;bias_dims={}, const std::string &amp;python_home=&quot;../scripts&quot;)</td></tr>
-<tr class="memdesc:ad061ae2fec18baa95cc7b9b854b57f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classpytorch_1_1_linear.html">Linear</a> object given the filenames and sizes of the requisite tensors.  <a href="#ad061ae2fec18baa95cc7b9b854b57f92">More...</a><br /></td></tr>
-<tr class="separator:ad061ae2fec18baa95cc7b9b854b57f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a597b9f666c6fb0ee63998eaf99c9fce9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a597b9f666c6fb0ee63998eaf99c9fce9">Linear</a> (const tensor &amp;<a class="el" href="classpytorch_1_1_linear.html#a2a697fc9ea78d4b700d88dc8a13eb9d3">weights</a>, const tensor &amp;<a class="el" href="classpytorch_1_1_linear.html#ab7c5cbbe5814e447ce836a2a0992d3b1">bias</a>)</td></tr>
+<tr class="memdesc:a597b9f666c6fb0ee63998eaf99c9fce9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classpytorch_1_1_linear.html">Linear</a> object given weights, and bias tensors.  <a href="#a597b9f666c6fb0ee63998eaf99c9fce9">More...</a><br /></td></tr>
+<tr class="separator:a597b9f666c6fb0ee63998eaf99c9fce9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96db040ad1dd0b5756baa7317ccdc273"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a96db040ad1dd0b5756baa7317ccdc273">Linear</a> (const std::string &amp;weights_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;weights_dims={}, const std::string &amp;bias_filename=&quot;&quot;, const std::vector&lt; int &gt; &amp;bias_dims={}, const std::string &amp;python_home=&quot;../scripts&quot;)</td></tr>
+<tr class="memdesc:a96db040ad1dd0b5756baa7317ccdc273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classpytorch_1_1_linear.html">Linear</a> object given the filenames and sizes of the requisite tensors.  <a href="#a96db040ad1dd0b5756baa7317ccdc273">More...</a><br /></td></tr>
+<tr class="separator:a96db040ad1dd0b5756baa7317ccdc273"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8bbc9c901cda2e77ac60abccf4de372"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#ac8bbc9c901cda2e77ac60abccf4de372">Linear</a> (const <a class="el" href="classpytorch_1_1_linear.html">Linear</a> &amp;other)</td></tr>
 <tr class="memdesc:ac8bbc9c901cda2e77ac60abccf4de372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor, constructs another <a class="el" href="classpytorch_1_1_linear.html">Linear</a> object that is an exact copy of the argument.  <a href="#ac8bbc9c901cda2e77ac60abccf4de372">More...</a><br /></td></tr>
 <tr class="separator:ac8bbc9c901cda2e77ac60abccf4de372"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,30 +119,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4db382b11a3f91778797a6e940692d86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a4db382b11a3f91778797a6e940692d86">add_bias</a> (const std::string &amp;bias_filename, const std::vector&lt; int &gt; &amp;bias_dims)</td></tr>
 <tr class="memdesc:a4db382b11a3f91778797a6e940692d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read in bias from a file given here if it wasn't passed to the constructor. Overwrites current contents of this-&gt;bias.  <a href="#a4db382b11a3f91778797a6e940692d86">More...</a><br /></td></tr>
 <tr class="separator:a4db382b11a3f91778797a6e940692d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a850c81192d2f73e96f42700b94091a57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a850c81192d2f73e96f42700b94091a57">set_has_bias</a> (bool <a class="el" href="classpytorch_1_1_linear.html#af77334f2b9d31c019e91834651dd5fe4">has_bias</a>)</td></tr>
-<tr class="memdesc:a850c81192d2f73e96f42700b94091a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether or not this layer has bias. If no, then this should be called. Otherwise, it's unnecessary.  <a href="#a850c81192d2f73e96f42700b94091a57">More...</a><br /></td></tr>
-<tr class="separator:a850c81192d2f73e96f42700b94091a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b0318a61558f674bff2be8410da1fb5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a0b0318a61558f674bff2be8410da1fb5">forward</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
-<tr class="memdesc:a0b0318a61558f674bff2be8410da1fb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function, takes data and performs the <a class="el" href="classpytorch_1_1_linear.html">Linear</a> operation using the already-initialized weights and bias tensors.  <a href="#a0b0318a61558f674bff2be8410da1fb5">More...</a><br /></td></tr>
-<tr class="separator:a0b0318a61558f674bff2be8410da1fb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d86c19268604c3c35a7958bb55d0329"><td class="memItemLeft" align="right" valign="top">std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a6d86c19268604c3c35a7958bb55d0329">operator()</a> (const std::vector&lt; af::array &gt; &amp;input)</td></tr>
-<tr class="memdesc:a6d86c19268604c3c35a7958bb55d0329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function, takes data and performs the <a class="el" href="classpytorch_1_1_linear.html">Linear</a> operation using the already-initialized weights and bias tensors.  <a href="#a6d86c19268604c3c35a7958bb55d0329">More...</a><br /></td></tr>
-<tr class="separator:a6d86c19268604c3c35a7958bb55d0329"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d6c9d5d98918c9b67acfd543507ba73"><td class="memItemLeft" align="right" valign="top">std::vector&lt; tensor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a8d6c9d5d98918c9b67acfd543507ba73">forward</a> (const std::vector&lt; tensor &gt; &amp;input)</td></tr>
+<tr class="memdesc:a8d6c9d5d98918c9b67acfd543507ba73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function, takes data and performs the <a class="el" href="classpytorch_1_1_linear.html">Linear</a> operation using the already-initialized weights and bias tensors.  <a href="#a8d6c9d5d98918c9b67acfd543507ba73">More...</a><br /></td></tr>
+<tr class="separator:a8d6c9d5d98918c9b67acfd543507ba73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d99b0deebfec4362b95926398048916"><td class="memItemLeft" align="right" valign="top">std::vector&lt; tensor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a3d99b0deebfec4362b95926398048916">operator()</a> (const std::vector&lt; tensor &gt; &amp;input)</td></tr>
+<tr class="memdesc:a3d99b0deebfec4362b95926398048916"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function, takes data and performs the <a class="el" href="classpytorch_1_1_linear.html">Linear</a> operation using the already-initialized weights and bias tensors.  <a href="#a3d99b0deebfec4362b95926398048916">More...</a><br /></td></tr>
+<tr class="separator:a3d99b0deebfec4362b95926398048916"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a1ce5755565afc4f3de332e3f6836f3bd"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a1ce5755565afc4f3de332e3f6836f3bd">weights</a></td></tr>
-<tr class="separator:a1ce5755565afc4f3de332e3f6836f3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2ec81120db6e196709dc11a67fc9ce8"><td class="memItemLeft" align="right" valign="top">af::array&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#ae2ec81120db6e196709dc11a67fc9ce8">bias</a></td></tr>
-<tr class="separator:ae2ec81120db6e196709dc11a67fc9ce8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a697fc9ea78d4b700d88dc8a13eb9d3"><td class="memItemLeft" align="right" valign="top">tensor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#a2a697fc9ea78d4b700d88dc8a13eb9d3">weights</a></td></tr>
+<tr class="separator:a2a697fc9ea78d4b700d88dc8a13eb9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7c5cbbe5814e447ce836a2a0992d3b1"><td class="memItemLeft" align="right" valign="top">tensor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#ab7c5cbbe5814e447ce836a2a0992d3b1">bias</a></td></tr>
+<tr class="separator:ab7c5cbbe5814e447ce836a2a0992d3b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1e4c23bdc871fa3df2d6fc1db4cf954"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classpycpp_1_1py__object.html">pycpp::py_object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#ae1e4c23bdc871fa3df2d6fc1db4cf954">utils</a></td></tr>
 <tr class="separator:ae1e4c23bdc871fa3df2d6fc1db4cf954"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af77334f2b9d31c019e91834651dd5fe4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#af77334f2b9d31c019e91834651dd5fe4">has_bias</a></td></tr>
+<tr class="memitem:af77334f2b9d31c019e91834651dd5fe4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_linear.html#af77334f2b9d31c019e91834651dd5fe4">has_bias</a> = false</td></tr>
 <tr class="separator:af77334f2b9d31c019e91834651dd5fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a47740884c0ce199daecd9958bd6b6ca3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47740884c0ce199daecd9958bd6b6ca3">&#9670;&nbsp;</a></span>Linear() <span class="overload">[1/3]</span></h2>
+<a id="a597b9f666c6fb0ee63998eaf99c9fce9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a597b9f666c6fb0ee63998eaf99c9fce9">&#9670;&nbsp;</a></span>Linear() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -153,13 +150,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">pytorch::Linear::Linear </td>
           <td>(</td>
-          <td class="paramtype">const af::array &amp;&#160;</td>
+          <td class="paramtype">const tensor &amp;&#160;</td>
           <td class="paramname"><em>weights</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const af::array &amp;&#160;</td>
+          <td class="paramtype">const tensor &amp;&#160;</td>
           <td class="paramname"><em>bias</em>&#160;</td>
         </tr>
         <tr>
@@ -186,8 +183,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="ad061ae2fec18baa95cc7b9b854b57f92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad061ae2fec18baa95cc7b9b854b57f92">&#9670;&nbsp;</a></span>Linear() <span class="overload">[2/3]</span></h2>
+<a id="a96db040ad1dd0b5756baa7317ccdc273"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96db040ad1dd0b5756baa7317ccdc273">&#9670;&nbsp;</a></span>Linear() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -206,12 +203,6 @@ Private Attributes</h2></td></tr>
           <td></td>
           <td class="paramtype">const std::vector&lt; int &gt; &amp;&#160;</td>
           <td class="paramname"><em>weights_dims</em> = <code>{}</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const bool&#160;</td>
-          <td class="paramname"><em>has_bias</em> = <code>false</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -247,9 +238,9 @@ Private Attributes</h2></td></tr>
 <p>Constructs a <a class="el" href="classpytorch_1_1_linear.html">Linear</a> object given the filenames and sizes of the requisite tensors. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">weights_filename</td><td>The file where the weights tensor is saved. Will be loaded with torch.load(filename). </td></tr>
+    <tr><td class="paramname">weights_filename</td><td>The file where the weights tensor is saved. Will be loaded with numpy.load(filename). </td></tr>
     <tr><td class="paramname">weights_dims</td><td>The dimensions of the weights tensor in pytorch convention - (batch, channels, h, w) </td></tr>
-    <tr><td class="paramname">bias_filename</td><td>The file where the bias tensor is saved. Will be loaded with torch.load(filename). </td></tr>
+    <tr><td class="paramname">bias_filename</td><td>The file where the bias tensor is saved. Will be loaded with numpy.load(filename). </td></tr>
     <tr><td class="paramname">bias_dims</td><td>The dimensions of the bias tensor in pytorch convention - (batch, channels, h, w) </td></tr>
     <tr><td class="paramname">python_home</td><td>Where the utility scripts are - holds the loading script necessary to load up the tensors. </td></tr>
   </table>
@@ -357,7 +348,7 @@ Private Attributes</h2></td></tr>
 <p>Read in bias from a file given here if it wasn't passed to the constructor. Overwrites current contents of this-&gt;bias. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">bias_filename</td><td>The file where the bias tensor is saved. Will be loaded with torch.load(filename). </td></tr>
+    <tr><td class="paramname">bias_filename</td><td>The file where the bias tensor is saved. Will be loaded with numpy.load(filename). </td></tr>
     <tr><td class="paramname">bias_dims</td><td>The dimensions of the bias tensor in pytorch convention - (batch, channels, h, w) </td></tr>
   </table>
   </dd>
@@ -402,7 +393,7 @@ Private Attributes</h2></td></tr>
 <p>Read in weights from a file given here if it wasn't passed to the constructor. Overwrites current contents of this-&gt;weights. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">weights_filename</td><td>The file where the weights tensor is saved. Will be loaded with torch.load(filename). </td></tr>
+    <tr><td class="paramname">weights_filename</td><td>The file where the weights tensor is saved. Will be loaded with numpy.load(filename). </td></tr>
     <tr><td class="paramname">weights_dims</td><td>The dimensions of the weights tensor in pytorch convention - (batch, channels, h, w) </td></tr>
   </table>
   </dd>
@@ -410,8 +401,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0b0318a61558f674bff2be8410da1fb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b0318a61558f674bff2be8410da1fb5">&#9670;&nbsp;</a></span>forward()</h2>
+<a id="a8d6c9d5d98918c9b67acfd543507ba73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d6c9d5d98918c9b67acfd543507ba73">&#9670;&nbsp;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -420,9 +411,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;af::array&gt; pytorch::Linear::forward </td>
+          <td class="memname">std::vector&lt;tensor&gt; pytorch::Linear::forward </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; af::array &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; tensor &gt; &amp;&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
           <td></td>
         </tr>
@@ -443,12 +434,12 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Transformed data size (dims_out, 1, batch) </dd></dl>
 
-<p>Implements <a class="el" href="classpytorch_1_1_layer.html#a1abb45857b18f70a9a95ae16a69f968d">pytorch::Layer</a>.</p>
+<p>Implements <a class="el" href="classpytorch_1_1_layer.html#aa4eef41dde3e7a2b6853e4ff4d553ed3">pytorch::Layer</a>.</p>
 
 </div>
 </div>
-<a id="a6d86c19268604c3c35a7958bb55d0329"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d86c19268604c3c35a7958bb55d0329">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a3d99b0deebfec4362b95926398048916"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d99b0deebfec4362b95926398048916">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -457,9 +448,9 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;af::array&gt; pytorch::Linear::operator() </td>
+          <td class="memname">std::vector&lt;tensor&gt; pytorch::Linear::operator() </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; af::array &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; tensor &gt; &amp;&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
           <td></td>
         </tr>
@@ -480,47 +471,13 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Transformed data size (dims_out, 1, batch) </dd></dl>
 
-<p>Implements <a class="el" href="classpytorch_1_1_layer.html#a7a766ac20be5e818e497e6f2f05a2c8d">pytorch::Layer</a>.</p>
-
-</div>
-</div>
-<a id="a850c81192d2f73e96f42700b94091a57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a850c81192d2f73e96f42700b94091a57">&#9670;&nbsp;</a></span>set_has_bias()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void pytorch::Linear::set_has_bias </td>
-          <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>has_bias</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Sets whether or not this layer has bias. If no, then this should be called. Otherwise, it's unnecessary. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">has_bias</td><td>Whether or not the layer has bias. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Implements <a class="el" href="classpytorch_1_1_layer.html#a99a644aa88713cb9f6803224c5156f24">pytorch::Layer</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae2ec81120db6e196709dc11a67fc9ce8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2ec81120db6e196709dc11a67fc9ce8">&#9670;&nbsp;</a></span>bias</h2>
+<a id="ab7c5cbbe5814e447ce836a2a0992d3b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7c5cbbe5814e447ce836a2a0992d3b1">&#9670;&nbsp;</a></span>bias</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -529,7 +486,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">af::array pytorch::Linear::bias</td>
+          <td class="memname">tensor pytorch::Linear::bias</td>
         </tr>
       </table>
   </td>
@@ -551,7 +508,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool pytorch::Linear::has_bias</td>
+          <td class="memname">bool pytorch::Linear::has_bias = false</td>
         </tr>
       </table>
   </td>
@@ -585,8 +542,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a1ce5755565afc4f3de332e3f6836f3bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ce5755565afc4f3de332e3f6836f3bd">&#9670;&nbsp;</a></span>weights</h2>
+<a id="a2a697fc9ea78d4b700d88dc8a13eb9d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a697fc9ea78d4b700d88dc8a13eb9d3">&#9670;&nbsp;</a></span>weights</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -595,7 +552,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">af::array pytorch::Linear::weights</td>
+          <td class="memname">tensor pytorch::Linear::weights</td>
         </tr>
       </table>
   </td>

@@ -16,6 +16,7 @@
 #include "modules/Concatenate.hpp"
 #include "modules/Convolution.hpp"
 #include "modules/Linear.hpp"
+#include "modules/RNN.hpp"
 #include "modules/Normalization.hpp"
 #include "modules/Pooling.hpp"
 #include "modules/Slice.hpp"

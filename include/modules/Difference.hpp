@@ -10,7 +10,8 @@
 #define PYTORCH_INFERENCE_DIFFERENCE_HPP
 
 #include "Layer.hpp"
-#include "Difference_Impl.hpp"
+#include "../functional/difference.hpp"
+#include "../storage/tensor.hpp"
 
 namespace pytorch {
 
@@ -20,12 +21,12 @@ namespace pytorch {
   public:
     Difference(const int &dim, const int &n_tensors) : dim(dim), n_tensors(n_tensors) {}
 
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
-      return {impl::difn(input, dim)};
+    inline std::vector<tensor> forward(const std::vector<tensor> &input){
+      return {functional::difn(input, dim)};
     }
 
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
-      return {impl::difn(input, dim)};
+    inline std::vector<tensor> operator()(const std::vector<tensor> &input){
+      return {functional::difn(input, dim)};
     }
   };
 

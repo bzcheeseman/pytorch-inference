@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['tanh',['Tanh',['../classpytorch_1_1_tanh.html',1,'pytorch::Tanh'],['../namespacepytorch_1_1impl.html#a1cd8ca00aa7f53404f1c55c7202ae1f3',1,'pytorch::impl::tanh()']]],
+  ['tanh',['Tanh',['../classpytorch_1_1_tanh.html',1,'pytorch']]],
   ['test',['test',['../namespacetest.html',1,'']]],
   ['test_2epy',['test.py',['../test_8py.html',1,'']]],
   ['test_5fact',['test_act',['../namespacetest__act.html',1,'test_act'],['../namespacetest__act.html#a4c8fb02962bfc9195f459fd0c3d6578b',1,'test_act.test_act()']]],
@@ -33,7 +33,8 @@ var searchData=
   ['test_5fprod',['test_prod',['../namespacetest__prod.html',1,'test_prod'],['../namespacetest__prod.html#ad84706884bce31df867d24fc5f4129b2',1,'test_prod.test_prod()']]],
   ['test_5fprod_2epy',['test_prod.py',['../test__prod_8py.html',1,'']]],
   ['test_5fproduct_2ecpp',['test_product.cpp',['../test__product_8cpp.html',1,'']]],
-  ['test_5fsetup',['test_setup',['../test_2utils_8hpp.html#a8b35521ac52846b0f926b91755016c0d',1,'utils.hpp']]],
+  ['test_5frnn_2ecpp',['test_rnn.cpp',['../test__rnn_8cpp.html',1,'']]],
+  ['test_5fsetup',['test_setup',['../test_2utils_8hpp.html#a3b15d040035aa5605640323c6acfb841',1,'utils.hpp']]],
   ['test_5fslice',['test_slice',['../namespacetest__slice.html',1,'test_slice'],['../namespacetest__slice.html#a94a0990cc036145cccd6e5604a7196b4',1,'test_slice.test_slice()']]],
   ['test_5fslice_2ecpp',['test_slice.cpp',['../test__slice_8cpp.html',1,'']]],
   ['test_5fslice_2epy',['test_slice.py',['../test__slice_8py.html',1,'']]],

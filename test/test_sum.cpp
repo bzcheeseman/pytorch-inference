@@ -11,7 +11,7 @@
 #include "utils.hpp"
 
 int main(){
-  std::vector<af::array> tests = test_setup({1, 1, 1},
+  std::vector<pytorch::tensor> tests = test_setup({1, 1, 1},
                                             {2, 2, 2},
                                             {45, 45, 45},
                                             {50, 50, 50},
@@ -26,7 +26,7 @@ int main(){
 
   pytorch::Sum s(pytorch::k, 3);
   af::timer::start();
-  af::array summed;
+  pytorch::tensor summed;
   for (int j = 49; j >= 0; j--){
     summed = s({tests[0], tests[1], tests[2]})[0];
     summed.eval();

@@ -118,16 +118,16 @@ Inheritance diagram for pytorch::Layer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1abb45857b18f70a9a95ae16a69f968d"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_layer.html#a1abb45857b18f70a9a95ae16a69f968d">forward</a> (const std::vector&lt; af::array &gt; &amp;input)=0</td></tr>
-<tr class="memdesc:a1abb45857b18f70a9a95ae16a69f968d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function for this layer.  <a href="#a1abb45857b18f70a9a95ae16a69f968d">More...</a><br /></td></tr>
-<tr class="separator:a1abb45857b18f70a9a95ae16a69f968d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a766ac20be5e818e497e6f2f05a2c8d"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; af::array &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_layer.html#a7a766ac20be5e818e497e6f2f05a2c8d">operator()</a> (const std::vector&lt; af::array &gt; &amp;input)=0</td></tr>
-<tr class="memdesc:a7a766ac20be5e818e497e6f2f05a2c8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function for this layer.  <a href="#a7a766ac20be5e818e497e6f2f05a2c8d">More...</a><br /></td></tr>
-<tr class="separator:a7a766ac20be5e818e497e6f2f05a2c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4eef41dde3e7a2b6853e4ff4d553ed3"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; tensor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_layer.html#aa4eef41dde3e7a2b6853e4ff4d553ed3">forward</a> (const std::vector&lt; tensor &gt; &amp;input)=0</td></tr>
+<tr class="memdesc:aa4eef41dde3e7a2b6853e4ff4d553ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function for this layer.  <a href="#aa4eef41dde3e7a2b6853e4ff4d553ed3">More...</a><br /></td></tr>
+<tr class="separator:aa4eef41dde3e7a2b6853e4ff4d553ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99a644aa88713cb9f6803224c5156f24"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; tensor &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpytorch_1_1_layer.html#a99a644aa88713cb9f6803224c5156f24">operator()</a> (const std::vector&lt; tensor &gt; &amp;input)=0</td></tr>
+<tr class="memdesc:a99a644aa88713cb9f6803224c5156f24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward function for this layer.  <a href="#a99a644aa88713cb9f6803224c5156f24">More...</a><br /></td></tr>
+<tr class="separator:a99a644aa88713cb9f6803224c5156f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1abb45857b18f70a9a95ae16a69f968d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1abb45857b18f70a9a95ae16a69f968d">&#9670;&nbsp;</a></span>forward()</h2>
+<a id="aa4eef41dde3e7a2b6853e4ff4d553ed3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4eef41dde3e7a2b6853e4ff4d553ed3">&#9670;&nbsp;</a></span>forward()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,9 +136,9 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual std::vector&lt;af::array&gt; pytorch::Layer::forward </td>
+          <td class="memname">virtual std::vector&lt;tensor&gt; pytorch::Layer::forward </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; af::array &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; tensor &gt; &amp;&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
           <td></td>
         </tr>
@@ -159,12 +159,12 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The output of this layer </dd></dl>
 
-<p>Implemented in <a class="el" href="classpytorch_1_1_batch_norm2d.html#a708c9fbeed102fe07577f4d9321b2261">pytorch::BatchNorm2d</a>, <a class="el" href="classpytorch_1_1_conv2d.html#a953a1db977476c1b7d963459a63b9034">pytorch::Conv2d</a>, <a class="el" href="classpytorch_1_1_linear.html#a0b0318a61558f674bff2be8410da1fb5">pytorch::Linear</a>, <a class="el" href="classpytorch_1_1_avg_pool2d.html#a1904e62fdaee1476b737a364b5156be7">pytorch::AvgPool2d</a>, <a class="el" href="classpytorch_1_1_max_unpool2d.html#a825b92beb3f4120595eb7d1288201802">pytorch::MaxUnpool2d</a>, <a class="el" href="classpytorch_1_1_softmax.html#a24909b8fdd420f9d0b6275dbcb3f8cc6">pytorch::Softmax</a>, <a class="el" href="classpytorch_1_1_re_l_u.html#a5488d7103355ed0f8f92aaea5364f3e2">pytorch::ReLU</a>, <a class="el" href="classpytorch_1_1_skip.html#ab3833af82d8d8b7579b2515d6e06e5ce">pytorch::Skip</a>, <a class="el" href="classpytorch_1_1_hardtanh.html#a0dddd311bb37d3bfb37f1ea45a1337ee">pytorch::Hardtanh</a>, <a class="el" href="classpytorch_1_1_max_pool2d.html#a5f2ea435fea042c0677ecd665de1405b">pytorch::MaxPool2d</a>, <a class="el" href="classpytorch_1_1_tanh.html#abebdcdc2a41b9cca18a30309af154600">pytorch::Tanh</a>, <a class="el" href="classpytorch_1_1_slice.html#ab62b0d4638d95c05094510a40c5f3625">pytorch::Slice</a>, <a class="el" href="classpytorch_1_1_branch.html#ae0d6f620eab11534bb3262580c571c8f">pytorch::Branch</a>, <a class="el" href="classpytorch_1_1_sigmoid.html#a8e7e598171e919a5dd3dfd54ad38dbdc">pytorch::Sigmoid</a>, <a class="el" href="classpytorch_1_1_concat.html#a579456fcc4526be442cf89dac0fe80d9">pytorch::Concat</a>, <a class="el" href="classpytorch_1_1_difference.html#a01bf21d2aab932f1684c99d27bf8e987">pytorch::Difference</a>, <a class="el" href="classpytorch_1_1_divisor.html#a6097f8351b50b810687d0684ae5e5213">pytorch::Divisor</a>, <a class="el" href="classpytorch_1_1_product.html#a326e40189dc850b84e292446d998d674">pytorch::Product</a>, and <a class="el" href="classpytorch_1_1_sum.html#a245f536c69ac5a00cae3da031323f379">pytorch::Sum</a>.</p>
+<p>Implemented in <a class="el" href="classpytorch_1_1_batch_norm2d.html#abf65015a525817d77ff213de019abbfd">pytorch::BatchNorm2d</a>, <a class="el" href="classpytorch_1_1_conv2d.html#a7bbd2e80086e2b220f658a5f0b179ae0">pytorch::Conv2d</a>, <a class="el" href="classpytorch_1_1_avg_pool2d.html#ae44d115be61aa92d678e7673b67f9252">pytorch::AvgPool2d</a>, <a class="el" href="classpytorch_1_1_linear.html#a8d6c9d5d98918c9b67acfd543507ba73">pytorch::Linear</a>, <a class="el" href="classpytorch_1_1_max_unpool2d.html#a7b281c8e9d1ea286df77a65005e98b39">pytorch::MaxUnpool2d</a>, <a class="el" href="classpytorch_1_1_softmax.html#aceab934c8c449c78176b0d249f289331">pytorch::Softmax</a>, <a class="el" href="classpytorch_1_1_re_l_u.html#a80992d979d818745600e722fd38e01ee">pytorch::ReLU</a>, <a class="el" href="classpytorch_1_1_skip.html#a9c7733ddf6d4a81b1f230f49359c20dd">pytorch::Skip</a>, <a class="el" href="classpytorch_1_1_max_pool2d.html#a292c43d0b8505550e331f8e2cfcd3f20">pytorch::MaxPool2d</a>, <a class="el" href="classpytorch_1_1_hardtanh.html#a82a7c2045adb65b4fa79c73fd3c3aac4">pytorch::Hardtanh</a>, <a class="el" href="classpytorch_1_1_tanh.html#a42e342fe4204b48d6e6f8d18dd4abd37">pytorch::Tanh</a>, <a class="el" href="classpytorch_1_1_branch.html#ad0f2af2513e8de4c065d5b19a4263784">pytorch::Branch</a>, <a class="el" href="classpytorch_1_1_slice.html#aa422029c4a955c94bbb46fe1e4f2ab99">pytorch::Slice</a>, <a class="el" href="classpytorch_1_1_concat.html#ac865557ee325b89aea0e93816d05affd">pytorch::Concat</a>, <a class="el" href="classpytorch_1_1_sigmoid.html#ad85f564989d4c54e27fc221f73e8d203">pytorch::Sigmoid</a>, <a class="el" href="classpytorch_1_1_difference.html#ad0d970cf0ed542f8aaf7fceddd0ef19a">pytorch::Difference</a>, <a class="el" href="classpytorch_1_1_divisor.html#a1b1793b2645559f1c644cbe4cc2e55ab">pytorch::Divisor</a>, <a class="el" href="classpytorch_1_1_product.html#acc81e3447b4d579c76030e6758098352">pytorch::Product</a>, and <a class="el" href="classpytorch_1_1_sum.html#a75f4e818f774e804c7f4dca9603e238b">pytorch::Sum</a>.</p>
 
 </div>
 </div>
-<a id="a7a766ac20be5e818e497e6f2f05a2c8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a766ac20be5e818e497e6f2f05a2c8d">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a99a644aa88713cb9f6803224c5156f24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99a644aa88713cb9f6803224c5156f24">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -173,9 +173,9 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual std::vector&lt;af::array&gt; pytorch::Layer::operator() </td>
+          <td class="memname">virtual std::vector&lt;tensor&gt; pytorch::Layer::operator() </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; af::array &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; tensor &gt; &amp;&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
           <td></td>
         </tr>
@@ -196,7 +196,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The output of this layer </dd></dl>
 
-<p>Implemented in <a class="el" href="classpytorch_1_1_batch_norm2d.html#ab8a0e1cbc627b47c87a8cc5951b55e25">pytorch::BatchNorm2d</a>, <a class="el" href="classpytorch_1_1_conv2d.html#ad59f5c6c9fd3a6a238cfa50fa94e4019">pytorch::Conv2d</a>, <a class="el" href="classpytorch_1_1_linear.html#a6d86c19268604c3c35a7958bb55d0329">pytorch::Linear</a>, <a class="el" href="classpytorch_1_1_avg_pool2d.html#a6a08e267be98ce762c062052cb9d046b">pytorch::AvgPool2d</a>, <a class="el" href="classpytorch_1_1_max_unpool2d.html#a81abe04136f9c82a92e553ea354968ed">pytorch::MaxUnpool2d</a>, <a class="el" href="classpytorch_1_1_softmax.html#ad11cd227c282ff29eaafa26e491daaca">pytorch::Softmax</a>, <a class="el" href="classpytorch_1_1_re_l_u.html#afc78ace7d3c4eba28a4344b5dcf24fe9">pytorch::ReLU</a>, <a class="el" href="classpytorch_1_1_skip.html#a968c864ee798307240bd9ea3d17156c3">pytorch::Skip</a>, <a class="el" href="classpytorch_1_1_max_pool2d.html#a6849f3a4850596f32f05b51273ea4eb3">pytorch::MaxPool2d</a>, <a class="el" href="classpytorch_1_1_hardtanh.html#a9ac35a8c4dd94eb271e032605c73a3fb">pytorch::Hardtanh</a>, <a class="el" href="classpytorch_1_1_tanh.html#a0d593d22d6b94e751d8f119626fb3e1f">pytorch::Tanh</a>, <a class="el" href="classpytorch_1_1_slice.html#a921e47ebaa66a1156d84d640d0733ea0">pytorch::Slice</a>, <a class="el" href="classpytorch_1_1_branch.html#a56760a37afd47d7efe851abd51b33568">pytorch::Branch</a>, <a class="el" href="classpytorch_1_1_sigmoid.html#a272104b99e5c7dd6358b6ad66bac8334">pytorch::Sigmoid</a>, <a class="el" href="classpytorch_1_1_concat.html#a12b56a501fb446b2c4232c6651b398bb">pytorch::Concat</a>, <a class="el" href="classpytorch_1_1_difference.html#aa212b613e22968164be7c70b0b9333f0">pytorch::Difference</a>, <a class="el" href="classpytorch_1_1_divisor.html#afe9bf4c588471c841387682cbd8aec8b">pytorch::Divisor</a>, <a class="el" href="classpytorch_1_1_product.html#aaf986dc9dc48d58e8d52ec1b07969e3c">pytorch::Product</a>, and <a class="el" href="classpytorch_1_1_sum.html#aa8cabf11163b25c80425d2bbca0e6558">pytorch::Sum</a>.</p>
+<p>Implemented in <a class="el" href="classpytorch_1_1_batch_norm2d.html#a545dd02286924e89b9446ae24be19193">pytorch::BatchNorm2d</a>, <a class="el" href="classpytorch_1_1_conv2d.html#a4041eec181d3a162a52cc05c251ce1a5">pytorch::Conv2d</a>, <a class="el" href="classpytorch_1_1_avg_pool2d.html#ae6a68e3c28205a810df812c92f6c3d56">pytorch::AvgPool2d</a>, <a class="el" href="classpytorch_1_1_linear.html#a3d99b0deebfec4362b95926398048916">pytorch::Linear</a>, <a class="el" href="classpytorch_1_1_max_unpool2d.html#a34cbe6a4a9e1fc71ba679329fb91e0f3">pytorch::MaxUnpool2d</a>, <a class="el" href="classpytorch_1_1_softmax.html#a88a1ae3e3e006bbaf733cdab467c1766">pytorch::Softmax</a>, <a class="el" href="classpytorch_1_1_skip.html#a6afcbf3621bfe3e99ec875b786de90bd">pytorch::Skip</a>, <a class="el" href="classpytorch_1_1_re_l_u.html#af522c9473da692f8ca0c4b4e0937c2ca">pytorch::ReLU</a>, <a class="el" href="classpytorch_1_1_max_pool2d.html#aeaef3ce3c5391c543aa58734acacbb31">pytorch::MaxPool2d</a>, <a class="el" href="classpytorch_1_1_hardtanh.html#aa08ba43936b51724f4e31f5c44508086">pytorch::Hardtanh</a>, <a class="el" href="classpytorch_1_1_tanh.html#a4ce691f6bd37754bc3e7cfa5bebd4f8f">pytorch::Tanh</a>, <a class="el" href="classpytorch_1_1_branch.html#aefede1a83bab5f45eed9f21d50032333">pytorch::Branch</a>, <a class="el" href="classpytorch_1_1_slice.html#a8daaff6dd745856efff5ad34cbfac1fc">pytorch::Slice</a>, <a class="el" href="classpytorch_1_1_concat.html#aa5929c9789904c02a04ea78eaa3d963b">pytorch::Concat</a>, <a class="el" href="classpytorch_1_1_sigmoid.html#a4db6261b6e54c5c4b5d7221a9371f9b5">pytorch::Sigmoid</a>, <a class="el" href="classpytorch_1_1_difference.html#a61d1b51e0c51d335ef01d91fbc8241c5">pytorch::Difference</a>, <a class="el" href="classpytorch_1_1_divisor.html#afb4a502e853f614cef53c6795c27e325">pytorch::Divisor</a>, <a class="el" href="classpytorch_1_1_product.html#a3d219486a1f8f157be097fbbe593db9b">pytorch::Product</a>, and <a class="el" href="classpytorch_1_1_sum.html#a406c26d6b58262fded9ffae3963714d0">pytorch::Sum</a>.</p>
 
 </div>
 </div>

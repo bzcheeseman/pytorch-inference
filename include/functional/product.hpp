@@ -6,8 +6,8 @@
 // Full license at pytorch_inference/LICENSE.txt
 //
 
-#ifndef PYTORCH_INFERENCE_SUM_IMPL_HPP
-#define PYTORCH_INFERENCE_SUM_IMPL_HPP
+#ifndef PYTORCH_INFERENCE_PRODUCT_IMPL_HPP
+#define PYTORCH_INFERENCE_PRODUCT_IMPL_HPP
 
 // ArrayFire
 #include <arrayfire.h>
@@ -15,20 +15,21 @@
 // Project
 #include "../utils.hpp"
 
-namespace pytorch::impl {
+namespace pytorch::functional {
 
-  inline af::array sumn(const std::vector<af::array> &inputs,
+  inline tensor prodn(const std::vector<tensor> &inputs,
                         const int &dim){
 
     int n_tensors = inputs.size();
-    af::array out = inputs[0];
+    af::array out = inputs[0].data();
 #pragma omp target device(0) map(out, inputs)
     for (int i = n_tensors-1; i > 0; i--){
-      out += inputs[i];
+      out *= inputs[i].data();
     }
-    return out;
+
+    return tensor(out);
   }
 
-} // pytorch::impl
+} // pytorch::functional
 
-#endif //PYTORCH_INFERENCE_SUM_IMPL_HPP
+#endif //PYTORCH_INFERENCE_PRODUCT_IMPL_HPP

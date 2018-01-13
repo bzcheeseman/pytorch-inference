@@ -15,6 +15,9 @@
 // ArrayFire
 #include <arrayfire.h>
 
+// Project
+#include "../storage/tensor.hpp"
+
 namespace pytorch {
   /**
    * @class Layer
@@ -32,14 +35,14 @@ namespace pytorch {
      * @param input The input to this layer
      * @return The output of this layer
      */
-    inline virtual std::vector<af::array> forward(const std::vector<af::array> &input) = 0;
+    inline virtual std::vector<tensor> forward(const std::vector<tensor> &input) = 0;
 
     /**
      * @brief Forward function for this layer
      * @param input The input to this layer
      * @return The output of this layer
      */
-    inline virtual std::vector<af::array> operator()(const std::vector<af::array> &input) = 0;
+    inline virtual std::vector<tensor> operator()(const std::vector<tensor> &input) = 0;
   };
 
   /**
@@ -54,7 +57,7 @@ namespace pytorch {
      * @param input Input tensor(s)
      * @return Input tensor(s)
      */
-    inline std::vector<af::array> forward(const std::vector<af::array> &input){
+    inline std::vector<tensor> forward(const std::vector<tensor> &input) override {
       return input;
     }
 
@@ -63,7 +66,7 @@ namespace pytorch {
      * @param input Input tensor(s)
      * @return Input tensor(s)
      */
-    inline std::vector<af::array> operator()(const std::vector<af::array> &input){
+    inline std::vector<tensor> operator()(const std::vector<tensor> &input) override {
       return input;
     }
   };

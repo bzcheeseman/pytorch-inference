@@ -17,21 +17,22 @@
 
 // Project
 #include "../utils.hpp"
+#include "../storage/tensor.hpp"
 
-namespace pytorch::impl {
+namespace pytorch::functional {
 
-  inline af::array divn(const std::vector<af::array> &inputs,
+  inline tensor divn(const std::vector<tensor> &inputs,
                          const int &dim){ // this didn't work
 
     int n_tensors = inputs.size();
-    af::array out = inputs[0];
+    af::array out = inputs[0].data();
 #pragma omp target device(0) map(out, inputs)
     for (int i = 1; i < n_tensors; i++){
-      out /= inputs[i];
+      out /= inputs[i].data();
     }
-    return out;
+    return tensor(out);
   }
 
-} // pytorch::impl
+} // pytorch::functional
 
 #endif //PYTORCH_INFERENCE_DIVISOR_IMPL_HPP

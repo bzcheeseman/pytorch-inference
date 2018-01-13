@@ -39,7 +39,7 @@ namespace pytorch {
   };
 }
 
-namespace pytorch::impl {
+namespace pytorch::functional {
   /**
    * @brief Performs convolution given exported pytorch filters
    *
@@ -48,27 +48,27 @@ namespace pytorch::impl {
    * @param input (h, w, Cin, batch)
    * @return (h_out, w_out, Cout, batch)
    */
-  inline af::array conv2d(const conv_params_t &params,
-                              const af::array &input,
-                              const af::array &filters,
-                              const af::array &bias,
+  inline tensor conv2d(const conv_params_t &params,
+                              const tensor &input,
+                              const tensor &filters,
+                              const tensor &bias,
                               const bool &has_bias) {
-    long Cin = input.dims(2);
-    long Cout = filters.dims(0);
-    long batch = input.dims(3);
+    long Cin = input.data().dims(2);
+    long Cout = filters.data().dims(0);
+    long batch = input.data().dims(3);
 
-    long h_in = input.dims(0);
-    long w_in = input.dims(0);
+    long h_in = input.data().dims(0);
+    long w_in = input.data().dims(0);
     long h_out = (int) floor((h_in - params.filter_x + 2 * params.pad_x) / params.stride_x + 1);
     long w_out = (int) floor((w_in - params.filter_y + 2 * params.pad_y) / params.stride_y + 1);
 
-    af::array in = af::unwrap(input, params.filter_x, params.filter_y,
+    af::array in = af::unwrap(input.data(), params.filter_x, params.filter_y,
                               params.stride_x, params.stride_y,
                               params.pad_x, params.pad_y);
-    in = af::moddims(af::reorder(in, 0, 2, 1, 3), in.dims(0)*Cin, in.dims(1), 1, batch); // comment to use nested for impl
+    in = af::moddims(af::reorder(in, 0, 2, 1, 3), in.dims(0)*Cin, in.dims(1), 1, batch); // comment to use nested for functional
     af::array out = af::constant(0, Cout, h_out*w_out, batch, 1);
     if (has_bias)
-      out += af::tile(af::reorder(bias, 2, 3, 0, 1), 1, h_out*w_out, batch, 1);
+      out += af::tile(af::reorder(bias.data(), 2, 3, 0, 1), 1, h_out*w_out, batch, 1);
 
     // input is (fx*fy, ox*oy, Cin, n)
     // filters is (Cout, fx*fy, Cin)
@@ -79,12 +79,12 @@ namespace pytorch::impl {
 //      for (int k = 0; k < Cin; k++){ // faster for larger input planes (e.g. full size images)
 //        out(af::span, af::span, i, 0) += af::matmul(filters(af::span, af::span, k, 0), in(af::span, af::span, k, i));
 //      }
-      out(af::span, af::span, i, 0) += af::matmul(filters(af::span, af::span, 0, 0), in(af::span, af::span, 0, i));
+      out(af::span, af::span, i, 0) += af::matmul(filters.data()(af::span, af::span, 0, 0), in(af::span, af::span, 0, i));
     }
 
-    return af::moddims(af::reorder(out, 1, 3, 0, 2), h_out, w_out, Cout, batch);
+    return tensor(af::moddims(af::reorder(out, 1, 3, 0, 2), h_out, w_out, Cout, batch));
   }
-} // pytorch::impl
+} // pytorch::functional
 
 
 
